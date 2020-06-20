@@ -42,13 +42,16 @@ define([
             //$("#message1").html("there" + message);
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
             var data = [{"message": message}];
-            $.ajax({
-                url: url,
-                data: data,
-                success: function(data){
-                    alert(data);
+            
+            $.post(url,
+                {
+                    sent_data: data,
+
+                },
+                function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
                 }
-              });
+            );
 
             $("#message").html(message);
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
