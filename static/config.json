@@ -9,7 +9,7 @@
   "type": "REST",
   "lang": {
      "en-US": {
-         "name": "REST Activity v1.3",
+         "name": "IS Event",
          "description": "An example REST activity using workflow API v1.1 format."
      }
   },
