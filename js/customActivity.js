@@ -57,6 +57,7 @@ define([
                         //alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
+                        $("#message").html(de_fields);
                     } else {
                         de_fields = "Cannot Lah"
                     }
@@ -65,7 +66,7 @@ define([
                 data: sendInfo
             });
 
-            $("#message").html(de_fields);
+            //$("#message").html(de_fields);
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         });
