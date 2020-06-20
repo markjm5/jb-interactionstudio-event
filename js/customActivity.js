@@ -46,7 +46,7 @@ define([
             var sendInfo = {
                 DECustomerKey: message,
             };
-            var de_fields = "";
+            var de_fields = "Nada";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -56,9 +56,9 @@ define([
                         //alert('HEY 2!');
                         //alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
-                        location.reload(true);
+                        //location.reload(true);
                     } else {
-                        alert("Cannot add to list !");
+                        de_fields = "Cannot Lah"
                     }
                 },
 
