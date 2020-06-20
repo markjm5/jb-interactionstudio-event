@@ -66,8 +66,12 @@ def index_html():
     # event_definition_key = journey_id_to_event_key(journey_id)    
     # entry_de_customer_key = event_key_to_de_customer_key(event_definition_key)
 
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #access_token = json.loads(response._content)["access_token"]
+    response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
+    response_content = json.loads(response._content)
+
+    response1 = requests.post(LOG_NOTIFICATION_URL, response_content)
+
+    access_token = json.loads(response._content)["access_token"]
 
     #entry_de_customer_key = "D5118761-5863-43DC-8022-941CE864DA83"
     #decrypted_token = "{\"inArguments\": [{\"tokens\": {\"token\": \"0bICaQjRzb5eVIj1GdBUzhwD4p91AuU60INp8kZUUlZ1rBLyNkAH7NqqdT4MRQkCWqBZDjJKYx7FAx_Waekwx4JyWHEHfU5saEdf01SARu-AijzK4Tyv_40MsOPQ1DdSp0pGg4tUWoNkGFhUMhKyZsyD-HWFFLXSRizG-La2sdNSlPoK2ce8RpTAKXgdkHNltS5HkxUVmBsfZvJBoLoRIBTqeMyECu6BqbbXNTbosJ77Pjhmij7fnP0jIj1O_DvEzlgTw3IfEZHd2C7RqKoukTg\", \"fuel2token\": \"4gOqoNhxXALlUcxZtK9S3j3U\", \"expires\": 1592483764291, \"stackKey\": \"S4\"}, \"emailAddress\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"contactIdentifier\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"message\": \"someMessage\"}], \"outArguments\": [{\"SegmentMembership\": \"\"}], \"activityObjectID\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"journeyId\": \"65f1d3c8-33ab-467a-a18a-b3d186e675ad\", \"activityId\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"definitionInstanceId\": \"af848d2e-8df1-4d9c-b915-9fedb8c0a4fe\", \"activityInstanceId\": \"48811206-f9fc-46d3-a633-4d3079638420\", \"keyValue\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"mode\": 0}"
