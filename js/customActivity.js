@@ -35,10 +35,10 @@ define([
         connection.trigger('requestEndpoints');
 
         // Disable the next button if a value isn't selected
-        $('#select1').change(function() {
+        $('#submit').click(function() {
             var message = getMessage();
             //$("#message1").css( "border", "3px solid blue" );
-            //alert(message);
+            alert(message);
             //$("#message1").html("there" + message);
 
             $("#message").html(message);
@@ -232,6 +232,8 @@ define([
 
     function getMessage() {
         //return $("#select1").find('option:selected').attr('value').trim();
+        //message = $("#activity-name-input").val().trim();
+        //alert(message);
         return $("#activity-name-input").val().trim();
     }
 
