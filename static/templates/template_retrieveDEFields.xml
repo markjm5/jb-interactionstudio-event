@@ -1,0 +1,39 @@
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <a:Action s:mustUnderstand="1">Retrieve</a:Action>
+        <a:To s:mustUnderstand="1"></a:To>
+        <fueloauth xmlns="http://exacttarget.com"></fueloauth>
+    </s:Header>
+    <s:Body xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <RetrieveRequestMsg xmlns="http://exacttarget.com/wsdl/partnerAPI">
+         <RetrieveRequest>
+            <ObjectType>DataExtensionField</ObjectType>
+            <Properties>Client.ID</Properties>
+            <Properties>CreatedDate</Properties>
+            <Properties>CustomerKey</Properties>
+            <Properties>DataExtension.CustomerKey</Properties>
+            <Properties>DefaultValue</Properties>
+            <Properties>FieldType</Properties>
+            <Properties>IsPrimaryKey</Properties>
+            <Properties>IsRequired</Properties>
+            <Properties>MaxLength</Properties>
+            <Properties>ModifiedDate</Properties>
+            <Properties>Name</Properties>
+            <Properties>ObjectID</Properties>
+            <Properties>Ordinal</Properties>
+            <Properties>Scale</Properties>
+            <Filter xsi:type="SimpleFilterPart">
+               <Property>DataExtension.CustomerKey</Property>
+               <SimpleOperator>equals</SimpleOperator>
+               <Value></Value>
+            </Filter>
+            <QueryAllAccounts>true</QueryAllAccounts>
+            <Retrieves />
+            <Options>
+               <SaveOptions />
+               <IncludeObjects>true</IncludeObjects>
+            </Options>
+         </RetrieveRequest>
+      </RetrieveRequestMsg>
+   </s:Body>
+</s:Envelope>

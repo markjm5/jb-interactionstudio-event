@@ -1,0 +1,30 @@
+{ 
+	"action": "",
+    "user": {
+        "id": "",
+        "anonId": "",
+        "attributes": {
+        },
+        "catalog": {
+            "Product": {
+                "attr1": "",
+                "attr2": ""
+            }
+        },
+        "order": {
+            "Product": {
+              "orderId": "",
+                "lineItems": 
+                    [{
+                        "_id": "",
+                        "price": "",
+                        "quantity": ""
+                    }
+                ]
+            }
+        }
+    },
+    "source": {
+        "channel": ""
+    }
+}
