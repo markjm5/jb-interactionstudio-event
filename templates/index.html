@@ -18,7 +18,11 @@
             var dependencies = [
                 'customActivity'
             ];
-            delete require.cache['customActivity'];
+
+            require.config({
+                urlArgs: "bust=" + (new Date()).getTime()
+            })
+            
             require(config, dependencies);
         })();
     </script>
