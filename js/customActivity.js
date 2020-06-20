@@ -231,7 +231,8 @@ define([
     }
 
     function getMessage() {
-        return $("#select1").find('option:selected').attr('value').trim();
+        //return $("#select1").find('option:selected').attr('value').trim();
+        return $("#activity-name-input").val().trim();
     }
 
 });
