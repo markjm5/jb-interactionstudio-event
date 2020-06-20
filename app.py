@@ -114,19 +114,17 @@ def index_html():
 
     return render_template('index.html', message="Custom Activity", debug_message=debug_message, css_path=path_to_css)
 
-@app.route('/journeybuilder/getdefields/', methods=['POST', 'GET'])
+@app.route('/journeybuilder/getdefields/', methods=['POST'])
 def journeybuilder_get_de_fields():
 
     if request.method == 'POST':
-        returned_data = request.data
-    else:
-        returned_data = {"method": "GET Command"}
+        de_customer_key = request.form["DECustomerKey"]
 
-    response = requests.post(LOG_NOTIFICATION_URL, returned_data)
+    response = requests.post(LOG_NOTIFICATION_URL, de_customer_key)
 
     #retrieve_de_name(de_customer_key, access_token):
     #de_customer_key_to_fields(de_customer_key, access_token):
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = {"fname": "Mark", "lname": "Mukherjee"}  
 
     return jsonify(jsonified_test)
 

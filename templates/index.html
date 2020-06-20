@@ -10,6 +10,7 @@
     
     <script type="text/javascript" src="/js/require.js"></script>    
     <script type="text/javascript">
+        
         (function() {
             var config = {
                 baseUrl: 'js'
@@ -22,9 +23,46 @@
             require.config({
                 urlArgs: "bust=" + (new Date()).getTime()
             })
-            
+
             require(config, dependencies);
         })();
+        
+        /*
+        function clickbutton() {
+            var message = 'test';
+            //$("#message1").css( "border", "3px solid blue" );
+            alert('HEY!!');
+            //$("#message1").html("there" + message);
+            var url = "http://127.0.0.1:5000/journeybuilder/getdefields/"; 
+            
+            var sendInfo = {
+                DECustomerKey: message,
+            };
+            var de_fields = "";
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                success: function (msg) {
+                    if (msg) {
+                        //alert('HEY 2!');
+                        //alert(JSON.stringify(msg));
+                        de_fields = JSON.stringify(msg);
+                        location.reload(true);
+                    } else {
+                        alert("Cannot add to list !");
+                    }
+                },
+
+                data: sendInfo
+            });
+
+            $("#message").html(de_fields);
+            //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+
+        }
+        */
+
     </script>
 
     <!--Styles-->
@@ -92,7 +130,7 @@
                     <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
                     <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
             
-                    <button id="submit">Get Data Extension Fields</button>
+                    <button id="submit" onclick="clickbutton()">Get Data Extension Fields</button>
             
                 </div>
             </div>

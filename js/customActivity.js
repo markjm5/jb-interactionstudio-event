@@ -40,21 +40,32 @@ define([
             //$("#message1").css( "border", "3px solid blue" );
             //alert(message);
             //$("#message1").html("there" + message);
+
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
-            var data = [{"message": message}];
             
-            $.post(url,
-                {
-                    sent_data: data,
-                    name: "Donald Duck"
-
+            var sendInfo = {
+                DECustomerKey: message,
+            };
+            var de_fields = "";
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                success: function (msg) {
+                    if (msg) {
+                        //alert('HEY 2!');
+                        //alert(JSON.stringify(msg));
+                        de_fields = JSON.stringify(msg);
+                        location.reload(true);
+                    } else {
+                        alert("Cannot add to list !");
+                    }
                 },
-                function(data, status){
-                    alert("Data: " + data + "\nStatus: " + status);
-                }
-            );
 
-            $("#message").html(message);
+                data: sendInfo
+            });
+
+            $("#message").html(de_fields);
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         });
