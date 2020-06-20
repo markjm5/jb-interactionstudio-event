@@ -528,30 +528,6 @@ def return_formatted_xml_tree(tree, value, access_token):
 
     return formatted_xml_tree
 
-"""
-@app.route('/static/config.json', methods=['GET'])
-def send_static_config():
-    return send_from_directory('static','config.json')
-
-@app.route('/submit', methods=['POST'])
-def submit():
-    if request.method == 'POST':
-        customer = request.form['customer']
-        dealer = request.form['dealer']
-        rating = request.form['rating']
-        comments = request.form['comments']
-        # print(customer, dealer, rating, comments)
-        if customer == '' or dealer == '':
-            return render_template('index.html', message='Please enter required field')
-
-        if db.session.query(Feedback).filter(Feedback.customer == customer).count() == 0:
-            data = Feedback(customer, dealer, rating, comments)
-            db.session.add(data)
-            db.session.commit()
-            return render_template('success.html')
-
-        return render_template('index.html', message='You have already submitted feedback')
-"""
 
 if __name__ == '__main__':
     app.run()
