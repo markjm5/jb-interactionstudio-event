@@ -40,8 +40,8 @@ define([
             //$("#message1").css( "border", "3px solid blue" );
             alert(message);
             //$("#message1").html("there" + message);
-            var url: "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
-            var data: [{"message": message}];
+            var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
+            var data = [{"message": message}];
             $.ajax({
                 url: url,
                 data: data,
