@@ -60,7 +60,7 @@ def index_html():
         debug_message = "this is a POST request to index.html"
     else:
         data = {'title': 'Pyton request', 'body': 'This is the Execute Command GET'}
-        debug_message = auth_header_json_data
+        debug_message = "This is a test" #auth_header_json_data
     
     #journey_id = "87ebbd51-11c0-41c7-bd53-5dd16e93b712"
     # event_definition_key = journey_id_to_event_key(journey_id)    
