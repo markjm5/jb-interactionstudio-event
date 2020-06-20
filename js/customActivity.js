@@ -38,7 +38,7 @@ define([
         $('#submit').click(function() {
             var message = getMessage();
             //$("#message1").css( "border", "3px solid blue" );
-            alert(message);
+            //alert(message);
             //$("#message1").html("there" + message);
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
             var data = [{"message": message}];
@@ -46,6 +46,7 @@ define([
             $.post(url,
                 {
                     sent_data: data,
+                    name: "Donald Duck"
 
                 },
                 function(data, status){
