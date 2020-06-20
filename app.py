@@ -114,6 +114,22 @@ def index_html():
 
     return render_template('index.html', message="Custom Activity", debug_message=debug_message, css_path=path_to_css)
 
+@app.route('/journeybuilder/getdefields/', methods=['POST', 'GET'])
+def journeybuilder_get_de_fields():
+
+    if request.method == 'POST':
+        returned_data = request.data
+    else:
+        returned_data = {"method": "GET Command"}
+
+    response = requests.post(LOG_NOTIFICATION_URL, returned_data)
+
+    #retrieve_de_name(de_customer_key, access_token):
+    #de_customer_key_to_fields(de_customer_key, access_token):
+    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+
+    return jsonify(jsonified_test)
+
 
 @app.route('/journeybuilder/execute/', methods=['POST'])
 def journeybuilder_execute():
