@@ -230,10 +230,10 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-    function getMessage() {
+    function getMessage() {  
         //return $("#select1").find('option:selected').attr('value').trim();
         //message = $("#activity-name-input").val().trim();
-        //alert(message);
+        //alert(message); 
         return $("#activity-name-input").val();
     }
 
