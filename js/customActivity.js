@@ -234,7 +234,7 @@ define([
         //return $("#select1").find('option:selected').attr('value').trim();
         //message = $("#activity-name-input").val().trim();
         //alert(message);
-        return $("#activity-name-input").val().trim();
+        return $("#activity-name-input").val();
     }
 
 });
