@@ -69,7 +69,7 @@ def index_html():
     response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
     response_content = json.loads(response._content)
 
-    response1 = requests.post(LOG_NOTIFICATION_URL, response_content)
+    #notification1_response = requests.post(LOG_NOTIFICATION_URL, response_content)
 
     access_token = json.loads(response._content)["access_token"]
 
