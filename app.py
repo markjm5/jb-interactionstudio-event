@@ -117,13 +117,14 @@ def index_html():
 @app.route('/journeybuilder/getdefields/', methods=['POST'])
 def journeybuilder_get_de_fields():
 
+    jsonified_text = {}
+
     if request.method == 'POST':
         de_customer_key = request.form["DECustomerKey"]
 
         response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
         response_content = json.loads(response._content)
         access_token = json.loads(response._content)["access_token"]
-
 
         response = requests.post(LOG_NOTIFICATION_URL, de_customer_key)
         try:
