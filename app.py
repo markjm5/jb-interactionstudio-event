@@ -134,7 +134,7 @@ def journeybuilder_get_de_fields():
         except:
             jsonified_text = {"error": "True"}
 
-    return jsonify(jsonified_test)
+    return jsonify(jsonified_text)
 
 
 @app.route('/journeybuilder/execute/', methods=['POST'])
