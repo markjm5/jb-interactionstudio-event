@@ -3,7 +3,7 @@
   "metaData": {
     "icon": "static/icon.png",
     "iconSmall": "static/iconSmall.png",
-     "category": "message"
+     "category": "customer"
   },
   "key": "REST1",
   "type": "REST",
