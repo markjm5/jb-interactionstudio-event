@@ -53,11 +53,11 @@ define([
                 dataType: "json",
                 success: function (msg) {
                     if (msg) {
-                        alert('HEY 2!');
-                        alert(JSON.stringify(msg));
+                        //alert('HEY 2!');
+                        //alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
-                        $("#message").html(de_fields);
+                        $("#message").html("Successfully Mapped Attributes");
                     } else {
                         de_fields = "Cannot Lah"
                     }
