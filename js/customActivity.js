@@ -40,7 +40,7 @@ define([
             //$("#message1").css( "border", "3px solid blue" );
             alert(customer_key);
             //$("#message1").html("there" + message);
-
+            var message = false;
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
             
             var sendInfo = {
@@ -63,12 +63,10 @@ define([
                         }else{
 
                             $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
-                            message = false;
                         }
                     } else {
                         de_fields = ""
                         $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
-                        message = false;
                     }
                 },
 
