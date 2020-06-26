@@ -46,7 +46,7 @@ define([
             var sendInfo = {
                 DECustomerKey: customer_key,
             };
-            var de_fields = "Nada";
+            var json_response = "Nada";
             $.ajax({
                 type: "POST",
                 url: url,
@@ -54,10 +54,11 @@ define([
                 success: function (msg) {
                     if (msg) {
                         alert('HEY 2!');
-                        alert(JSON.stringify(msg));
-                        de_fields = JSON.stringify(msg);
+                        json_response = JSON.parse(msg);    
+                        alert(json_response);
+
                         //location.reload(true);
-                        if(JSON.stringify(msg) == 'True'){
+                        if(json_response.Error == 'False'){
                             $("#message").html("Successfully Mapped Attributes");
                             message = true;
                         }else{
@@ -65,7 +66,6 @@ define([
                             $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
                         }
                     } else {
-                        de_fields = ""
                         $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
                     }
                 },

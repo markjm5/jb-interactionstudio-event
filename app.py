@@ -131,7 +131,7 @@ def journeybuilder_get_de_fields():
             de_name = retrieve_de_name(de_customer_key, access_token)
             de_fields = de_customer_key_to_fields(de_customer_key, access_token)
 
-            jsonified_text = {"de_name": de_name, "de_fields": de_fields}  
+            jsonified_text = {"error": "False","de_name": de_name, "de_fields": de_fields}  
         except:
             jsonified_text = {"error": "True"}
 
