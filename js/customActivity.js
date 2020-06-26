@@ -38,7 +38,7 @@ define([
         $('#submit').click(function() {
             var customer_key = getMessage();
             //$("#message1").css( "border", "3px solid blue" );
-           // alert(message);
+            alert(customer_key);
             //$("#message1").html("there" + message);
 
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
@@ -53,8 +53,8 @@ define([
                 dataType: "json",
                 success: function (msg) {
                     if (msg) {
-                        //alert('HEY 2!');
-                        //alert(JSON.stringify(msg));
+                        alert('HEY 2!');
+                        alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
                         if(Json.stringify(msg) == 'True'){
