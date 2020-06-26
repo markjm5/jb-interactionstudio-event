@@ -74,6 +74,7 @@ define([
             });
 
             //$("#message").html(de_fields);
+            alert(message);
             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         });
