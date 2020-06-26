@@ -58,12 +58,12 @@ define([
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
                         if(JSON.stringify(msg) == 'True'){
-                            $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
-                            message = false;
-                        }else{
-
                             $("#message").html("Successfully Mapped Attributes");
                             message = true;
+                        }else{
+
+                            $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                            message = false;
                         }
                     } else {
                         de_fields = ""
