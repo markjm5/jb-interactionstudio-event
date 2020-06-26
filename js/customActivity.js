@@ -58,7 +58,7 @@ define([
                         alert(json_response);
 
                         //location.reload(true);
-                        if(json_response.Error == 'False'){
+                        if(json_response.error == 'False'){
                             $("#message").html("Successfully Mapped Attributes");
                             message = true;
                         }else{
