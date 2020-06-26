@@ -81,1033 +81,183 @@
 
 </head>
 <body>
-
-<div id="step1" class="step">
-    <div class="scm-common-header slds-m-top_medium slds-m-horizontal_medium slds-m-bottom_small" style="display: block;">
-        <div class="scm-common-header-flex slds-is-relative">
-            <div class="scm-common-header-text-container slds-has-flexi-truncate slds-is-relative">
+    <div id="step1" class="step">
+       <div class="scm-common-header slds-m-top_medium slds-m-horizontal_medium slds-m-bottom_small" style="display: block;">
+          <div class="scm-common-header-flex slds-is-relative">
+             <div class="scm-common-header-text-container slds-has-flexi-truncate slds-is-relative">
                 <div class="scm-common-header-text slds-text-heading_medium slds-text-color_default slds-truncate" title="Push Notification Activity Summary">Interaction Studio Event</div>
                 <div class="scm-common-header-subtext slds-text-body_regular slds-text-color_weak slds-truncate slds-hide"></div>
-            </div>            
-            <div class="scm-common-header-close-button-container">
+             </div>
+             <div class="scm-common-header-close-button-container">
                 <svg class="scm-common-header-close slds-icon slds-icon_small slds-m-top_xx-small slds-m-left_x-small scm-header-close" aria-hidden="true" style="display: block;">
-                    <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use-->
+                   <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use-->
                 </svg>
                 <svg class="scm-common-header-back slds-icon slds-m-top_xx-small  slds-m-left_x-small scm-header-back" aria-hidden="true" style="display: none;">
-                    <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use-->
+                   <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use-->
                 </svg>
                 <div class="popover-target slds-is-relative"></div>
-            </div>
-        </div>
-    </div>
-    <div class="scm-common-header slds-m-top_medium slds-m-horizontal_medium slds-m-bottom_small" style="display: block;">
-        <div class="scm-common-header-flex slds-is-relative">
-            <div id="message"></div>
-            <div class="popover-target slds-is-relative"></div>
-        </div>
-    </div>
-
-    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-
-    <div class="scm-common-body slds-is-relative">
-        <div class="scm-element slds-m-top_none slds-p-horizontal_medium slds-p-bottom_medium slds-is-absolute" data-state="transient" data-view="summary" style="display: block;">
-            <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
+             </div>
+          </div>
+       </div>
+       <div class="scm-common-header slds-m-top_medium slds-m-horizontal_medium slds-m-bottom_small" style="display: block;">
+          <div class="scm-common-header-flex slds-is-relative">
+             <div id="message"></div>
+             <div class="popover-target slds-is-relative"></div>
+          </div>
+       </div>
+       <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+       <div class="scm-common-body slds-is-relative">
+          <div class="scm-element slds-m-top_none slds-p-horizontal_medium slds-p-bottom_medium slds-is-absolute" data-state="transient" data-view="summary" style="display: block;">
+             <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
                 <div class="summary-view">
-                    <div class="activity-detail slds-grid slds-m-bottom_medium">
-
-
-                        <div class="slds-col slds-size_1-of-2 slds-p-right_small activity-name-container">
-                            <div class="slds-form-element">
-                                <label id="activity-name_label" class="slds-form-element__label slds-text-title_caps" for="activity-name-input">
-                                ENTRY DATA EXTENSION CUSTOMER KEY
-                                </label>
-                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right slds-border_bottom">
-                                    <svg class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default scm-anchor-right" aria-hidden="true">
-                                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="scm-anchor-right">
-                                            <path d="M4.4 15.4l4.1 4.1c.2.2.5.2.6 0L19.4 9.2c.2-.2.2-.4 0-.6l-4.1-4.1c-.2-.2-.4-.2-.6 0L4.4 14.8c-.2.2-.2.5 0 .6zM16.7 2.6c-.2.2-.2.5 0 .7l4 4c.2.2.5.2.7 0l1.1-1.1c.8-.7.8-1.8 0-2.6l-2.1-2.1c-.8-.8-1.9-.8-2.7 0l-1 1.1zM1 22.2c-.1.5.3.9.8.8l5-1.2c.2 0 .3-.1.4-.2l.1-.1c.1-.1.1-.4-.1-.6l-4.1-4.1c-.2-.2-.5-.2-.6-.1l-.1.1c-.1.1-.2.3-.2.4l-1.2 5z"></path>
-                                        </svg>
-                                    </svg>
-                                    <div id="activity-name">
-                                        <input type="text" id="activity-name-input" class="slds-input slds-input_bare slds-p-around_none" value="">
-                                    </div>
-                                </div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium">
+                      <div class="slds-col slds-size_1-of-2 slds-p-right_small activity-name-container">
+                         <div class="slds-form-element">
+                            <label id="activity-name_label" class="slds-form-element__label slds-text-title_caps" for="activity-name-input">
+                            ENTRY DATA EXTENSION CUSTOMER KEY
+                            </label>
+                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right slds-border_bottom">
+                               <svg class="slds-icon slds-input__icon slds-input__icon_right slds-icon-text-default scm-anchor-right" aria-hidden="true">
+                                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="scm-anchor-right">
+                                     <path d="M4.4 15.4l4.1 4.1c.2.2.5.2.6 0L19.4 9.2c.2-.2.2-.4 0-.6l-4.1-4.1c-.2-.2-.4-.2-.6 0L4.4 14.8c-.2.2-.2.5 0 .6zM16.7 2.6c-.2.2-.2.5 0 .7l4 4c.2.2.5.2.7 0l1.1-1.1c.8-.7.8-1.8 0-2.6l-2.1-2.1c-.8-.8-1.9-.8-2.7 0l-1 1.1zM1 22.2c-.1.5.3.9.8.8l5-1.2c.2 0 .3-.1.4-.2l.1-.1c.1-.1.1-.4-.1-.6l-4.1-4.1c-.2-.2-.5-.2-.6-.1l-.1.1c-.1.1-.2.3-.2.4l-1.2 5z"></path>
+                                  </svg>
+                               </svg>
+                               <div id="activity-name">
+                                  <input type="text" id="activity-name-input" class="slds-input slds-input_bare slds-p-around_none" value="">
+                               </div>
                             </div>
-                        </div>                       
-                    </div>
-
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-            
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-
-                    <div class="deupdate-attribute-list"><div class="slds-grid"><div class="deupdate-field-dropdown slds-col slds-size_5-of-12"><div id="dropdownc109"><div class="slds-combobox_container">
-                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                                <input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress">
-                                <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right" title="Toggle Dropdown">
-                                    <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/vendor/salesforce-lightning-design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
-                                    </svg>
-                                    <span class="slds-assistive-text">Toggle Dropdown</span>
-                                </span>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <div class="deupdate-attribute-list">
+                      <div class="slds-grid">
+                         <div class="deupdate-field-dropdown slds-col slds-size_5-of-12">
+                            <div id="dropdownc109">
+                               <div class="slds-combobox_container">
+                                  <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress">
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                            <div id="dropdownc109-listbox" role="listbox">
-                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid" role="presentation">
-                                <li data-value="aa753989-3839-4925-a626-e3dd480c4275" role="presentation" class="slds-listbox__item text-type">
-                        <div id="aa753989-3839-4925-a626-e3dd480c4275" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="SubscriberKey">SubscriberKey</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f80fa258-9011-4799-9956-635ca600d922" role="presentation" class="slds-listbox__item">
-                        <div id="f80fa258-9011-4799-9956-635ca600d922" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                slds-is-selected
-                                slds-has-focus
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate" title="EmailAddress">EmailAddress</span>
-                            </span>
-                        </div>
-                    </li>
-                    <li data-value="7669860d-b183-42a7-a3d7-fa4c1b8a3740" role="presentation" class="slds-listbox__item text-type">
-                        <div id="7669860d-b183-42a7-a3d7-fa4c1b8a3740" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="First_Name">First_Name</span>
-                            </span>
-                        </div>
-                    </li><li data-value="19a3122e-075a-4a47-89cf-cbf0f8099db5" role="presentation" class="slds-listbox__item text-type">
-                        <div id="19a3122e-075a-4a47-89cf-cbf0f8099db5" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Last_Name">Last_Name</span>
-                            </span>
-                        </div>
-                    </li><li data-value="078ebc95-a8fa-4059-b4c7-d5d285896b58" role="presentation" class="slds-listbox__item text-type">
-                        <div id="078ebc95-a8fa-4059-b4c7-d5d285896b58" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Gender">Gender</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f72d9eb0-b2f4-4e3e-bf91-588e0c8ed92b" role="presentation" class="slds-listbox__item date-type">
-                        <div id="f72d9eb0-b2f4-4e3e-bf91-588e0c8ed92b" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate date-type" title="DOB">DOB</span>
-                            </span>
-                        </div>
-                    </li><li data-value="d00c3b7e-b02d-4f1e-aa75-f50d73c32022" role="presentation" class="slds-listbox__item text-type">
-                        <div id="d00c3b7e-b02d-4f1e-aa75-f50d73c32022" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Address1">Address1</span>
-                            </span>
-                        </div>
-                    </li><li data-value="af42f26e-ad60-44b9-92a0-4d6c7192919e" role="presentation" class="slds-listbox__item text-type">
-                        <div id="af42f26e-ad60-44b9-92a0-4d6c7192919e" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Address2">Address2</span>
-                            </span>
-                        </div>
-                    </li><li data-value="312f9968-b655-4e64-b0df-61cc24456557" role="presentation" class="slds-listbox__item text-type">
-                        <div id="312f9968-b655-4e64-b0df-61cc24456557" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="City">City</span>
-                            </span>
-                        </div>
-                    </li><li data-value="add6b619-2fe1-45c0-922d-0c4e160aaa32" role="presentation" class="slds-listbox__item text-type">
-                        <div id="add6b619-2fe1-45c0-922d-0c4e160aaa32" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="State">State</span>
-                            </span>
-                        </div>
-                    </li><li data-value="5387c9ef-66f2-4490-a3d1-90ab90a0907e" role="presentation" class="slds-listbox__item number-type">
-                        <div id="5387c9ef-66f2-4490-a3d1-90ab90a0907e" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate number-type" title="Zip">Zip</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f7598fa4-43ab-4428-bbac-2da3f1880e9d" role="presentation" class="slds-listbox__item text-type">
-                        <div id="f7598fa4-43ab-4428-bbac-2da3f1880e9d" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Language">Language</span>
-                            </span>
-                        </div>
-                    </li><li data-value="1937ae7a-a50b-4208-9617-b93858ed657d" role="presentation" class="slds-listbox__item phone-type">
-                        <div id="1937ae7a-a50b-4208-9617-b93858ed657d" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate phone-type" title="Mobile_Number">Mobile_Number</span>
-                            </span>
-                        </div>
-                    </li><li data-value="7c7d2031-5fcf-4661-a580-3078687b098b" role="presentation" class="slds-listbox__item text-type">
-                        <div id="7c7d2031-5fcf-4661-a580-3078687b098b" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Rewards">Rewards</span>
-                            </span>
-                        </div>
-                    </li><li data-value="d07cd391-7c3e-4137-8953-208582875be2" role="presentation" class="slds-listbox__item text-type">
-                        <div id="d07cd391-7c3e-4137-8953-208582875be2" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="RewardsStatus">RewardsStatus</span>
-                            </span>
-                        </div>
-                    </li><li data-value="79c2ee8f-cd27-42a4-a8db-763e76460636" role="presentation" class="slds-listbox__item number-type">
-                        <div id="79c2ee8f-cd27-42a4-a8db-763e76460636" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate number-type" title="RewardsBalance">RewardsBalance</span>
-                            </span>
-                        </div>
-                    </li><li data-value="3c174ee1-b0b4-4dde-b3db-e2526ecb14bd" role="presentation" class="slds-listbox__item date-type">
-                        <div id="3c174ee1-b0b4-4dde-b3db-e2526ecb14bd" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate date-type" title="Opt_in_Date">Opt_in_Date</span>
-                            </span>
-                        </div>
-                    </li><li data-value="379c5e6d-ccb8-4a54-a6dc-3a72f79576f8" role="presentation" class="slds-listbox__item text-type">
-                        <div id="379c5e6d-ccb8-4a54-a6dc-3a72f79576f8" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Latitude">Latitude</span>
-                            </span>
-                        </div>
-                    </li><li data-value="dc79dfef-9509-4713-9cc7-c760d11d03e6" role="presentation" class="slds-listbox__item text-type">
-                        <div id="dc79dfef-9509-4713-9cc7-c760d11d03e6" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Longitude">Longitude</span>
-                            </span>
-                        </div>
-                    </li><li data-value="9486697a-89f3-4ec5-8423-e54458bc3b51" role="presentation" class="slds-listbox__item text-type">
-                        <div id="9486697a-89f3-4ec5-8423-e54458bc3b51" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Purchased">Purchased</span>
-                            </span>
-                        </div>
-                    </li><li data-value="9730c8ea-b6af-4b40-a488-0c8ced074531" role="presentation" class="slds-listbox__item text-type">
-                        <div id="9730c8ea-b6af-4b40-a488-0c8ced074531" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Cart">Cart</span>
-                            </span>
-                        </div>
-                    </li><li data-value="06f5a4e9-dd4d-41bd-b9ae-948c519a0cc2" role="presentation" class="slds-listbox__item text-type">
-                        <div id="06f5a4e9-dd4d-41bd-b9ae-948c519a0cc2" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Abandoned">Abandoned</span>
-                            </span>
-                        </div>
-                    </li></ul>
+                         </div>
+                         <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
+                         <div class="deupdate-value-input slds-col slds-size_5-of-12">
+                            <div id="inputc109" class="slds-form-element">
+                               <div class="slds-form-element__control">
+                                  <input type="text" id="text-input-461641388975" class="slds-input" placeholder="" value="">
+                               </div>
                             </div>
-                        </div>
-                    </div></div></div>
-                    <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
-                    <div class="deupdate-value-input slds-col slds-size_5-of-12"><div id="inputc109" class="slds-form-element"><div class="slds-form-element__control">
-                        <input type="text" id="text-input-461641388975" class="slds-input" placeholder="" value="">
-                    </div></div></div>
-                    </div></div>
-
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                    <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-
-                    <!--button id="submit" onclick="clickbutton()">Get Data Extension Fields</button-->
-
-                    <button id="submit" class="slds-button slds-button_brand">
-                        Map Attributes
-                    </button>
-                    <!--button id="submit">Get Data Extension Fields</button-->
-                        
+                         </div>
+                      </div>
+                   </div>
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                   <!--button id="submit" onclick="clickbutton()">Get Data Extension Fields</button-->
+                   <button id="submit" class="slds-button slds-button_brand">Submit Event Settings</button>
+                   <!--button id="submit">Get Data Extension Fields</button-->
                 </div>
-            </div>
-        </div>
+             </div>
+          </div>
+       </div>
     </div>
-</div>
-<div id="step2" class="step">
+    <div id="step2" class="step">
     <div class="scm-common-header slds-m-top_medium slds-m-horizontal_medium slds-m-bottom_small" style="display: block;">
-        <div class="scm-common-header-flex slds-is-relative">
-            <div class="scm-common-header-text-container slds-has-flexi-truncate slds-is-relative">
-                <div class="scm-common-header-text slds-text-heading_medium slds-text-color_default slds-truncate" title="Push Notification Activity Summary">Interaction Studio Event</div>
-                <div class="scm-common-header-subtext slds-text-body_regular slds-text-color_weak slds-truncate slds-hide"></div>
-            </div>            
-            <div class="scm-common-header-close-button-container">
-                <svg class="scm-common-header-close slds-icon slds-icon_small slds-m-top_xx-small slds-m-left_x-small scm-header-close" aria-hidden="true" style="display: block;">
-                    <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use-->
-                </svg>
-                <svg class="scm-common-header-back slds-icon slds-m-top_xx-small  slds-m-left_x-small scm-header-back" aria-hidden="true" style="display: none;">
-                    <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use-->
-                </svg>
-                <div class="popover-target slds-is-relative"></div>
-                <div id="message1"></div>
-
-            </div>
-        </div>
+       <div class="scm-common-header-flex slds-is-relative">
+          <div class="scm-common-header-text-container slds-has-flexi-truncate slds-is-relative">
+             <div class="scm-common-header-text slds-text-heading_medium slds-text-color_default slds-truncate" title="Push Notification Activity Summary">Interaction Studio Event</div>
+             <div class="scm-common-header-subtext slds-text-body_regular slds-text-color_weak slds-truncate slds-hide"></div>
+          </div>
+          <div class="scm-common-header-close-button-container">
+             <svg class="scm-common-header-close slds-icon slds-icon_small slds-m-top_xx-small slds-m-left_x-small scm-header-close" aria-hidden="true" style="display: block;">
+                <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use-->
+             </svg>
+             <svg class="scm-common-header-back slds-icon slds-m-top_xx-small  slds-m-left_x-small scm-header-back" aria-hidden="true" style="display: none;">
+                <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use-->
+             </svg>
+             <div class="popover-target slds-is-relative"></div>
+             <div id="message1"></div>
+          </div>
+       </div>
     </div>
     <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
     <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-
     <div class="scm-common-body slds-is-relative">
-        <div class="scm-element slds-m-top_none slds-p-horizontal_medium slds-p-bottom_medium slds-is-absolute" data-state="transient" data-view="summary" style="display: block;">
-            <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
-                <div class="summary-view">
-                    <div class="activity-detail slds-grid slds-m-bottom_medium">
-
-                  <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                    <!-- Start Combobox here -->
-                
-                    <div class="deupdate-attribute-list"><div class="slds-grid"><div class="deupdate-field-dropdown slds-col slds-size_5-of-12"><div id="dropdownc109"><div class="slds-combobox_container">
-                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                                <input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress">
-                                <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right" title="Toggle Dropdown">
-                                    <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/vendor/salesforce-lightning-design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
-                                    </svg>
-                                    <span class="slds-assistive-text">Toggle Dropdown</span>
-                                </span>
+       <div class="scm-element slds-m-top_none slds-p-horizontal_medium slds-p-bottom_medium slds-is-absolute" data-state="transient" data-view="summary" style="display: block;">
+          <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
+             <div class="summary-view">
+                <div class="activity-detail slds-grid slds-m-bottom_medium">
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <!-- Start Combobox here -->
+                   <div class="deupdate-attribute-list">
+                      <div class="slds-grid">
+                         <div class="deupdate-field-dropdown slds-col slds-size_5-of-12">
+                            <div id="dropdownc109">
+                               <div class="slds-combobox_container">
+                                  <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress">
+                                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right" title="Toggle Dropdown">
+                                           <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/vendor/salesforce-lightning-design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                           </svg>
+                                           <span class="slds-assistive-text">Toggle Dropdown</span>
+                                        </span>
+                                     </div>
+                                  </div>
+                               </div>
                             </div>
-                            <div id="dropdownc109-listbox" role="listbox">
-                                <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_length-with-icon-5 slds-dropdown_fluid" role="presentation">
-                                <li data-value="aa753989-3839-4925-a626-e3dd480c4275" role="presentation" class="slds-listbox__item text-type">
-                        <div id="aa753989-3839-4925-a626-e3dd480c4275" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="SubscriberKey">SubscriberKey</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f80fa258-9011-4799-9956-635ca600d922" role="presentation" class="slds-listbox__item">
-                        <div id="f80fa258-9011-4799-9956-635ca600d922" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                slds-is-selected
-                                slds-has-focus
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate" title="EmailAddress">EmailAddress</span>
-                            </span>
-                        </div>
-                    </li>
-                    <li data-value="7669860d-b183-42a7-a3d7-fa4c1b8a3740" role="presentation" class="slds-listbox__item text-type">
-                        <div id="7669860d-b183-42a7-a3d7-fa4c1b8a3740" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="First_Name">First_Name</span>
-                            </span>
-                        </div>
-                    </li><li data-value="19a3122e-075a-4a47-89cf-cbf0f8099db5" role="presentation" class="slds-listbox__item text-type">
-                        <div id="19a3122e-075a-4a47-89cf-cbf0f8099db5" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Last_Name">Last_Name</span>
-                            </span>
-                        </div>
-                    </li><li data-value="078ebc95-a8fa-4059-b4c7-d5d285896b58" role="presentation" class="slds-listbox__item text-type">
-                        <div id="078ebc95-a8fa-4059-b4c7-d5d285896b58" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Gender">Gender</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f72d9eb0-b2f4-4e3e-bf91-588e0c8ed92b" role="presentation" class="slds-listbox__item date-type">
-                        <div id="f72d9eb0-b2f4-4e3e-bf91-588e0c8ed92b" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate date-type" title="DOB">DOB</span>
-                            </span>
-                        </div>
-                    </li><li data-value="d00c3b7e-b02d-4f1e-aa75-f50d73c32022" role="presentation" class="slds-listbox__item text-type">
-                        <div id="d00c3b7e-b02d-4f1e-aa75-f50d73c32022" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Address1">Address1</span>
-                            </span>
-                        </div>
-                    </li><li data-value="af42f26e-ad60-44b9-92a0-4d6c7192919e" role="presentation" class="slds-listbox__item text-type">
-                        <div id="af42f26e-ad60-44b9-92a0-4d6c7192919e" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Address2">Address2</span>
-                            </span>
-                        </div>
-                    </li><li data-value="312f9968-b655-4e64-b0df-61cc24456557" role="presentation" class="slds-listbox__item text-type">
-                        <div id="312f9968-b655-4e64-b0df-61cc24456557" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="City">City</span>
-                            </span>
-                        </div>
-                    </li><li data-value="add6b619-2fe1-45c0-922d-0c4e160aaa32" role="presentation" class="slds-listbox__item text-type">
-                        <div id="add6b619-2fe1-45c0-922d-0c4e160aaa32" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="State">State</span>
-                            </span>
-                        </div>
-                    </li><li data-value="5387c9ef-66f2-4490-a3d1-90ab90a0907e" role="presentation" class="slds-listbox__item number-type">
-                        <div id="5387c9ef-66f2-4490-a3d1-90ab90a0907e" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate number-type" title="Zip">Zip</span>
-                            </span>
-                        </div>
-                    </li><li data-value="f7598fa4-43ab-4428-bbac-2da3f1880e9d" role="presentation" class="slds-listbox__item text-type">
-                        <div id="f7598fa4-43ab-4428-bbac-2da3f1880e9d" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Language">Language</span>
-                            </span>
-                        </div>
-                    </li><li data-value="1937ae7a-a50b-4208-9617-b93858ed657d" role="presentation" class="slds-listbox__item phone-type">
-                        <div id="1937ae7a-a50b-4208-9617-b93858ed657d" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate phone-type" title="Mobile_Number">Mobile_Number</span>
-                            </span>
-                        </div>
-                    </li><li data-value="7c7d2031-5fcf-4661-a580-3078687b098b" role="presentation" class="slds-listbox__item text-type">
-                        <div id="7c7d2031-5fcf-4661-a580-3078687b098b" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Rewards">Rewards</span>
-                            </span>
-                        </div>
-                    </li><li data-value="d07cd391-7c3e-4137-8953-208582875be2" role="presentation" class="slds-listbox__item text-type">
-                        <div id="d07cd391-7c3e-4137-8953-208582875be2" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="RewardsStatus">RewardsStatus</span>
-                            </span>
-                        </div>
-                    </li><li data-value="79c2ee8f-cd27-42a4-a8db-763e76460636" role="presentation" class="slds-listbox__item number-type">
-                        <div id="79c2ee8f-cd27-42a4-a8db-763e76460636" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate number-type" title="RewardsBalance">RewardsBalance</span>
-                            </span>
-                        </div>
-                    </li><li data-value="3c174ee1-b0b4-4dde-b3db-e2526ecb14bd" role="presentation" class="slds-listbox__item date-type">
-                        <div id="3c174ee1-b0b4-4dde-b3db-e2526ecb14bd" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate date-type" title="Opt_in_Date">Opt_in_Date</span>
-                            </span>
-                        </div>
-                    </li><li data-value="379c5e6d-ccb8-4a54-a6dc-3a72f79576f8" role="presentation" class="slds-listbox__item text-type">
-                        <div id="379c5e6d-ccb8-4a54-a6dc-3a72f79576f8" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Latitude">Latitude</span>
-                            </span>
-                        </div>
-                    </li><li data-value="dc79dfef-9509-4713-9cc7-c760d11d03e6" role="presentation" class="slds-listbox__item text-type">
-                        <div id="dc79dfef-9509-4713-9cc7-c760d11d03e6" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Longitude">Longitude</span>
-                            </span>
-                        </div>
-                    </li><li data-value="9486697a-89f3-4ec5-8423-e54458bc3b51" role="presentation" class="slds-listbox__item text-type">
-                        <div id="9486697a-89f3-4ec5-8423-e54458bc3b51" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Purchased">Purchased</span>
-                            </span>
-                        </div>
-                    </li><li data-value="9730c8ea-b6af-4b40-a488-0c8ced074531" role="presentation" class="slds-listbox__item text-type">
-                        <div id="9730c8ea-b6af-4b40-a488-0c8ced074531" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Cart">Cart</span>
-                            </span>
-                        </div>
-                    </li><li data-value="06f5a4e9-dd4d-41bd-b9ae-948c519a0cc2" role="presentation" class="slds-listbox__item text-type">
-                        <div id="06f5a4e9-dd4d-41bd-b9ae-948c519a0cc2" class="
-                                slds-media 
-                                slds-listbox__option 
-                                slds-listbox__option_plain 
-                                slds-media_small 
-                                slds-media_center
-                                
-                                
-                            " tabindex="0" role="option">
-                            <span class="slds-media__figure">
-                                <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                </svg>
-                            </span>
-                            <span class="slds-media__body">
-                                <span class="slds-truncate text-type" title="Abandoned">Abandoned</span>
-                            </span>
-                        </div>
-                    </li></ul>
+                         </div>
+                         <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
+                         <div class="deupdate-value-input slds-col slds-size_5-of-12">
+                            <div id="inputc109" class="slds-form-element">
+                               <div class="slds-form-element__control">
+                                  <input type="text" id="text-input-461641388975" class="slds-input" placeholder="" value="">
+                               </div>
                             </div>
-                        </div>
-                    </div></div></div>
-                    <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
-                    <div class="deupdate-value-input slds-col slds-size_5-of-12"><div id="inputc109" class="slds-form-element"><div class="slds-form-element__control">
-                        <input type="text" id="text-input-461641388975" class="slds-input" placeholder="" value="">
-                    </div></div></div>
-                    </div></div>
-
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-                    <!-- End Combobox here -->
-
+                         </div>
+                      </div>
+                   </div>
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
+                   <!-- End Combobox here -->
                 </div>
-            </div>
-        </div>
+             </div>
+          </div>
+       </div>
     </div>
-</div>
-<div id="step3" class="step">
-    You chose the message: <div id="message"></div>
-</div>
-<div id="step4" class="step">
-    Hey, here's a fourth step, just for you.  Toggle this on or off from step 1.
-</div>
-</body>
+    <div id="step3" class="step">
+       You chose the message: 
+       <div id="message"></div>
+    </div>
+    <div id="step4" class="step">
+       Hey, here's a fourth step, just for you.  Toggle this on or off from step 1.
+    </div>
+ </body>
 </html>

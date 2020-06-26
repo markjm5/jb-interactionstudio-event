@@ -59,7 +59,7 @@ define([
 
                         //location.reload(true);
                         if(json_response.error == 'False'){
-                            $("#message").html("Successfully Mapped Attributes");
+                            $("#message").html("Success! Data Extension Found");
                             message = true;
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                             $("#message1").html(JSON.stringify(json_response));
