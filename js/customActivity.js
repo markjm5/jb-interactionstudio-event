@@ -36,15 +36,15 @@ define([
 
         // Disable the next button if a value isn't selected
         $('#submit').click(function() {
-            var message = getMessage();
+            var customer_key = getMessage();
             //$("#message1").css( "border", "3px solid blue" );
-            alert(message);
+           // alert(message);
             //$("#message1").html("there" + message);
 
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
             
             var sendInfo = {
-                DECustomerKey: message,
+                DECustomerKey: customer_key,
             };
             var de_fields = "Nada";
             $.ajax({
@@ -54,12 +54,21 @@ define([
                 success: function (msg) {
                     if (msg) {
                         //alert('HEY 2!');
-                        alert(JSON.stringify(msg));
+                        //alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
-                        $("#message").html("Successfully Mapped Attributes");
+                        if(Json.stringify(msg) == 'True'){
+                            $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                            message = false;
+                        }else{
+
+                            $("#message").html("Successfully Mapped Attributes");
+                            message = true;
+                        }
                     } else {
-                        de_fields = "Cannot Lah"
+                        de_fields = ""
+                        $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
+                        message = false;
                     }
                 },
 
