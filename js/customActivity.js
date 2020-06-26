@@ -57,7 +57,7 @@ define([
                         alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
-                        if(Json.stringify(msg) == 'True'){
+                        if(JSON.stringify(msg) == 'True'){
                             $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
                             message = false;
                         }else{
