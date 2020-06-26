@@ -62,6 +62,7 @@ define([
                             $("#message").html("Successfully Mapped Attributes");
                             message = true;
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                            $("#message1").html(JSON.stringify(json_response));
                         }else{
 
                             $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
@@ -70,14 +71,11 @@ define([
                     } else {
                         $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-
                     }
                 },
 
                 data: sendInfo
             });
-
-            $("#message1").html(JSON.stringify(json_response));
 
             //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
