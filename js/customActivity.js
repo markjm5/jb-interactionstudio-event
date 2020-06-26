@@ -54,7 +54,7 @@ define([
                 success: function (msg) {
                     if (msg) {
                         alert('HEY 2!');
-                        json_response = JSON.parse(msg);    
+                        json_response = JSON.parse(JSON.stringify(msg));    
                         alert(json_response);
 
                         //location.reload(true);
