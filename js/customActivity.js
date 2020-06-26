@@ -62,12 +62,10 @@ define([
                             $("#message").html("Successfully Mapped Attributes");
                             message = true;
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-
                         }else{
 
                             $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-
                         }
                     } else {
                         $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
@@ -79,8 +77,8 @@ define([
                 data: sendInfo
             });
 
-            //$("#message").html(de_fields);
-           // alert('m4:' + message);
+            $("#message1").html(JSON.stringify(json_response));
+
             //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         });
