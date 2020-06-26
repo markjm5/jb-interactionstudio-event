@@ -54,7 +54,7 @@ define([
                 success: function (msg) {
                     if (msg) {
                         //alert('HEY 2!');
-                        //alert(JSON.stringify(msg));
+                        alert(JSON.stringify(msg));
                         de_fields = JSON.stringify(msg);
                         //location.reload(true);
                         $("#message").html("Successfully Mapped Attributes");
