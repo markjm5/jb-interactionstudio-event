@@ -49,6 +49,7 @@ define([
             var json_response = "Nada";
             if(customer_key.replace(/\s/g,'') == ""){
                 alert("Hey! Your string is EMPTY!");
+                $("#message").html("Please enter a valid Customer Key");
             }else{
                 $.ajax({
                     type: "POST",
