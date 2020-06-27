@@ -47,7 +47,7 @@ define([
                 DECustomerKey: customer_key,
             };
             var json_response = "Nada";
-            if(isEmpty(customer_key)){
+            if(customer_key.text().replace(/\s/g,'') == ""){
                 alert("Hey! Your string is EMPTY!");
             }else{
                 $.ajax({
