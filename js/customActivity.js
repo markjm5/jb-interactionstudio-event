@@ -63,7 +63,7 @@ define([
 
                             //location.reload(true);
                             if(json_response.error == 'False'){
-                                $("#message").html("Success! Data Extension Found");
+                                $("#message").html("Success! Data Extension Found. Click Next to Continue");
                                 message = true;
                                 connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                 $("#message1").html(JSON.stringify(json_response));
@@ -86,6 +86,12 @@ define([
 
         });
 
+
+        $('#submit1').click(function() {
+
+            alert("Second Submit Button Clicked!!!!");
+
+        });
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
         $('#toggleLastStep').click(function() {
