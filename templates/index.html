@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Custom Journey Builder Activity</title>
 
-    <link rel="stylesheet" href="{{ css_path }}style.css">
+    <link rel="stylesheet" href="{{ static_path }}style.css">
     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
     
     <script type="text/javascript" src="/js/require.js"></script>    
@@ -26,6 +26,21 @@
 
             require(config, dependencies);
         })();
+
+        function DropDown(el) {
+            this.dd = el;
+            this.initEvents();
+         }
+         DropDown.prototype = {
+            initEvents : function() {
+               var obj = this;
+
+               obj.dd.on('click', function(event){
+                     $(this).toggleClass('active');
+                     event.stopPropagation();
+               }); 
+            }
+         }
 
         /*
         function clickbutton() {
@@ -139,7 +154,7 @@
                             <div class="slds-col slds-size_1-of-2 slds-p-right_small activity-name-container">
                                 <div class="slds-form-element">
                                     <label id="activity-name_label" class="slds-form-element__label slds-text-title_caps" for="activity-name-input">
-                                    SELECT EVENT TEMPLATE
+                                    INTERACTION STUDIO EVENT TEMPLATE
                                     </label>
                                 </div>
                             </div>
@@ -148,23 +163,19 @@
 
                    <div class="deupdate-attribute-list">
                       <div class="slds-grid">
-                         <div class="deupdate-field-dropdown slds-col slds-size_5-of-12">
 
-                            <div id="dropdownc109">
-                               <div class="slds-combobox_container">
-        
-                                  <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                                        <select class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" placeholder="Select an Attribute">
-                                            <option value="" disabled selected>Choose your template</option>
-                                            <option value="Test 1">Event</option>
-                                            <option value="Test 2">Product Order</option>
-                                        </select>
-                                        <!--input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress"-->
-                                     </div>
-                                  </div>
-                               </div>
-                            </div>
+                        <div class="slds-form-element">
+                           <label class="slds-form-element__label" for="select-01">
+                             <abbr class="slds-required" title="required">* </abbr>Select Interaction Studio Event</label>
+                           <div class="slds-form-element__control">
+                             <div class="slds-select_container">
+                               <select class="slds-select" id="select-01" required="">
+                                 <option value="">Please select</option>
+                                 <option>Generic User Event</option>
+                                 <option>Product Purchase</option>
+                               </select>
+                             </div>
+                           </div>
                          </div>
                       </div>
                    </div>
@@ -259,3 +270,28 @@
     </div>
  </body>
 </html>
+
+
+<!--div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+   <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true" title="Show More">
+      <svg class="slds-button__icon" aria-hidden="true">
+         <use xlink:href="{{ static_path }}salesforce-lightning-design-system-static-resource-2.11.9/icons/utility-sprite/svg/symbols.svg#down"></use>
+      </svg>
+
+      <span class="slds-assistive-text">Show More</span>
+   </button>
+   <div class="slds-dropdown slds-dropdown_left slds-dropdown_large">
+      <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+      <li class="slds-dropdown__item slds-is-selected" role="presentation">
+         <a role="menuitemcheckbox" aria-checked="true">133</a>
+         </li>
+         <li class="slds-dropdown__item slds-is-selected" role="presentation">
+         <a role="menuitemcheckbox" aria-checked="true">test 2</a>
+         </li>
+         <li class="slds-dropdown__item slds-is-selected" role="presentation">
+         <a role="menuitemcheckbox" aria-checked="true">133</a>
+         </li>
+
+      </ul>                                      
+   </div>
+</div-->            

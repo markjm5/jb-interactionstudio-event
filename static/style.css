@@ -8572,10 +8572,18 @@ a.slds-button--inverse:focus,a.slds-button_inverse:focus {
     flex-direction: column
 }
 
-.slds-combobox,.slds-combobox__form-element {
+.slds-combobox__form-element .slds-combobox__input {
     -ms-flex: 1 1 auto;
-    flex: 1 1 auto
+    flex: 1 1 auto;
+
+    /* Styles */
+    background: #fff;
+    border-left: 5px solid grey;
+    cursor: pointer;
+    outline: none;
+
 }
+
 
 [role=combobox] input[readonly] {
     padding-left: .75rem;

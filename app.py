@@ -10,7 +10,7 @@ from flask import Flask, render_template, request, send_from_directory, jsonify,
 from flask_sqlalchemy import SQLAlchemy
 
 from urllib.request import urlopen
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
 
 is_prod = os.environ.get('IS_PRODUCTION', None)
 
@@ -53,7 +53,7 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 @app.route('/index.html', methods=['GET','POST'])
 def index_html():
-    path_to_css = os.path.join(request.url_root, "static/")
+    path_to_static = os.path.join(request.url_root, "static/")
 
     if request.method == 'POST':
         data = {'title': 'Pyton request', 'body': 'This is the Execute Command POST'}
@@ -62,6 +62,9 @@ def index_html():
         data = {'title': 'Pyton request', 'body': 'This is the Execute Command GET'}
         debug_message = "This is a test" #auth_header_json_data
     
+    # Deprecated calls to obtain de_customer_key from the published journey.
+    # We are instead allowing the user to specify the de_customer_key
+
     #journey_id = "87ebbd51-11c0-41c7-bd53-5dd16e93b712" 
     # event_definition_key = journey_id_to_event_key(journey_id)    
     # entry_de_customer_key = event_key_to_de_customer_key(event_definition_key)
@@ -73,69 +76,7 @@ def index_html():
 
     access_token = json.loads(response._content)["access_token"]
 
-    #entry_de_customer_key = "D5118761-5863-43DC-8022-941CE864DA83"
-    #decrypted_token = "{\"inArguments\": [{\"tokens\": {\"token\": \"0bICaQjRzb5eVIj1GdBUzhwD4p91AuU60INp8kZUUlZ1rBLyNkAH7NqqdT4MRQkCWqBZDjJKYx7FAx_Waekwx4JyWHEHfU5saEdf01SARu-AijzK4Tyv_40MsOPQ1DdSp0pGg4tUWoNkGFhUMhKyZsyD-HWFFLXSRizG-La2sdNSlPoK2ce8RpTAKXgdkHNltS5HkxUVmBsfZvJBoLoRIBTqeMyECu6BqbbXNTbosJ77Pjhmij7fnP0jIj1O_DvEzlgTw3IfEZHd2C7RqKoukTg\", \"fuel2token\": \"4gOqoNhxXALlUcxZtK9S3j3U\", \"expires\": 1592483764291, \"stackKey\": \"S4\"}, \"emailAddress\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"contactIdentifier\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"message\": \"someMessage\"}], \"outArguments\": [{\"SegmentMembership\": \"\"}], \"activityObjectID\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"journeyId\": \"65f1d3c8-33ab-467a-a18a-b3d186e675ad\", \"activityId\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"definitionInstanceId\": \"af848d2e-8df1-4d9c-b915-9fedb8c0a4fe\", \"activityInstanceId\": \"48811206-f9fc-46d3-a633-4d3079638420\", \"keyValue\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"mode\": 0}"
-
-    #json_obj = json.loads(decrypted_token)
-
-    #emailAddress = json_obj['inArguments'][0]['emailAddress']
-    #contactIdentifier = json_obj['inArguments'][0]['contactIdentifier']
-    #type = "Filed A Case"
-
-    #entry_de_name = retrieve_de_name(entry_de_customer_key, access_token)
-
-    #entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
-    #unique_id = "EmailAddress"    
-
-    #fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
-
-    #action = "Filed a Case"
-    #user_id = fields_values['UserID']
-
-    #if type == "Filed A Case":
-        # Retrieve the Data Extension Object Json
-    #    with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
-    #        retrieve_json = json.load(json_file)
-
-
-    ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
-    ## In doing so, dynamically create dict1
-
-    #current_date = "06-14-2020"
-    #my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
-    #current_date_millis = helper_unix_time_millis(my_dt)
-
-    # should be dynamically created. This is just a test to make sure we can post to evergage api
-    #dict1 = { 'action': action ,'user': {'id': contactIdentifier, 'attributes': fields_values}, 'source': {'channel': 'Call Center', 'time': current_date_millis}}
-    #retrieve_json.update(dict1)
-    
-    #make an api call to evergage
-    #response = requests.post(IS_ENDPOINT, json=retrieve_json)
-
-    return render_template('index.html', message="Custom Activity", debug_message=debug_message, css_path=path_to_css)
-
-@app.route('/journeybuilder/getdefields/', methods=['POST'])
-def journeybuilder_get_de_fields():
-
-    jsonified_text = {}
-
-    if request.method == 'POST':
-        de_customer_key = request.form["DECustomerKey"]
-
-        response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-        response_content = json.loads(response._content)
-        access_token = json.loads(response._content)["access_token"]
-
-        response = requests.post(LOG_NOTIFICATION_URL, de_customer_key)
-        try:
-            de_name = retrieve_de_name(de_customer_key, access_token)
-            de_fields = de_customer_key_to_fields(de_customer_key, access_token)
-
-            jsonified_text = {"error": "False","de_name": de_name, "de_fields": de_fields}  
-        except:
-            jsonified_text = {"error": "True"}
-
-    return jsonify(jsonified_text)
+    return render_template('index.html', message="Custom Activity", debug_message=debug_message, static_path=path_to_static)
 
 
 @app.route('/journeybuilder/execute/', methods=['POST'])
@@ -155,12 +96,47 @@ def journeybuilder_execute():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        #The data we will use to send to Evergage
-        # decrypted_token = json.dumps(decrypted_token)
+        #entry_de_customer_key = "D5118761-5863-43DC-8022-941CE864DA83"
+        #decrypted_token = "{\"inArguments\": [{\"tokens\": {\"token\": \"0bICaQjRzb5eVIj1GdBUzhwD4p91AuU60INp8kZUUlZ1rBLyNkAH7NqqdT4MRQkCWqBZDjJKYx7FAx_Waekwx4JyWHEHfU5saEdf01SARu-AijzK4Tyv_40MsOPQ1DdSp0pGg4tUWoNkGFhUMhKyZsyD-HWFFLXSRizG-La2sdNSlPoK2ce8RpTAKXgdkHNltS5HkxUVmBsfZvJBoLoRIBTqeMyECu6BqbbXNTbosJ77Pjhmij7fnP0jIj1O_DvEzlgTw3IfEZHd2C7RqKoukTg\", \"fuel2token\": \"4gOqoNhxXALlUcxZtK9S3j3U\", \"expires\": 1592483764291, \"stackKey\": \"S4\"}, \"emailAddress\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"contactIdentifier\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"message\": \"someMessage\"}], \"outArguments\": [{\"SegmentMembership\": \"\"}], \"activityObjectID\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"journeyId\": \"65f1d3c8-33ab-467a-a18a-b3d186e675ad\", \"activityId\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"definitionInstanceId\": \"af848d2e-8df1-4d9c-b915-9fedb8c0a4fe\", \"activityInstanceId\": \"48811206-f9fc-46d3-a633-4d3079638420\", \"keyValue\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"mode\": 0}"
 
-        #Process here the decrypted token, and match it to evergage event api fields
+        #Get decrypted data
+        #json_obj = json.loads(decrypted_token)
 
-        #Fire evergage event api here
+        #emailAddress = json_obj['inArguments'][0]['emailAddress']
+        #contactIdentifier = json_obj['inArguments'][0]['contactIdentifier']
+        #type = "Filed A Case"
+
+
+        #Process here the decrypted data, and match it to evergage event api fields
+        #entry_de_name = retrieve_de_name(entry_de_customer_key, access_token)
+
+        #entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
+        #unique_id = "EmailAddress"    
+
+        #fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+
+        #action = "Filed a Case"
+        #user_id = fields_values['UserID']
+
+        #if type == "Filed A Case":
+            # Retrieve the Data Extension Object Json
+        #    with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
+        #        retrieve_json = json.load(json_file)
+
+
+        ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
+        ## In doing so, dynamically create dict1
+
+        #current_date = "06-14-2020"
+        #my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
+        #current_date_millis = helper_unix_time_millis(my_dt)
+
+        # should be dynamically created. This is just a test to make sure we can post to evergage api
+        #dict1 = { 'action': action ,'user': {'id': contactIdentifier, 'attributes': fields_values}, 'source': {'channel': 'Call Center', 'time': current_date_millis}}
+        #retrieve_json.update(dict1)
+        
+        #make an api call to evergage
+        #response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
 
@@ -260,9 +236,39 @@ def send_config_json():
 
     return render_template('showjson.jade', data=data)
 
+
+@app.route('/static/salesforce-lightning-design-system-static-resource-2.11.9/icons/action/<path:path>')
+def send_static(path):
+    return send_from_directory('static/salesforce-lightning-design-system-static-resource-2.11.9/icons/action/', path)
+
+
 ################################################################################################################
 #                                              Helper Functions                                                #
 ################################################################################################################
+
+@app.route('/journeybuilder/getdefields/', methods=['POST'])
+def journeybuilder_get_de_fields():
+
+    jsonified_text = {}
+
+    if request.method == 'POST':
+        de_customer_key = request.form["DECustomerKey"]
+
+        response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
+        response_content = json.loads(response._content)
+        access_token = json.loads(response._content)["access_token"]
+
+        response = requests.post(LOG_NOTIFICATION_URL, de_customer_key)
+        try:
+            de_name = retrieve_de_name(de_customer_key, access_token)
+            de_fields = de_customer_key_to_fields(de_customer_key, access_token)
+
+            jsonified_text = {"error": "False","de_name": de_name, "de_fields": de_fields}  
+        except:
+            jsonified_text = {"error": "True"}
+
+    return jsonify(jsonified_text)
+
 
 def to_pretty_json(value):
     return json.dumps(value, sort_keys=True,

@@ -47,36 +47,40 @@ define([
                 DECustomerKey: customer_key,
             };
             var json_response = "Nada";
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                success: function (msg) {
-                    if (msg) {
-                        alert('m2: HEY 2!');
-                        json_response = JSON.parse(JSON.stringify(msg));    
-                        alert('m3:' + json_response);
+            if(isEmpty(customer_key)){
+                alert("Hey! Your string is EMPTY!");
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    success: function (msg) {
+                        if (msg) {
+                            alert('m2: HEY 2!');
+                            json_response = JSON.parse(JSON.stringify(msg));    
+                            alert('m3:' + json_response);
 
-                        //location.reload(true);
-                        if(json_response.error == 'False'){
-                            $("#message").html("Success! Data Extension Found");
-                            message = true;
-                            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                            $("#message1").html(JSON.stringify(json_response));
-                        }else{
+                            //location.reload(true);
+                            if(json_response.error == 'False'){
+                                $("#message").html("Success! Data Extension Found");
+                                message = true;
+                                connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                $("#message1").html(JSON.stringify(json_response));
 
-                            $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                            }else{
+
+                                $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                                connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                            }
+                        } else {
+                            $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                         }
-                    } else {
-                        $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
-                        connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                    }
-                },
+                    },
 
-                data: sendInfo
-            });
-
+                    data: sendInfo
+                });
+            }
             //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         });
