@@ -27,45 +27,6 @@
             require(config, dependencies);
         })();
 
-        
-      
-
-        /*
-        function clickbutton() {
-            var message = 'test';
-            //$("#message1").css( "border", "3px solid blue" );
-            alert('HEY!!');
-            //$("#message1").html("there" + message);
-            var url = "http://127.0.0.1:5000/journeybuilder/getdefields/"; 
-            
-            var sendInfo = {
-                DECustomerKey: message,
-            };
-            var de_fields = "";
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                success: function (msg) {
-                    if (msg) {
-                        //alert('HEY 2!');
-                        //alert(JSON.stringify(msg));
-                        de_fields = JSON.stringify(msg);
-                        location.reload(true);
-                    } else {
-                        alert("Cannot add to list !");
-                    }
-                },
-
-                data: sendInfo
-            });
-
-            $("#message").html(de_fields);
-            //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-
-        }
-        */
-
     </script>
 
     <!--Styles-->
@@ -74,21 +35,13 @@
             padding: 20px;
             margin: 0;
         }
-/*        .step {
+        .step {
             display: none;
-*/        }
+        }
+
         #step1 {
             display: block;
         }
-        #step2 {
-            display: none;
-        }
-        #step3 {
-            display: none;
-        }
-
-
-
 
     </style>
 

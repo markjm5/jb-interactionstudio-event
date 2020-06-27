@@ -41,6 +41,7 @@ else:
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG
 
+
 auth_header_json_data = { "grant_type": "client_credentials",
     "client_id" : CLIENT_ID,
     "client_secret" : CLIENT_SECRET
@@ -76,7 +77,7 @@ def index_html():
 
     access_token = json.loads(response._content)["access_token"]
 
-    return render_template('index.html', message="Custom Activity", debug_message=debug_message, static_path=path_to_static)
+    return render_template('index.html', static_path=path_to_static)
 
 
 @app.route('/journeybuilder/execute/', methods=['POST'])
