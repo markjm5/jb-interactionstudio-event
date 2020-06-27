@@ -37,9 +37,9 @@ define([
         // Disable the next button if a value isn't selected
         $('#submit').click(function() {
             var customer_key = getMessage();
-            //$("#message1").css( "border", "3px solid blue" );
+
             alert('m1:' + customer_key);
-            //$("#message1").html("there" + message);
+
             var message = false;
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
             
@@ -48,7 +48,7 @@ define([
             };
             var json_response = "Nada";
             if(customer_key.replace(/\s/g,'') == ""){
-                alert("Hey! Your string is EMPTY!");
+
                 $("#message").html("You cannot leave the Customer Key Empty. Please enter a valid Customer Key");
             }else{
                 $.ajax({

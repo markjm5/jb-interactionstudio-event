@@ -39,7 +39,7 @@
             display: none;
         }
 
-        #step1 {
+        #step2 {
             display: block;
         }
 
@@ -147,12 +147,6 @@
              <div class="scm-common-header-subtext slds-text-body_regular slds-text-color_weak slds-truncate slds-hide"></div>
           </div>
           <div class="scm-common-header-close-button-container">
-             <svg class="scm-common-header-close slds-icon slds-icon_small slds-m-top_xx-small slds-m-left_x-small scm-header-close" aria-hidden="true" style="display: block;">
-                <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use-->
-             </svg>
-             <svg class="scm-common-header-back slds-icon slds-m-top_xx-small  slds-m-left_x-small scm-header-back" aria-hidden="true" style="display: none;">
-                <!--use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#back"></use-->
-             </svg>
              <div class="popover-target slds-is-relative"></div>
              <div id="message1"></div>
           </div>
@@ -164,15 +158,11 @@
        <div class="scm-element slds-m-top_none slds-p-horizontal_medium slds-p-bottom_medium slds-is-absolute" data-state="transient" data-view="summary" style="display: block;">
           <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
              <div class="summary-view">
+
+               <!-- Start Field Group Here -->
+
                 <div class="activity-detail slds-grid slds-m-bottom_medium">
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <!-- Start Combobox here -->
-                   <div class="deupdate-attribute-list">
+                  <div class="deupdate-attribute-list">
                       <div class="slds-grid">
                          <div class="deupdate-field-dropdown slds-col slds-size_5-of-12">
                             <div id="dropdownc109">
@@ -192,26 +182,66 @@
                             </div>
                          </div>
                          <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
-                         <div class="deupdate-value-input slds-col slds-size_5-of-12">
-                            <div id="inputc109" class="slds-form-element">
-                               <div class="slds-form-element__control">
-                                  <input type="text" id="text-input-461641388975" class="slds-input" placeholder="" value="">
+                         <div class="slds-form-element">
+                           <div class="slds-form-element__control">
+                             <div class="slds-select_container">
+                               <select class="slds-select" id="select-01" required="">
+                                 <option value="" disabled selected>Please select</option>
+                                 <option value="GenericUserEvent">Field 1</option>
+                                 <option value="ProductPurchase">Field 2</option>
+                               </select>
+                             </div>
+                           </div>
+                         </div>
+                      </div>
+                   </div>                   
+                </div>
+               <!-- End Field Group Here -->
+
+               <!-- Start Field Group Here -->
+               <div class="activity-detail slds-grid slds-m-bottom_medium">
+                  <div class="deupdate-attribute-list">
+                      <div class="slds-grid">
+                         <div class="deupdate-field-dropdown slds-col slds-size_5-of-12">
+                            <div id="dropdownc109">
+                               <div class="slds-combobox_container">
+                                  <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist" aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                     <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        <input type="text" class="slds-input slds-combobox__input" id="dropdownc109-input" aria-controls="dropdownc109-input" autocomplete="off" role="textbox" placeholder="Select an Attribute" readonly="" value="EmailAddress">
+                                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right" title="Toggle Dropdown">
+                                           <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/vendor/salesforce-lightning-design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                           </svg>
+                                           <span class="slds-assistive-text">Toggle Dropdown</span>
+                                        </span>
+                                     </div>
+                                  </div>
                                </div>
                             </div>
                          </div>
+                         <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
+                         <div class="slds-form-element">
+                           <div class="slds-form-element__control">
+                             <div class="slds-select_container">
+                               <select class="slds-select" id="select-01" required="">
+                                 <option value="" disabled selected>Please select</option>
+                                 <option value="GenericUserEvent">Field 1</option>
+                                 <option value="ProductPurchase">Field 2</option>
+                               </select>
+                             </div>
+                           </div>
+                         </div>
                       </div>
-                   </div>
-                   <!-- End Combobox here -->
-                   <!-- End Combobox here -->
-                   <!-- End Combobox here -->
-                   <!-- End Combobox here -->
-                   <!-- End Combobox here -->
-                   <!-- End Combobox here -->
-                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                   <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
-                   <button id="submit1" class="slds-button slds-button_brand">Submit Event Settings</button>
+                   </div>                   
                 </div>
+
+               <!-- End Field Group Here -->
+
+                <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                <div class="activity-detail slds-grid slds-m-bottom_medium"></div>
+                <button id="submit1" class="slds-button slds-button_brand">Submit Event Settings</button>
+
              </div>
           </div>
        </div>
