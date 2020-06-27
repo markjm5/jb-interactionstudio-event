@@ -27,20 +27,8 @@
             require(config, dependencies);
         })();
 
-        function DropDown(el) {
-            this.dd = el;
-            this.initEvents();
-         }
-         DropDown.prototype = {
-            initEvents : function() {
-               var obj = this;
-
-               obj.dd.on('click', function(event){
-                     $(this).toggleClass('active');
-                     event.stopPropagation();
-               }); 
-            }
-         }
+        
+      
 
         /*
         function clickbutton() {
@@ -86,12 +74,22 @@
             padding: 20px;
             margin: 0;
         }
-        .step {
+/*        .step {
             display: none;
-        }
+*/        }
         #step1 {
             display: block;
         }
+        #step2 {
+            display: none;
+        }
+        #step3 {
+            display: none;
+        }
+
+
+
+
     </style>
 
 </head>

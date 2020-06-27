@@ -174,7 +174,7 @@ define([
         }
 
         currentStep = step;
-
+        
         $('.step').hide();
 
         switch(currentStep.key) {
@@ -225,6 +225,7 @@ define([
                 $("#step4").show();
                 break;
         }
+        
     }
 
 
