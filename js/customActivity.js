@@ -129,15 +129,15 @@ define([
 
         });
 
-
+        /*
         $('#submit1').click(function() {
 
-            alert("Second Submit Button Clicked!!!!");
+            alert("Second Submit Button Clicked");
 
         });
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
-        /*$('#toggleLastStep').click(function() {
+        $('#toggleLastStep').click(function() {
             lastStepEnabled = !lastStepEnabled; // toggle status
             steps[3].active = !steps[3].active; // toggle active
 
