@@ -159,7 +159,8 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-        alert('inArguments: ' + JSON.stringify(inArguments));
+        //alert('inArguments: ' + JSON.stringify(inArguments));
+        $("#message").html(JSON.stringify(inArguments));
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
