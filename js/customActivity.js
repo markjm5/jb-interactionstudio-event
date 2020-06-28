@@ -175,7 +175,7 @@ define([
             // If there is a message, skip to the summary step
         } else {
             $("#select1").find('option[value='+ message +']').attr('selected', 'selected');
-            $("#message").html(message);
+            //$("#message").html(message);
             showStep(null, 1);
         }
     }
