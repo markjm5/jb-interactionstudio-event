@@ -77,7 +77,16 @@ define([
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
                                         $("#message1").html(JSON.stringify(json_response));
+                                        //$("#message1").html('hahahahahohoho!');
+
+                                        var txt1 = "<p>Text.</p>";               // Create element with HTML 
+                                        var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
+                                        var txt3 = document.createElement("p");  // Create with DOM
+                                        txt3.innerHTML = "Text.";
+                                        $("#summary-view").append(txt1, txt2, txt3);      // Append the new elements
+
                                         break;
+
                                     case 'ProductPurchase':
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
