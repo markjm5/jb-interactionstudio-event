@@ -192,11 +192,8 @@ define([
     }
 
     function onClickedNext () {
-        alert('onClickedNext');
-        if (
-            (currentStep.key === 'step3' && steps[3].active === false) ||
-            currentStep.key === 'step4'
-        ) {
+        //alert('onClickedNext');
+        if (currentStep.key === 'step2') {
             save();
         } else {
             connection.trigger('nextStep');
