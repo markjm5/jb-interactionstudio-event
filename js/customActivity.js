@@ -246,7 +246,7 @@ define([
                 break;
         }
         
-    }
+    } 
 
      // NEED TO LOOK AT THIS FUNCTION IN MORE DETAIL. THIS IS THE FUNCTION THAT SENDS THE PAYLOAD IN THE inArguments
      /*
