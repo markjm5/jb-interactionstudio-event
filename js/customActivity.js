@@ -91,7 +91,7 @@ define([
 
                                         for (var key in is_template_data) {
                                             //if (data.hasOwnProperty(key)) { // this will check if key is owned by data object and not by any of it's ancestors
-                                            alert(key + ': '+ data[key]); // this will show each key with it's value
+                                            alert(key + ': '+ is_template_data[key]); // this will show each key with it's value
                                             //}
                                         }
 
