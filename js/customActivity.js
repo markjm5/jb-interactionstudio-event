@@ -240,32 +240,9 @@ define([
                 });
                 connection.trigger('updateButton', {
                     button: 'next',
-                    text: 'next',
+                    text: 'done',
                     visible: true
                 });
-                break;
-            case 'step3':
-                $("#step3").show();
-                connection.trigger('updateButton', {
-                     button: 'back',
-                     visible: true
-                });
-                if (lastStepEnabled) {
-                    connection.trigger('updateButton', {
-                        button: 'next',
-                        text: 'next',
-                        visible: true
-                    });
-                } else {
-                    connection.trigger('updateButton', {
-                        button: 'next',
-                        text: 'done',
-                        visible: true
-                    });
-                }
-                break;
-            case 'step4':
-                $("#step4").show();
                 break;
         }
         
