@@ -84,6 +84,9 @@ define([
                                     default:
                                         message = false;
                                         $("#message").html("Please Select an Event Template");
+                                        
+                                        var element = document.getElementById("event_template_selection");
+                                        element.classList.add("slds-has-error");
                                 }
 
                             }else{
