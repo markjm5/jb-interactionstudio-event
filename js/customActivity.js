@@ -159,6 +159,7 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+        alert('inArguments': inArguments);
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
