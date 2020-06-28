@@ -12,8 +12,6 @@ define([
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
         { "label": "Step 2", "key": "step2" }
-        //{ "label": "Step 3", "key": "step3" },
-        //{ "label": "Step 4", "key": "step4", "active": false }
     ];
     var currentStep = steps[0].key;
 
@@ -139,12 +137,12 @@ define([
         });
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
-        $('#toggleLastStep').click(function() {
+        /*$('#toggleLastStep').click(function() {
             lastStepEnabled = !lastStepEnabled; // toggle status
             steps[3].active = !steps[3].active; // toggle active
 
             connection.trigger('updateSteps', steps);
-        });
+        });*/
     }
 
     function initialize (data) {
