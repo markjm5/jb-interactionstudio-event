@@ -39,7 +39,7 @@
             display: none;
         }
 
-        #step1 {
+        #step2 {
             display: block;
         }
 
@@ -140,7 +140,7 @@
           <div class="summary-view-container" data-detail="false" style="display: flex; width: 100%; height: 100%;">
              <div class="summary-view" id="summary-view">
 
-               <!-- Start Field Group Here
+               <!--
 
                 <div class="activity-detail slds-grid slds-m-bottom_medium">
                   <div class="deupdate-attribute-list">
@@ -194,6 +194,23 @@
                          </div>
                          <div class="slds-col slds-size_1-of-12 slds-text-align_center equals-symbol">=</div>
                          <div class="slds-form-element">
+                           <label class="slds-form-element__label" for="form-element-03">
+                              <abbr class="slds-required" title="required">* </abbr>
+                              Form Label
+                           </label>
+                           <label class="slds-form-element__label" for="form-element-help-01">Status</label>
+                           <div class="slds-form-element__icon">
+                              <button class="slds-button slds-button_icon"  aria-describedby="help">
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                  <use xlink:href="{{ static_path }}salesforce-lightning-design-system-static-resource-2.11.9/icons/utility-sprite/svg/symbols.svg#info"></use>
+                                </svg>
+                                <span class="slds-assistive-text">Help</span>
+                              </button>
+                              <div class="slds-popover slds-popover_tooltip slds-nubbin_bottom-left" role="tooltip" id="help" style="position:absolute;top:-45px;left:-15px;width:170px">
+                                 <div class="slds-popover__body">Some helpful information</div>
+                               </div>
+                            </div>
+
                            <div class="slds-form-element__control">
                              <div class="slds-select_container">
                                <select class="slds-select" id="select-03" required="">
@@ -208,7 +225,7 @@
                    </div>                   
                 </div>
 
-               End Field Group Here -->
+               End Field Group Here-->
 
                 <!--div class="activity-detail slds-grid slds-m-bottom_medium"></div>
                 <button id="submit1" class="slds-button slds-button_brand">Save Mapping Configuration</button-->
