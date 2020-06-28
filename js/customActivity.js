@@ -279,6 +279,7 @@ define([
         var name = $("#select1").find('option:selected').html();
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
+        var ISEventMappings = getISEventMappings();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -307,15 +308,17 @@ define([
     }
 
     function getCustomerKey() {  
-        //return $("#select1").find('option:selected').attr('value').trim();
-        //message = $("#activity-name-input").val().trim();
-        //alert(message); 
+
         return $("#activity-name-input").val();
     }
     function getISTemplate() {  
-        //return $("#select1").find('option:selected').attr('value').trim();
-        //message = $("#activity-name-input").val().trim();
-        //alert(message); 
+
+        return $("#select-01").val();
+    }
+
+    function getISEventMappings() {  
+
+        //Need to write JS to retrieve mapping selections and put them into an array
         return $("#select-01").val();
     }
 
