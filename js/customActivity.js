@@ -81,7 +81,7 @@ define([
                                         var txt1 = "";
                                         var i;
 
-                                        alert(arr_de_fields);
+                                        alert(arr_de_fields[0].Name);
 
 
                                         for (i = 0; i < 5; i++) {
