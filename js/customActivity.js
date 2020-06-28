@@ -82,7 +82,7 @@ define([
                                         var i;
                                         var j;
                                         for(i=0; i < arr_de_fields.length; i++){
-                                            alert(arr_de_fields[0].Name);
+                                            alert(arr_de_fields[i].Name);
                                         }
 
 
