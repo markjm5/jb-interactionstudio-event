@@ -85,13 +85,13 @@ define([
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
                                         }       
 
-                                        var json_is_template_fields = '{"user_id":"true","action":"true","source":"false","event_date":"false"}';
+                                        var json_is_template_fields = {"user_id":"true","action":"true","source":"false","event_date":"false"};
                                         var is_template_data = eval(json_is_template_fields);
                                         //var arr_is_template_fields = ["user_id","action","source","event_date"];
 
                                         for (var key in is_template_data) {
                                             //if (data.hasOwnProperty(key)) { // this will check if key is owned by data object and not by any of it's ancestors
-                                            alert(key+': '+data[key]); // this will show each key with it's value
+                                            alert(key + ': '+ data[key]); // this will show each key with it's value
                                             //}
                                         }
 
