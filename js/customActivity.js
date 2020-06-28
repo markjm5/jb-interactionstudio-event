@@ -76,7 +76,7 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html(JSON.stringify(json_response.de_name));
+                                        $("#message1").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
 
                                         var arr_de_fields = json_response.de_fields;
                                         var txt1 = "";
