@@ -299,7 +299,8 @@ define([
             "emailAddress": "{{InteractionDefaults.Email}}",        
             "contactIdentifier": "{{Contact.Key}}",    
             "customer_key": customerKey,
-            "is_template": isTemplate
+            "is_template": isTemplate,
+            "is_event_mappings": ISEventMappings
         }];
 
         payload['metaData'].isConfigured = true;
