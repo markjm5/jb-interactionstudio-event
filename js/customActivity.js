@@ -41,8 +41,8 @@ define([
             var e = document.getElementById("select-01");
             var event_template = e.options[e.selectedIndex].value;
 
-            alert('m1:' + customer_key);
-            alert('m1a:' + event_template);
+            //alert('m1:' + customer_key);
+            //alert('m1a:' + event_template);
 
             var message = false;
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
@@ -61,9 +61,9 @@ define([
                     dataType: "json",
                     success: function (msg) {
                         if (msg) {
-                            alert('m2: HEY 2!');
+
                             json_response = JSON.parse(JSON.stringify(msg));    
-                            alert('m3:' + json_response);
+                            //alert('m3:' + json_response);
 
                             //location.reload(true);
                             if(json_response.error == 'False'){
@@ -84,20 +84,14 @@ define([
                                         var i;
 
                                         for(i=0; i < arr_de_fields.length; i++){
-                                            //if(arr_de_fields[i].IsRequired == "true"){
-                                            //    dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")*</option>";
-
-                                            //}else{
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
-
-                                            //}
-
                                         }       
+                                        
                                         var arr_is_template_fields = ["user_id","action","source","event_date"];
 
                                         //alert('Arr Length:' + arr_is_template_fields.length);
                                         for(i=0; i < arr_is_template_fields.length; i++){
-                                            alert(arr_is_template_fields[i]);
+                                            //alert(arr_is_template_fields[i]);
                                             txt1 += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"dropdownc109-input\" aria-controls=\"dropdownc109-input\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  arr_is_template_fields[i] + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\">=</div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" id=\"select-01\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
                                         }
 
