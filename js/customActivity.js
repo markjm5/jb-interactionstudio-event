@@ -85,7 +85,8 @@ define([
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
                                         }       
 
-                                        var arr_is_template_fields = [{"user_id":"true"},{"action":"true"},{"source":"false"}{"event_date":"false"}];
+                                        //var arr_is_template_fields = [{"user_id":"true"},{"action":"true"},{"source":"false"},{"event_date":"false"}];
+                                        var arr_is_template_fields = ["user_id","action","source","event_date"];
 
                                         //alert('Arr Length:' + arr_is_template_fields.length);
                                         for(i=0; i < arr_is_template_fields.length; i++){
