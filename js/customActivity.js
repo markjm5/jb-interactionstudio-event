@@ -67,7 +67,7 @@ define([
 
                             //location.reload(true);
                             if(json_response.error == 'False'){
-                                $("#message").html("Success! Data Extension Found. Click Next to Continue");
+                                $("#message").html("Success! Click Next to Continue");
 
                                 switch(event_template) {
                                     case 'GenericUserEvent':
