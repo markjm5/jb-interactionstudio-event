@@ -76,7 +76,7 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html(JSON.stringify(json_response));
+                                        $("#message1").html(JSON.stringify(json_response.de_name));
 
                                         var arr_de_fields = json_response.de_fields;
                                         var txt1 = "";
@@ -86,16 +86,15 @@ define([
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             if(arr_de_fields[i].IsRequired == "true"){
-                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + '*Required (' + arr_de_fields[i].FieldType + ")</option>";
+                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")*</option>";
 
                                             }else{
                                                 dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
 
                                             }
-                                            //alert(arr_de_fields[i].Name + ' | ' + arr_de_fields[i].FieldType + ' | ' + arr_de_fields[i].IsRequired);
-                                        }       
-                                        //alert(dropdown_options);
 
+                                        }       
+                                        
                                         for (j = 0; j < 5; j++) {
                                             txt1 += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"dropdownc109-input\" aria-controls=\"dropdownc109-input\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"EmailAddress\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\">=</div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" id=\"select-01\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
                                         }
