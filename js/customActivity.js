@@ -86,7 +86,7 @@ define([
                                         }       
 
                                         var json_is_template_fields = '{{"user_id":"true","action":"true","source":"false","event_date":"false"}}';
-                                        var is_template_data = eval(json_is_template);
+                                        var is_template_data = eval(json_is_template_fields);
                                         //var arr_is_template_fields = ["user_id","action","source","event_date"];
 
                                         for (var key in is_template_data) {
