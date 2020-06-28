@@ -34,7 +34,7 @@ define([
 
         // Disable the next button if a value isn't selected
         $('#submit').click(function() {
-            var customer_key = getMessage();
+            var customer_key = getCustomerKey();
 
             var e = document.getElementById("select-01");
             var event_template = e.options[e.selectedIndex].value;
@@ -234,7 +234,7 @@ define([
                 $("#step1").show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getMessage())
+                    enabled: Boolean(getCustomerKey())
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -277,7 +277,8 @@ define([
 
     function save() {
         var name = $("#select1").find('option:selected').html();
-        var value = getMessage();
+        var customerKey = getCustomerKey();
+        var isTemplate = getISTemplate();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -296,7 +297,8 @@ define([
             "tokens": authTokens,
             "emailAddress": "{{InteractionDefaults.Email}}",        
             "contactIdentifier": "{{Contact.Key}}",    
-            "message": value 
+            "customer_key": customerKey,
+            "is_template": isTemplate
         }];
 
         payload['metaData'].isConfigured = true;
@@ -304,11 +306,17 @@ define([
         connection.trigger('updateActivity', payload);
     }
 
-    function getMessage() {  
+    function getCustomerKey() {  
         //return $("#select1").find('option:selected').attr('value').trim();
         //message = $("#activity-name-input").val().trim();
         //alert(message); 
         return $("#activity-name-input").val();
+    }
+    function getISTemplate() {  
+        //return $("#select1").find('option:selected').attr('value').trim();
+        //message = $("#activity-name-input").val().trim();
+        //alert(message); 
+        return $("#select-01").val();
     }
 
 });
