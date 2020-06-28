@@ -68,9 +68,23 @@ define([
                             //location.reload(true);
                             if(json_response.error == 'False'){
                                 $("#message").html("Success! Data Extension Found. Click Next to Continue");
-                                message = true;
-                                connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                                $("#message1").html(JSON.stringify(json_response));
+
+                                switch(event_template) {
+                                    case 'GenericUserEvent':
+                                        message = true;
+                                        connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message1").html(JSON.stringify(json_response));
+                                        break;
+                                    case 'ProductPurchase':
+                                        message = true;
+                                        connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message1").html(JSON.stringify(json_response));
+                                        break;
+
+                                    default:
+                                        message = false;
+                                        $("#message").html("Please Select an Event Template");
+                                }
 
                             }else{
 
