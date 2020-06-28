@@ -38,7 +38,11 @@ define([
         $('#submit').click(function() {
             var customer_key = getMessage();
 
+            var e = document.getElementById("select-01");
+            var event_template = e.options[e.selectedIndex].value;
+
             alert('m1:' + customer_key);
+            alert('m1a:' + event_template);
 
             var message = false;
             var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
