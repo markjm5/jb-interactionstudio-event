@@ -129,12 +129,8 @@ define([
 
         });
 
+        
         /*
-        $('#submit1').click(function() {
-
-            alert("Second Submit Button Clicked");
-
-        });
         // Toggle step 4 active/inactive
         // If inactive, wizard hides it and skips over it during navigation
         $('#toggleLastStep').click(function() {
@@ -144,6 +140,19 @@ define([
             connection.trigger('updateSteps', steps);
         });*/
     }
+
+
+    //var element = document.getElementById("event_template_selection");
+    //element.classList.add("slds-has-error");
+    /*
+    $('#combobox-id-1').click(function() {
+
+        //alert("Second Submit Button Clicked");
+        var element = document.getElementById("combobox1");
+        element.classList.add("slds-is-open");
+
+    });
+    */
 
     function initialize (data) {
         if (data) {
