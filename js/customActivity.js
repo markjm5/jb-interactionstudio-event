@@ -67,24 +67,27 @@ define([
 
                             //location.reload(true);
                             if(json_response.error == 'False'){
-                                $("#message").html("Success! Click Next to Continue");
+                                var element = document.getElementById("event_template_selection");
+
+                                element.classList.remove("slds-has-error");
 
                                 switch(event_template) {
                                     case 'GenericUserEvent':
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message").html("Success! Click Next to Continue");
                                         $("#message1").html(JSON.stringify(json_response));
                                         break;
                                     case 'ProductPurchase':
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message").html("Success! Click Next to Continue");
                                         $("#message1").html(JSON.stringify(json_response));
                                         break;
 
                                     default:
                                         message = false;
-                                        $("#message").html("Please Select an Event Template");
-                                        
+                                        $("#message").html("Please Select an Event Template");                                        
                                         var element = document.getElementById("event_template_selection");
                                         element.classList.add("slds-has-error");
                                 }
