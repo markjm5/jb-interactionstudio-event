@@ -85,11 +85,11 @@ define([
                                         var j;
 
                                         for(i=0; i < arr_de_fields.length; i++){
-                                            if(arr_de_fields[i].IsRequired == true){
-                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' | ' + arr_de_fields[i].FieldType + "*</option>";
+                                            if(arr_de_fields[i].IsRequired == "true"){
+                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + '*Required (' + arr_de_fields[i].FieldType + ")</option>";
 
                                             }else{
-                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' | ' + arr_de_fields[i].FieldType + "</option>";
+                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
 
                                             }
                                             //alert(arr_de_fields[i].Name + ' | ' + arr_de_fields[i].FieldType + ' | ' + arr_de_fields[i].IsRequired);
