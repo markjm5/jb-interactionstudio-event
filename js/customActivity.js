@@ -84,13 +84,13 @@ define([
                                         var i;
 
                                         for(i=0; i < arr_de_fields.length; i++){
-                                            if(arr_de_fields[i].IsRequired == "true"){
-                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")*</option>";
+                                            //if(arr_de_fields[i].IsRequired == "true"){
+                                            //    dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")*</option>";
 
-                                            }else{
-                                                dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
+                                            //}else{
+                                            dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
 
-                                            }
+                                            //}
 
                                         }       
                                         var arr_is_template_fields = ["user_id","action","source","event_date"];
