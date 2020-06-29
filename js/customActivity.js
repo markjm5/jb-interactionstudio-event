@@ -326,7 +326,7 @@ define([
     function getISEventMappings() {  
 
 
-        is-template-1 = de-field-1
+        //is-template-1 = de-field-1
 
         //Need to write JS to retrieve mapping selections and put them into an array
         return $("#select-01").val();
