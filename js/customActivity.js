@@ -329,25 +329,11 @@ define([
         var is_template_data = eval(json_is_template_fields_event);
         var array_length = Object.keys(is_template_data).length;
         var i;
-        //alert("arrLen: " + array_length);
-        //for (var key in is_template_data) {
-            //i++;
 
         for(i=1; i < array_length + 1; i++){
 
-            //val1 = $('#is-template-' + i + ':selected').text();
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
-
-            //var val2 = $('#de-field-' + i + ':selected').text();
-
-            //alert("is-template-" + i);
-            //var e = document.getElementById("is-template-" + i);
-            //alert("SelIndex: " + e.selectedIndex);
-            //var is_template_value = e.options[e.selectedIndex].value;
-
-            //var f = document.getElementById("de-field-" + i );
-            //var de_field_value = f.options[f.selectedIndex].value;
 
             alert(val1 + ": " + val2);
         }
