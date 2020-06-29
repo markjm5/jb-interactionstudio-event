@@ -326,12 +326,21 @@ define([
 
     function getISEventMappings() {  
 
+        //var is_template_data = eval(json_is_template_fields_event);
+        var array_length = Object.keys(jsonArray).length;
+        var i;
+        //for (var key in is_template_data) {
+            //i++;
+        for(i=1; i < array_length; i++){
+            var e = document.getElementById("is-template-" + i );
+            var is_template_value = e.options[e.selectedIndex].value;
 
-        //is-template-1 = de-field-1
-        var e = document.getElementById("select-01");
-        var event_template = e.options[e.selectedIndex].value;
-        alert(event_template);
-        
+            var f = document.getElementById("de-field-" + i );
+            var de_field_value = f.options[f.selectedIndex].value;
+
+            alert(is_template_value + ": " + de_field_value);
+        }
+
         //Need to write JS to retrieve mapping selections and put them into an array
         return $("#select-01").val();
     }
