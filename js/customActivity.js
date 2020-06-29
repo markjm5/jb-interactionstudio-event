@@ -336,8 +336,8 @@ define([
         for(i=1; i < array_length; i++){
 
             //val1 = $('#is-template-' + i + ':selected').text();
-            val1 = $('#is-template-' + i).val();
-            val2 = $('#de-field-' + i + ':selected').text();
+            var val1 = $('#is-template-' + i).val();
+            var val2 = $('#de-field-' + i + ':selected').text();
 
             //alert("is-template-" + i);
             //var e = document.getElementById("is-template-" + i);
