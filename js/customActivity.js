@@ -325,7 +325,7 @@ define([
     }
 
     function getISEventMappings() {  
-/*
+
         var is_template_data = eval(json_is_template_fields_event);
         var array_length = Object.keys(is_template_data).length;
         var i;
@@ -334,17 +334,22 @@ define([
             //i++;
 
         for(i=1; i < array_length; i++){
-            alert("is-template-" + i);
-            var e = document.getElementById("is-template-" + i);
-            alert("SelIndex: " + e.selectedIndex);
-            var is_template_value = e.options[e.selectedIndex].value;
 
-            var f = document.getElementById("de-field-" + i );
-            var de_field_value = f.options[f.selectedIndex].value;
+            //val1 = $('#is-template-' + i + ':selected').text();
+            val1 = $('#is-template-' + i).val();
+            val2 = $('#de-field-' + i + ':selected').text();
 
-            alert(is_template_value + ": " + de_field_value);
+            //alert("is-template-" + i);
+            //var e = document.getElementById("is-template-" + i);
+            //alert("SelIndex: " + e.selectedIndex);
+            //var is_template_value = e.options[e.selectedIndex].value;
+
+            //var f = document.getElementById("de-field-" + i );
+            //var de_field_value = f.options[f.selectedIndex].value;
+
+            alert(val1 + ": " + val2);
         }
-*/
+
         //Need to write JS to retrieve mapping selections and put them into an array
         return $("#select-01").val();
     }
