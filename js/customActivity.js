@@ -9,6 +9,8 @@ define([
     var payload = {};
     var authTokens = {};
     var lastStepEnabled = false;
+    var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false"};
+
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
         { "label": "Step 2", "key": "step2" }
@@ -85,8 +87,7 @@ define([
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
                                         }       
 
-                                        var json_is_template_fields = {"user_id":"true","action":"true","source":"false","event_date":"false"};
-                                        var is_template_data = eval(json_is_template_fields);
+                                        var is_template_data = eval(json_is_template_fields_event);
 
                                         i=0;
                                         for (var key in is_template_data) {
@@ -323,6 +324,9 @@ define([
     }
 
     function getISEventMappings() {  
+
+
+        is-template-1 = de-field-1
 
         //Need to write JS to retrieve mapping selections and put them into an array
         return $("#select-01").val();
