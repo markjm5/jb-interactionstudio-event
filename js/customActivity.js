@@ -328,7 +328,8 @@ define([
 
 
         //is-template-1 = de-field-1
-        var event_template = document.getElementById("event_template_selection");
+        var e = document.getElementById("select-01");
+        var event_template = e.options[e.selectedIndex].value;
         alert(event_template);
         
         //Need to write JS to retrieve mapping selections and put them into an array
