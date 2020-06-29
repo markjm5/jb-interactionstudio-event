@@ -329,6 +329,7 @@ define([
         var is_template_data = eval(json_is_template_fields_event);
         var array_length = Object.keys(is_template_data).length;
         var i;
+        alert("arrLen: " + array_length);
         //for (var key in is_template_data) {
             //i++;
         for(i=1; i < array_length; i++){
