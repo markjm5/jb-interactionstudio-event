@@ -332,8 +332,10 @@ define([
         alert("arrLen: " + array_length);
         //for (var key in is_template_data) {
             //i++;
+
         for(i=1; i < array_length; i++){
-            var e = document.getElementById("is-template-" + i );
+            alert("is-template-" + i);
+            var e = document.getElementById("is-template-" + i);
             alert("SelIndex: " + e.selectedIndex);
             var is_template_value = e.options[e.selectedIndex].value;
 
