@@ -70,8 +70,8 @@ define([
                                 var element = document.getElementById("event_template_selection");
 
                                 element.classList.remove("slds-has-error");
-                                $("#template_type").html(event_template);
-                                
+                                $("#template_type").html("\"" + event_template + "\"");
+
                                 switch(event_template) {
                                     case 'GenericUserEvent':
                                         message = true;
