@@ -191,7 +191,7 @@ define([
                 if(key === 'is_event_mappings'){
                     alert('key:val - ' + key + ': ' + val);
 
-                    $.each(key, function(key1, val1) {
+                    $.each(val, function(key1, val1) {
                         //message = val;
                         alert('key1:val1 - ' + key1 + ': ' + val1);
 
