@@ -329,17 +329,19 @@ define([
         var is_template_data = eval(json_is_template_fields_event);
         var array_length = Object.keys(is_template_data).length;
         var i;
+        var field_mapping_dict = {}
 
         for(i=1; i < array_length + 1; i++){
 
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
 
-            alert(val1 + ": " + val2);
+            //alert(val1 + ": " + val2);
+            field_mapping_dict[val1] = val2;
         }
 
         //Need to write JS to retrieve mapping selections and put them into an array
-        return $("#select-01").val();
+        return field_mapping_dict; //$("#select-01").val();
     }
 
 });
