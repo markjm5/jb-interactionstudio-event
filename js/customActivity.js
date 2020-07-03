@@ -185,7 +185,7 @@ define([
         //        }
         //    });
         //});
-        alert(inArguments[0].tokens);
+        alert(Object.keys(inArguments[0])[0]);
         // If there is no message selected, disable the next button
         if (!message) {
             showStep(null, 1);
