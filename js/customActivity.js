@@ -190,7 +190,7 @@ define([
                 }
 
                 if(key === 'is_event_mappings'){
-                    //alert('key:val - ' + key + ': ' + val);
+                    alert('key:val - ' + key + ': ' + val);
                     var json_selected_fields = [];
                     var field_group = "";
                     var i = 0;
