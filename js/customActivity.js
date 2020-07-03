@@ -185,7 +185,7 @@ define([
                     $('#activity-name-input').val(val);
                 }
                 if(key === 'is_template'){
-                    $('#select-01 option').eq(val).prop('selected', true);
+                    $('#select-01').val(val);
                     //message = val;
                 }
 
