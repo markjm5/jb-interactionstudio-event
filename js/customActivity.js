@@ -175,15 +175,24 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-        //alert('inArguments: ' + JSON.stringify(inArguments));
+
         $("#message").html(JSON.stringify(inArguments));
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
                 alert('key:val - ' + key + ': ' + val)
-                //if (key === 'message') {
-                //    message = val;
-                //}
+                if(key === 'customer_key'){
+                    $('#activity-name-input').val(val);
+                }
+                if(key === 'is_template'){
+                    $('#select01 option').eq(val).prop('selected', true);
+                    //message = val;
+                }
+
+                if(key === 'is_event_mappings'){
+                    message = val;
+                }
+                
             });
         });
         
