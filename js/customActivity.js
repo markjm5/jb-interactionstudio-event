@@ -189,13 +189,15 @@ define([
                 }
 
                 if(key === 'is_event_mappings'){
-                    alert('key:val - ' + key + ': ' + val);
+                    //alert('key:val - ' + key + ': ' + val);
+                    var json_selected_fields = {};
 
                     $.each(val, function(key1, val1) {
                         //message = val;
-                        alert('key1:val1 - ' + key1 + ': ' + val1);
-
+                        json_selected_fields[key1] = val1;                        
+                        //alert('key1:val1 - ' + key1 + ': ' + val1);
                     });
+                    alert(json_selected_fields);
                 }
             });
         });
@@ -279,24 +281,7 @@ define([
         
     } 
 
-     // NEED TO LOOK AT THIS FUNCTION IN MORE DETAIL. THIS IS THE FUNCTION THAT SENDS THE PAYLOAD IN THE inArguments
-     /*
-     function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
-
-        payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens,
-            "emailAddress": "{{Contact.Attribute.PostcardJourney.EmailAddress}}"
-        }];
-        
-        payload['metaData'].isConfigured = true;
-
-        console.log(payload);
-        connection.trigger('updateActivity', payload);
-    }
-    */
-
+    
     function save() {
         var name = $("#select1").find('option:selected').html();
         var customerKey = getCustomerKey();
@@ -358,5 +343,33 @@ define([
         //Need to write JS to retrieve mapping selections and put them into an array
         return field_mapping_dict; //$("#select-01").val();
     }
+
+    function returnDropdownMappings(de_fields, selected_fields) {  
+
+        var arr_de_fields = de_fields;
+        var field_group = "";
+        var dropdown_options = "";
+        var i;
+    
+        for(i=0; i < arr_de_fields.length; i++){
+            dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
+        }       
+    
+        var is_template_data = eval(json_is_template_fields_event);
+    
+        i=0;
+        for (var key in is_template_data) {
+            i++;
+            if (is_template_data[key] == 'true') { // this will check if key is a required field
+                field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\">=</div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+            }else{
+                field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\">=</div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+            }
+        }
+
+        return field_group;
+    }
+
+
 
 });
