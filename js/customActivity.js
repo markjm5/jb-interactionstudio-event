@@ -186,6 +186,7 @@ define([
 
                 if(key === 'is_template'){
                     $('#select-01').val(val);
+                    
                 }
 
                 if(key === 'is_event_mappings'){
@@ -204,7 +205,7 @@ define([
         
         //alert(Object.keys(inArguments[0])[3]);
         // If there is no message selected, disable the next button
-        if (!message) {
+        if (document.getElementById('activity-name-input').value === "") {
             showStep(null, 1);
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
@@ -344,7 +345,7 @@ define([
         return field_mapping_dict; //$("#select-01").val();
     }
 
-    function returnDropdownMappings(de_fields, selected_fields) {  
+   /* function returnDropdownMappings(de_fields, selected_fields) {  
 
         var arr_de_fields = de_fields;
         var field_group = "";
@@ -368,7 +369,7 @@ define([
         }
 
         return field_group;
-    }
+    }*/
 
 
 
