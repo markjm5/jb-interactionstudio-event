@@ -191,12 +191,14 @@ define([
 
                 if(key === 'is_event_mappings'){
                     //alert('key:val - ' + key + ': ' + val);
-                    var json_selected_fields = {};
+                    var json_selected_fields = [];
 
                     $.each(val, function(key1, val1) {
                         //message = val;
-                        json_selected_fields[key1] = val1;                        
-                        //alert('key1:val1 - ' + key1 + ': ' + val1);
+                        var field_name_val = {}
+                        field_name_val[key1] = val1;                        
+                        json_selected_fields.push(field_name_val);  
+                          //alert('key1:val1 - ' + key1 + ': ' + val1);
                     });
                     alert(JSON.stringify(json_selected_fields));
                 }
@@ -348,7 +350,7 @@ define([
         return field_mapping_dict; //$("#select-01").val();
     }
 
-   /* function returnDropdownMappings(de_fields, selected_fields) {  
+    function returnDropdownMappings(de_fields) {  
 
         var arr_de_fields = de_fields;
         var field_group = "";
@@ -372,7 +374,7 @@ define([
         }
 
         return field_group;
-    }*/
+    }
 
 
 
