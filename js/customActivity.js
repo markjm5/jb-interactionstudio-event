@@ -178,14 +178,16 @@ define([
         //alert('inArguments: ' + JSON.stringify(inArguments));
         $("#message").html(JSON.stringify(inArguments));
 
-        //$.each(inArguments, function(index, inArgument) {
-        //    $.each(inArgument, function(key, val) {
-        //        if (key === 'message') {
-        //            message = val;
-        //        }
-        //    });
-        //});
-        alert(Object.keys(inArguments[0])[3]);
+        $.each(inArguments, function(index, inArgument) {
+            $.each(inArgument, function(key, val) {
+                alert('key:val - ' + key + ': ' + val)
+                //if (key === 'message') {
+                //    message = val;
+                //}
+            });
+        });
+        
+        //alert(Object.keys(inArguments[0])[3]);
         // If there is no message selected, disable the next button
         if (!message) {
             showStep(null, 1);
