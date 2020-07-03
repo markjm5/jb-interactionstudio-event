@@ -180,16 +180,17 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                //alert('key:val - ' + key + ': ' + val)
                 if(key === 'customer_key'){
                     $('#activity-name-input').val(val);
                 }
+
                 if(key === 'is_template'){
                     $('#select-01').val(val);
-                    //message = val;
                 }
 
                 if(key === 'is_event_mappings'){
+                    alert('key:val - ' + key + ': ' + val)
+
                     message = val;
                 }
                 
