@@ -206,10 +206,13 @@ define([
         //alert(Object.keys(inArguments[0])[3]);
         // If there is no message selected, disable the next button
         if (document.getElementById('activity-name-input').value === "") {
+            alert('value NOT selected!');
+
             showStep(null, 1);
             connection.trigger('updateButton', { button: 'next', enabled: false });
             // If there is a message, skip to the summary step
         } else {
+            alert('value selected!');
             $("#select1").find('option[value='+ message +']').attr('selected', 'selected');
             //$("#message").html(message);
             showStep(null, 1);
