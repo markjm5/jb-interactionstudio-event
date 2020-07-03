@@ -197,7 +197,7 @@ define([
                         json_selected_fields[key1] = val1;                        
                         //alert('key1:val1 - ' + key1 + ': ' + val1);
                     });
-                    alert(json_selected_fields);
+                    alert(JSON.stringify(json_selected_fields));
                 }
             });
         });
