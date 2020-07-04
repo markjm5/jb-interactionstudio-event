@@ -301,7 +301,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
-        var contactIdentifiers = getContactIdentifiers();
+       // var contactIdentifiers = getContactIdentifiers();
         var i;
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -319,7 +319,9 @@ define([
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
             "contactKey": "{{Contact.Key}}",  
-            contactIdentifiers,
+            for(i=0; i < pks.length; i++){
+                "contactIdentifier" + i + ": {{Contact.Attribute." + de_name + "." + pks[i] + "}}",
+            }    
             "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
@@ -334,7 +336,7 @@ define([
 
         return $("#activity-name-input").val();
     }
-
+    /*
     function getContactIdentifiers(){
         //alert('PKs: ' + pks);
         //alert('DE Name: ' + de_name);
@@ -347,7 +349,8 @@ define([
         //alert(arrContactKeys);
 
         return contactKeys;
-    }
+
+    }*/
 
     function getISTemplate() {  
 
