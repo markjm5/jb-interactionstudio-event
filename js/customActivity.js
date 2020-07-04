@@ -315,18 +315,24 @@ define([
         /*resp['arguments'].execute.inArguments.push({"message":value});*/
         console.log('Here2');
 
-        //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
-        payload['arguments'].execute.inArguments = [{
+        arrinArgs = [{
             "tokens": authTokens,
             "contactKey": "{{Contact.Key}}",  
-            for(i=0; i < pks.length; i++){
-                "contactIdentifier" + i + ": {{Contact.Attribute." + de_name + "." + pks[i] + "}}",
-            }    
             "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
         }];
 
+        for(i=0; i < pks.length; i++){
+            arrinArgs[0]["contactIdentifier"+ i] = "{{Contact.Attribute." + de_name + "." + pks[i] + "}}"
+
+        }    
+
+        alert(JSON.stringify(arrinArgs));
+        //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
+        payload['arguments'].execute.inArguments = arrInArgs;
+
+    
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
