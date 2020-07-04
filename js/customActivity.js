@@ -325,7 +325,7 @@ define([
         }];
 
         for(i=0; i < pks.length; i++){
-            var stringVal = "{{Contact.Attribute." + de_name + "." + pks[i] + "}}";
+            var stringVal = "{{Contact.Attribute." + JSON.stringify(de_name) + "." + JSON.stringify(pks[i]) + "}}";
             arrinArgs[0]["contactIdentifier"+ i] = stringVal;
         }    
 
