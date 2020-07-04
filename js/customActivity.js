@@ -287,7 +287,6 @@ define([
         
     } 
 
-    
     function save() {
         var name = $("#select1").find('option:selected').html();
         var customerKey = getCustomerKey();
