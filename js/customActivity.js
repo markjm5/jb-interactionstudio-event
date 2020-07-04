@@ -302,7 +302,7 @@ define([
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
         var contactIdentifiers = getContactIdentifiers();
-
+        var i;
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
@@ -318,8 +318,8 @@ define([
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
-            "contactKey": "{{Contact.Key}}",    
-            "contactIdentifier": "{{ Contact.Attribute.[FullyQualifiedAttributeName]}}",
+            "contactKey": "{{Contact.Key}}",  
+            contactIdentifiers,
             "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
@@ -339,13 +339,14 @@ define([
         //alert('PKs: ' + pks);
         //alert('DE Name: ' + de_name);
         var i;
-        var arrContactKeys = [];
+        var contactKeys = "";
         for(i=0; i < pks.length; i++){
-            arrContactKeys.push("\"contactIdentifier" + i + "\": \"{{Contact.Attribute." + de_name + ".\"" + pks[i] + "\"}}\"");
-        }
-        alert(arrContactKeys);
+            contactKeys += "\"contactIdentifier" + i + "\": \"{{Contact.Attribute." + de_name + ".\"" + pks[i] + "\"}}\","
 
-        return $("#message1").val();
+        }
+        //alert(arrContactKeys);
+
+        return contactKeys;
     }
 
     function getISTemplate() {  
