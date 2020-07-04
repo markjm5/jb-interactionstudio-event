@@ -345,7 +345,7 @@ define([
         }
         alert(arrContactKeys);
 
-        return $("#message1").val()
+        return $("#message1").val();
     }
 
     function getISTemplate() {  
