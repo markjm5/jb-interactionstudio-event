@@ -331,7 +331,7 @@ define([
 
         alert(JSON.stringify(arrinArgs));
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
-        payload['arguments'].execute.inArguments = arrInArgs;
+        payload['arguments'].execute.inArguments = arrinArgs;
 
     
         payload['metaData'].isConfigured = true;
