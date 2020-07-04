@@ -10,6 +10,7 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false"};
+    var pks = [];
 
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
@@ -84,17 +85,17 @@ define([
                                         var dropdown_options = "";
                                         var i;
                                         
-                                        alert(JSON.stringify(arr_de_fields));
+                                        //alert(JSON.stringify(arr_de_fields));
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
-                                            alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].IsPrimaryKey);
+                                            //alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].IsPrimaryKey);
                                             if(arr_de_fields[i].IsPrimaryKey === 'true'){
-                                                alert('Field1: ' + arr_de_fields[i].Name + ' PK1: ' + arr_de_fields[i].IsPrimaryKey);
-
+                                                //alert('Field1: ' + arr_de_fields[i].Name + ' PK1: ' + arr_de_fields[i].IsPrimaryKey);
+                                                pks.push(arr_de_fields[i].Name)
                                             }
                                         }       
-
+                                        alert(pks);
                                         var is_template_data = eval(json_is_template_fields_event);
 
                                         i=0;
