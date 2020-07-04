@@ -319,6 +319,7 @@ define([
         arrinArgs = [{
             "tokens": authTokens,
             "contactIdentifier": "{{Contact.Key}}",  
+            "emailAddress": "{{InteractionDefaults.Email}}",
             "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
