@@ -341,7 +341,7 @@ define([
         var i;
         var arrContactKeys = [];
         for(i=0; i < pks.length; i++){
-            arrContactKeys.push("\"contactIdentifier" + i + "\": \"{{ Contact.Attribute.\""+ de_name + "\".\"" + pks[i] + "\"}}\"");
+            arrContactKeys.push("\"contactIdentifier" + i + "\": \"{{Contact.Attribute." + de_name + "." + pks[i] + "}}\"");
         }
         alert(arrContactKeys);
 
