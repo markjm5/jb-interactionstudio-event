@@ -328,7 +328,7 @@ define([
             arrinArgs[0]["contactIdentifier"+ i] = "{{Contact.Attribute." + de_name + "." + pks[i] + "}}"
         }    
 
-        alert(JSON.stringify(arrinArgs));
+        //alert(JSON.stringify(arrinArgs));
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = arrinArgs;
 
