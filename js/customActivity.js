@@ -80,7 +80,7 @@ define([
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
                                         $("#message1").html(JSON.stringify(json_response.de_name));
-                                        de_name = JSON.stringify(json_response.de_name);
+                                        de_name = json_response.de_name;
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
