@@ -300,6 +300,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
+        var contactIdentifiers = getContactIdentifiers();
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -334,6 +335,8 @@ define([
     }
 
     function getContactIdentifiers(){
+        alert('PKs: ' + pks);
+        alert($("#message1").val());
         return $("#message1").val()
     }
 
