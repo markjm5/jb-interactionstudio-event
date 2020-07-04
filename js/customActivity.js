@@ -189,7 +189,7 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if(key === 'customer_key'){
+                if(key === 'de_customer_key'){
                     $('#activity-name-input').val(val);
                 }
 
