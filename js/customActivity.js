@@ -301,6 +301,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
+        var arrinArgs = [];
        // var contactIdentifiers = getContactIdentifiers();
         var i;
         // 'payload' is initialized on 'initActivity' above.
