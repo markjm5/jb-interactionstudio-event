@@ -318,7 +318,7 @@ define([
 
         arrinArgs = [{
             "tokens": authTokens,
-            "contactKey": "{{Contact.Key}}",  
+            "contactIdentifier": "{{Contact.Key}}",  
             "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
