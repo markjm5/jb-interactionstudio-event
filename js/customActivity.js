@@ -11,6 +11,7 @@ define([
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false"};
     var pks = [];
+    var de_name = "";
 
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
@@ -79,7 +80,7 @@ define([
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
                                         $("#message1").html(JSON.stringify(json_response.de_name));
-
+                                        de_name = JSON.stringify(json_response.de_name);
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
@@ -95,7 +96,7 @@ define([
                                                 pks.push(arr_de_fields[i].Name)
                                             }
                                         }       
-                                        alert(pks);
+                                        //alert(pks);
                                         var is_template_data = eval(json_is_template_fields_event);
 
                                         i=0;
@@ -336,7 +337,7 @@ define([
 
     function getContactIdentifiers(){
         alert('PKs: ' + pks);
-        alert($("#message1").val());
+        alert('DE Name: ' + de_name);
         return $("#message1").val()
     }
 
