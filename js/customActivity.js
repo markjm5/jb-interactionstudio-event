@@ -325,7 +325,7 @@ define([
         }];
 
         for(i=0; i < pks.length; i++){
-            arrinArgs[0]["contactIdentifier"+ i] = "{{Contact.Attribute." + de_name + "." + pks[i] + "}}"
+            arrinArgs[0]["contactIdentifier"+ i] = "{{Contact.Attribute-" + de_name + "-" + pks[i] + "}}"
         }    
 
         //alert(JSON.stringify(arrinArgs));
@@ -342,21 +342,6 @@ define([
 
         return $("#activity-name-input").val();
     }
-    /*
-    function getContactIdentifiers(){
-        //alert('PKs: ' + pks);
-        //alert('DE Name: ' + de_name);
-        var i;
-        var contactKeys = "";
-        for(i=0; i < pks.length; i++){
-            contactKeys += "\"contactIdentifier" + i + "\": \"{{Contact.Attribute." + de_name + ".\"" + pks[i] + "\"}}\","
-
-        }
-        //alert(arrContactKeys);
-
-        return contactKeys;
-
-    }*/
 
     function getISTemplate() {  
 
