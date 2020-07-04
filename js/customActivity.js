@@ -88,9 +88,9 @@ define([
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
-                                            alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].isPrimaryKey);
-                                            if(arr_de_fields[i].isPrimaryKey === 'true'){
-                                                alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].isPrimaryKey);
+                                            alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].IsPrimaryKey);
+                                            if(arr_de_fields[i].IsPrimaryKey === 'true'){
+                                                alert('Field1: ' + arr_de_fields[i].Name + ' PK1: ' + arr_de_fields[i].IsPrimaryKey);
 
                                             }
                                         }       
