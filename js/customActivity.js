@@ -336,8 +336,15 @@ define([
     }
 
     function getContactIdentifiers(){
-        alert('PKs: ' + pks);
-        alert('DE Name: ' + de_name);
+        //alert('PKs: ' + pks);
+        //alert('DE Name: ' + de_name);
+        var i;
+        var arrContactKeys = [];
+        for(i=0; i < pks.length; i++){
+            arrContactKeys.push("\"contactIdentifier" + i + "\": \"{{ Contact.Attribute.[FullyQualifiedAttributeName]}}\"");
+        }
+        alert(arrContactKeys);
+
         return $("#message1").val()
     }
 
