@@ -323,12 +323,12 @@ define([
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
         }];
-
+        /*
         for(i=0; i < pks.length; i++){
             var stringVal = "{{Contact.Attribute." + JSON.stringify(de_name) + "." + JSON.stringify(pks[i]) + "}}";
             arrinArgs[0]["contactIdentifier"+ i] = stringVal;
         }    
-
+        */
         //alert(JSON.stringify(arrinArgs));
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = arrinArgs;
