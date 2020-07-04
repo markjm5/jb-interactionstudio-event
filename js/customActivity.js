@@ -325,7 +325,11 @@ define([
         }];
 
         for(i=0; i < pks.length; i++){
-            arrinArgs[0]["contactIdentifier"+ i] = "{{Contact.Attribute-" + de_name + "-" + pks[i] + "}}"
+            var stringVal = "{{Contact.Attribute-" + de_name + "-" + pks[i] + "}}";
+            alert(de_name);
+            alert(pks[i]);
+            alert(stringVal);
+            arrinArgs[0]["contactIdentifier"+ i] = stringVal;
         }    
 
         //alert(JSON.stringify(arrinArgs));
