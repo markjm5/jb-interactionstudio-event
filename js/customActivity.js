@@ -77,12 +77,14 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
+                                        $("#message1").html(JSON.stringify(json_response.de_name));
 
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
                                         var i;
+                                        
+                                        alert(arr_de_fields);
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
@@ -308,9 +310,9 @@ define([
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
-            "emailAddress": "{{InteractionDefaults.Email}}",        
-            "contactIdentifier": "{{Contact.Key}}",    
-            "customer_key": customerKey,
+            "contactKey": "{{Contact.Key}}",    
+            "contactIdentifier": "{{ Contact.Attribute.[FullyQualifiedAttributeName]}}",
+            "de_customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
         }];
@@ -324,6 +326,11 @@ define([
 
         return $("#activity-name-input").val();
     }
+
+    function getContactIdentifiers(){
+        return $("#message1").val()
+    }
+
     function getISTemplate() {  
 
         return $("#select-01").val();
