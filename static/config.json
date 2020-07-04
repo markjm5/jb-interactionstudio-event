@@ -18,10 +18,7 @@
           "inArguments": [
               {
                 "emailAddress": "{{InteractionDefaults.Email}}",
-                "contactIdentifier": "{{Contact.Key}}",             
-                "customer_key": "",
-                "is_template": "",
-                "is_event_mappings": ""
+                "contactIdentifier": "{{Contact.Key}}"             
               }
           ],
           "outArguments": [
