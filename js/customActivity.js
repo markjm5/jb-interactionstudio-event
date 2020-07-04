@@ -84,7 +84,7 @@ define([
                                         var dropdown_options = "";
                                         var i;
                                         
-                                        //alert(JSON.stringify(arr_de_fields));
+                                        alert(JSON.stringify(arr_de_fields));
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
