@@ -25,6 +25,7 @@ if is_prod:
     IS_ENDPOINT = os.environ.get('IS_ENDPOINT')
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
+    APPLICATION_EXTENSION_KEY = os.environ.get('APPLICATION_EXTENSION_KEY')
 
 else:
     from config_dev import Config
@@ -40,6 +41,7 @@ else:
     IS_ENDPOINT = Config.IS_ENDPOINT
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG
+    APPLICATION_EXTENSION_KEY = Config.APPLICATION_EXTENSION_KEY
 
 
 auth_header_json_data = { "grant_type": "client_credentials",
@@ -232,10 +234,12 @@ def send_js(path):
 def send_config_json():
 
     #SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "static/", "config.json")
-    data = json.load(open(json_url))
+    #json_url = os.path.join(SITE_ROOT, "static/", "config.json")
+    #data = json.load(open(json_url))
 
-    return render_template('showjson.jade', data=data)
+    applicationExtensionKey = APPLICATION_EXTENSION_KEY
+
+    return render_template('showjson.jade', applicationExtensionKey=applicationExtensionKey)
 
 
 @app.route('/static/salesforce-lightning-design-system-static-resource-2.11.9/icons/action/<path:path>')
