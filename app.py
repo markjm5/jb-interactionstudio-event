@@ -141,7 +141,8 @@ def journeybuilder_execute():
         #make an api call to evergage
         #response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
+        #data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command'}
 
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
