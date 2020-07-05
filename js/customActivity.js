@@ -79,24 +79,20 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html(JSON.stringify(json_response.de_name));
-                                        de_name = json_response.de_name;
+                                        $("#message1").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
+
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
                                         var i;
-                                        
-                                        //alert(JSON.stringify(arr_de_fields));
 
                                         for(i=0; i < arr_de_fields.length; i++){
                                             dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
-                                            //alert('Field: ' + arr_de_fields[i].Name + ' PK: ' + arr_de_fields[i].IsPrimaryKey);
                                             if(arr_de_fields[i].IsPrimaryKey === 'true'){
-                                                //alert('Field1: ' + arr_de_fields[i].Name + ' PK1: ' + arr_de_fields[i].IsPrimaryKey);
                                                 pks.push(arr_de_fields[i].Name)
                                             }
                                         }       
-                                        //alert(pks);
+
                                         var is_template_data = eval(json_is_template_fields_event);
 
                                         i=0;
@@ -189,7 +185,7 @@ define([
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-                if(key === 'de_customer_key'){
+                if(key === 'customer_key'){
                     $('#activity-name-input').val(val);
                 }
 
@@ -301,9 +297,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
-        var arrinArgs = [];
-       // var contactIdentifiers = getContactIdentifiers();
-        var i;
+
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
@@ -315,36 +309,17 @@ define([
         console.log('Here1');
         /*resp['arguments'].execute.inArguments.push({"message":value});*/
         console.log('Here2');
-        
-        /*
-        arrinArgs = [{
-            "tokens": authTokens,
-            "contactIdentifier": "{{Contact.Key}}",  
-            "emailAddress": "{{InteractionDefaults.Email}}",
-            "de_customer_key": customerKey,
-            "is_template": isTemplate,
-            "is_event_mappings": ISEventMappings
-        }];
-        
-        for(i=0; i < pks.length; i++){
-            var stringVal = "{{Contact.Attribute." + JSON.stringify(de_name) + "." + JSON.stringify(pks[i]) + "}}";
-            arrinArgs[0]["contactIdentifier"+ i] = stringVal;
-        }    
-        */
-        //alert(JSON.stringify(arrinArgs));
+
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens,
-            "contactIdentifier": "{{Contact.Key}}",  
-            "emailAddress": "{{InteractionDefaults.Email}}",
-            "de_customer_key": customerKey,
+            "emailAddress": "{{InteractionDefaults.Email}}",        
+            "contactIdentifier": "{{Contact.Key}}",    
+            "customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
         }];
-        
-        //arrinArgs;
 
-    
         payload['metaData'].isConfigured = true;
 
         connection.trigger('updateActivity', payload);
@@ -354,7 +329,6 @@ define([
 
         return $("#activity-name-input").val();
     }
-
     function getISTemplate() {  
 
         return $("#select-01").val();
