@@ -17,7 +17,11 @@
       "execute": {
           "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/execute/",
           "verb": "POST",
-          "useJwt": true  
+          "body": "",
+          "header": "",
+          "format": "json",
+          "useJwt": true,
+          "timeout": 10000
       }
   },
   "configurationArguments": {

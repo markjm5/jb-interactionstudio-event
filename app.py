@@ -89,6 +89,7 @@ def journeybuilder_execute():
     # https://salesforce.stackexchange.com/questions/269769/sfmc-custom-activity-error-a-custom-activity-or-entry-source-failed-validation
     # https://salesforce.stackexchange.com/questions/185511/journey-builder-custom-activity-not-a-valid-argument?rq=1
     # https://salesforce.stackexchange.com/questions/185792/accessing-entry-event-data-journey-builder-custom-activity
+    # https://salesforce.stackexchange.com/questions/283981/sfmc-journey-builder-custom-activity
     
     decrypted_token = ""
     
