@@ -17,7 +17,8 @@
       "execute": {
           "inArguments": [
             {
-              "contactIdentifier": ""
+              "contactIdentifier": "{{Contact.Key}}",
+              "emailAddress": "{{InteractionDefaults.Email}}"
             } 
           ],
           "outArguments": [],
@@ -66,7 +67,6 @@
   "schema": {
       "arguments": {
           "execute": {
-              "inArguments": [],
               "outArguments": [
                 {
                     "SegmentMembership": {

@@ -313,7 +313,8 @@ define([
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
-            "contactIdentifier": "Test"    
+                "contactIdentifier": "{{Contact.Key}}",
+                "emailAddress": "{{InteractionDefaults.Email}}"  
         }];
 
         //"customer_key": customerKey,
@@ -323,7 +324,7 @@ define([
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
-        
+
         connection.trigger('updateActivity', payload);
     }
 
