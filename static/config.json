@@ -16,10 +16,8 @@
   "arguments": {
       "execute": {
           "inArguments": [
-              {
-                "emailAddress": "{{InteractionDefaults.Email}}",
-                "contactIdentifier": "{{Contact.Key}}"
-              }
+              {"emailAddress": "{{InteractionDefaults.Email}}"},
+              {"contactIdentifier": "{{Contact.Key}}"}
           ],
           "outArguments": [
               {
