@@ -313,7 +313,6 @@ define([
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
-            "emailAddress": "{{InteractionDefaults.Email}}",
             "contactIdentifier": "{{Contact.Key}}"    
         }];
 
