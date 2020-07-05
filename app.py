@@ -233,13 +233,14 @@ def send_js(path):
 @app.route('/config.json', methods=['GET'])
 def send_config_json():
 
-    #SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    #json_url = os.path.join(SITE_ROOT, "static/", "config.json")
-    #data = json.load(open(json_url))
+    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    json_url = os.path.join(SITE_ROOT, "static/", "config.json")
+    data = json.load(open(json_url))
 
     applicationExtensionKey = APPLICATION_EXTENSION_KEY
 
-    return render_template('showjson.jade', applicationExtensionKey=applicationExtensionKey)
+    #return render_template('showjson.jade', applicationExtensionKey=applicationExtensionKey)
+    return render_template('showjson.jade', data=data)
 
 
 @app.route('/static/salesforce-lightning-design-system-static-resource-2.11.9/icons/action/<path:path>')
