@@ -15,7 +15,11 @@
   },
   "arguments": {
       "execute": {
-          "inArguments": [],
+          "inArguments": [
+            {
+              "contactIdentifier": ""
+            } 
+          ],
           "outArguments": [],
           "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/execute/",
           "verb": "POST",
