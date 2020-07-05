@@ -273,8 +273,10 @@ def journeybuilder_get_de_fields():
             jsonified_text = {"error": "False","de_name": de_name, "de_fields": de_fields}  
         except:
             jsonified_text = {"error": "True"}
-        
-        response = requests.post(LOG_NOTIFICATION_URL, jsonified_text)
+
+        data = {'title': 'Python request', 'body': 'This is a POST request to Get DE Fields'}
+
+        response = requests.post(LOG_NOTIFICATION_URL, data)
     
     return jsonify(jsonified_text)
 
