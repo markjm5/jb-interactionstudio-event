@@ -54,16 +54,16 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #db = SQLAlchemy(app)
 
-@app.route('/index.html', methods=['GET','POST'])
+@app.route('/index.html', methods=['GET'])
 def index_html():
     path_to_static = os.path.join(request.url_root, "static/")
 
-    if request.method == 'POST':
-        data = {'title': 'Pyton request', 'body': 'This is the Execute Command POST'}
-        debug_message = "this is a POST request to index.html"
-    else:
-        data = {'title': 'Pyton request', 'body': 'This is the Execute Command GET'}
-        debug_message = "This is a test" #auth_header_json_data
+    #if request.method == 'POST':
+    #    data = {'title': 'Pyton request', 'body': 'This is the Execute Command POST'}
+    #    debug_message = "this is a POST request to index.html"
+    #else:
+    data = {'title': 'Pyton request', 'body': 'This is the Execute Command GET'}
+    #debug_message = "This is a test" #auth_header_json_data
     
     # Deprecated calls to obtain de_customer_key from the published journey.
     # We are instead allowing the user to specify the de_customer_key
@@ -72,12 +72,12 @@ def index_html():
     # event_definition_key = journey_id_to_event_key(journey_id)    
     # entry_de_customer_key = event_key_to_de_customer_key(event_definition_key)
 
-    response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    response_content = json.loads(response._content)
+    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
+    #response_content = json.loads(response._content)
 
-    #notification1_response = requests.post(LOG_NOTIFICATION_URL, response_content)
+    notification1_response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    access_token = json.loads(response._content)["access_token"]
+    #access_token = json.loads(response._content)["access_token"]
 
     return render_template('index.html', static_path=path_to_static)
 
