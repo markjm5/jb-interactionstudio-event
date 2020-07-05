@@ -62,7 +62,7 @@ def index_html():
     #    data = {'title': 'Pyton request', 'body': 'This is the Execute Command POST'}
     #    debug_message = "this is a POST request to index.html"
     #else:
-    data = {'title': 'Python request', 'body': 'this is a GET request to index.html'}
+    data = {'title': 'Python request', 'body': 'this is a GET request to index.html', 'data': request.data}
     #debug_message = "This is a test" #auth_header_json_data
     
     # Deprecated calls to obtain de_customer_key from the published journey.
