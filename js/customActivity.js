@@ -311,11 +311,11 @@ define([
         console.log('Here2');
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
-        payload['arguments'].execute.inArguments = [
-            {"tokens": authTokens}, 
-            {"emailAddress": "{{InteractionDefaults.Email}}"},
-            {"contactIdentifier": "{{Contact.Key}}"}    
-        ];
+        payload['arguments'].execute.inArguments = [{
+            "tokens": authTokens, 
+            "emailAddress": "{{InteractionDefaults.Email}}",
+            "contactIdentifier": "{{Contact.Key}}"    
+        }];
 
         //"customer_key": customerKey,
         //"is_template": isTemplate,
