@@ -15,15 +15,6 @@
   },
   "arguments": {
       "execute": {
-          "inArguments": [
-              {"emailAddress": "{{InteractionDefaults.Email}}"},
-              {"contactIdentifier": "{{Contact.Key}}"}
-          ],
-          "outArguments": [
-              {
-                  "SegmentMembership": ""
-              }
-          ],
           "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/execute/",
           "verb": "POST",
           "body": "",
