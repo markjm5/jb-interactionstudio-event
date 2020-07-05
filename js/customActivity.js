@@ -313,7 +313,7 @@ define([
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
-            "contactIdentifier": "{{Contact.Key}}"    
+            "contactIdentifier": "Test"    
         }];
 
         //"customer_key": customerKey,
