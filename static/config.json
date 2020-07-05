@@ -39,7 +39,7 @@
       }
   },
   "configurationArguments": {
-    "applicationExtensionKey": "7021a1af-625b-48f6-9cfb-0d496dfa3d81",
+    "applicationExtensionKey": "2adba120-75bb-4db4-9f3f-4a7fe9b7ddd5",
      "save": {
         "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/save/",
         "verb": "POST",
