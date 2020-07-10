@@ -16,7 +16,11 @@
   "arguments": {
       "execute": {
           "inArguments": [],
-          "outArguments": [],
+          "outArguments": [
+            {
+                "SegmentMembership": ""
+            }
+          ],
           "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/execute/",
           "verb": "POST",
           "body": "",
