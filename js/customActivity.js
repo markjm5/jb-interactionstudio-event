@@ -291,7 +291,7 @@ define([
         }
         
     } 
-
+    
     function save() {
         var name = $("#select1").find('option:selected').html();
         var customerKey = getCustomerKey();
@@ -307,15 +307,15 @@ define([
         //req.open("POST", "https://mmdemofeedback.herokuapp.com/config.json");
         //var resp = req.send();
         console.log('Here1');
-        /*resp['arguments'].execute.inArguments.push({"message":value});*/
+        payload['arguments'].execute.inArguments = ({"message":customerKey});
         console.log('Here2');
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
-        payload['arguments'].execute.inArguments = [{
+        /*payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
                 "contactIdentifier": "{{Contact.Key}}",
                 "emailAddress": "{{InteractionDefaults.Email}}"  
-        }];
+        }];*/
 
         //"customer_key": customerKey,
         //"is_template": isTemplate,
@@ -327,6 +327,7 @@ define([
 
         connection.trigger('updateActivity', payload);
     }
+    
 
     function getCustomerKey() {  
 
