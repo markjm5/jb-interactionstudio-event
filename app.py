@@ -94,7 +94,7 @@ def journeybuilder_execute():
     decrypted_token = ""
     
     if request.method == 'POST':
-
+        response = requests.post(LOG_NOTIFICATION_URL, "YAY!!!")
         try:
             decrypted_token = jwt.decode(request.data,JWT_SIGNING_SECRET, algorithms=['HS256'])
         except jwt.DecodeError as e:
