@@ -104,7 +104,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
-        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_tA6bNqe335ddynoqU4b03JKO6IH8vefZ7KTpfMqYrH4GFuB4wHGHYEglkefkqktPi3PeowQ8AkokIeRQtR_sC-Jy5qmogQcvAvlkVLIaabZzjyqhoLcpq8dLISkMfV-1LOfhshg6F-8bCSCQ1duBcycZmvr21HrVNyH6Akm7SodK8wT5H-jm4JO_RX1hKPbapfl7v7_6K3QJPFTiRoi9Xiw2wt2zFkDZTzQO7I_p4sof9x_rS9e_ypsuoyBZEYaA", "fuel2token": "4BtCq2X2eo56Q99mK1xXwcBs", "expires": 1594738582503, "stackKey": "S4"}, "contactIdentifier": "50", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "Action", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "02932a81-cb40-4077-9c6d-2d34a867b4f2", "journeyId": "d2385f85-fe6d-4273-9db6-ca13675dcc35", "activityId": "02932a81-cb40-4077-9c6d-2d34a867b4f2", "definitionInstanceId": "f7a94e51-6bcc-464e-a04e-ef628476bfb9", "activityInstanceId": "fdb0ec9f-d885-4969-8965-7ee6b0f64cf4", "keyValue": "50", "mode": 0}
+        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -155,7 +155,7 @@ def journeybuilder_execute():
                 current_date_millis = helper_unix_time_millis(my_dt)
 
 
-
+            #import pdb; pdb.set_trace()
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
         ## In doing so, dynamically create dict1
 
