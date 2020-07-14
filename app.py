@@ -148,7 +148,8 @@ def journeybuilder_execute():
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
-    return jsonify(jsonified_test)
+    #import pdb; pdb.set_trace()
+    return jsonified_test
 
 
 @app.route('/journeybuilder/save/', methods=['POST'])
