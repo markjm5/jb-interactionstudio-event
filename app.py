@@ -149,7 +149,7 @@ def journeybuilder_execute():
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     #import pdb; pdb.set_trace()
-    return jsonified_test
+    return jsonify(jsonified_test)
 
 
 @app.route('/journeybuilder/save/', methods=['POST'])
