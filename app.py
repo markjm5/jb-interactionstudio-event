@@ -104,7 +104,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
-        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhwPDUBZKFfU-cJ-tudH7ZjbD9NDANPMDXzdQnkRYng5k_hwD5lk1aF093m_MERY7QQqCEfRDyFrY2GIBYCzHUZfi6wohj5PSNlch820xTDuzh6uXD5wApj8vrcYy3xliaVOGl367wHATotxOIVZ--mVcHKlmNcIqT2kpiZtx0rnuCwrIKdShasMy8o6wbykkggNhO7MblKhl2PyOWAlCXftCFrdWC27wnd3yBF9owiyDQqQ3sPKwtuM8D1_AAfJM0g", "fuel2token": "4TRBSWz6neyuR8bVmCCrGTCQ", "expires": 1594733545770, "stackKey": "S4"}, "contactIdentifier": "47", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "unique_id_field": "EventID", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "Action", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "fb686a22-1341-40f8-82fd-8e8ef481d946", "journeyId": "d3a85ed8-e764-4e73-895e-0da0417f483d", "activityId": "fb686a22-1341-40f8-82fd-8e8ef481d946", "definitionInstanceId": "ff6b604b-afe1-46d5-a9b7-d4d98020c787", "activityInstanceId": "46d1e8fa-d42e-49f9-8114-e457be6c7b5c", "keyValue": "47", "mode": 0}
+        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_tA6bNqe335ddynoqU4b03JKO6IH8vefZ7KTpfMqYrH4GFuB4wHGHYEglkefkqktPi3PeowQ8AkokIeRQtR_sC-Jy5qmogQcvAvlkVLIaabZzjyqhoLcpq8dLISkMfV-1LOfhshg6F-8bCSCQ1duBcycZmvr21HrVNyH6Akm7SodK8wT5H-jm4JO_RX1hKPbapfl7v7_6K3QJPFTiRoi9Xiw2wt2zFkDZTzQO7I_p4sof9x_rS9e_ypsuoyBZEYaA", "fuel2token": "4BtCq2X2eo56Q99mK1xXwcBs", "expires": 1594738582503, "stackKey": "S4"}, "contactIdentifier": "50", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "Action", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "02932a81-cb40-4077-9c6d-2d34a867b4f2", "journeyId": "d2385f85-fe6d-4273-9db6-ca13675dcc35", "activityId": "02932a81-cb40-4077-9c6d-2d34a867b4f2", "definitionInstanceId": "f7a94e51-6bcc-464e-a04e-ef628476bfb9", "activityInstanceId": "fdb0ec9f-d885-4969-8965-7ee6b0f64cf4", "keyValue": "50", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -145,13 +145,15 @@ def journeybuilder_execute():
             #if an event date was assigned, use it for the event date in IS, otherwise use todays date
             if event_date == "":
                 current_date = dt.today().strftime("%m-%d-%Y")
-                my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
-                current_date_millis = helper_unix_time_millis(my_dt)
+                #my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
+                current_date_millis = helper_unix_time_millis(current_date)
             else:
-                current_date = "06-14-2020"
-                my_dt = dt.strptime(current_date, '%m-%d-%Y')
-                #import pdb; pdb.set_trace()    
+                #current_date = "06-14-2020"
+                #my_dt = dt.strptime(current_date, '%m-%d-%Y')
+
+                my_dt = dt.strptime(event_date, '%m/%d/%Y %H:%M:%S %p')
                 current_date_millis = helper_unix_time_millis(my_dt)
+
 
 
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
@@ -564,7 +566,7 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
     return field_values
 
 def helper_unix_time_millis(dt):
-    epoch = datetime.utcfromtimestamp(0)
+    epoch = dt.utcfromtimestamp(0)
     return (dt - epoch).total_seconds() * 1000.0
 
 def helper_xstr(s):
