@@ -26,7 +26,7 @@ if is_prod:
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
     APPLICATION_EXTENSION_KEY = os.environ.get('APPLICATION_EXTENSION_KEY')
-
+    EXECUTE_METHOD = "POST"
 else:
     from config_dev import Config
     app.config.from_object(Config)
@@ -42,7 +42,7 @@ else:
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG
     APPLICATION_EXTENSION_KEY = Config.APPLICATION_EXTENSION_KEY
-
+    EXECUTE_METHOD = "GET"
 
 auth_header_json_data = { "grant_type": "client_credentials",
     "client_id" : CLIENT_ID,
@@ -93,7 +93,7 @@ def journeybuilder_execute():
     
     decrypted_token = ""
     
-    if request.method == 'GET':
+    if request.method == EXECUTE_METHOD:
         response = requests.post(LOG_NOTIFICATION_URL, "YAY!!!")
         try:
             decrypted_token = jwt.decode(request.data,JWT_SIGNING_SECRET, algorithms=['HS256'])
@@ -121,7 +121,7 @@ def journeybuilder_execute():
 
         entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
 
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
         #unique_id = "EmailAddress"    
 
         #fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
