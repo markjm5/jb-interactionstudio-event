@@ -297,7 +297,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
-
+        var unique_id_field = "EventID"
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
         // set by this activity's config.json file.  Any property
@@ -314,15 +314,12 @@ define([
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
             "contactIdentifier": "{{Contact.Key}}",
+            "unique_id_field": unique_id_field,
             "emailAddress": "{{InteractionDefaults.Email}}",  
             "customer_key": customerKey,
             "is_template": isTemplate,
             "is_event_mappings": ISEventMappings
         }];
-
-        //"customer_key": customerKey,
-        //"is_template": isTemplate,
-        //"is_event_mappings": ISEventMappings
 
         payload['metaData'].isConfigured = true;
 
