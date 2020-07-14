@@ -307,7 +307,7 @@ define([
         //req.open("POST", "https://mmdemofeedback.herokuapp.com/config.json");
         //var resp = req.send();
         console.log('Here1');
-        payload['arguments'].execute.inArguments = ({"message":customerKey});
+        payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;

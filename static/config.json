@@ -17,7 +17,7 @@
       "execute": {
           "outArguments": [
             {
-                "SegmentMembership": ""
+                "SegmentMembership": "test"
             }
           ],
           "url": "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/execute/",
@@ -25,7 +25,7 @@
           "body": "",
           "header": "",
           "format": "json",
-          "useJwt": false,
+          "useJwt": true,
           "timeout": 10000
       }
   },
