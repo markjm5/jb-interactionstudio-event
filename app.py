@@ -4,7 +4,7 @@ import json
 import jwt
 import requests
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime as dt
 from os import environ
 from flask import Flask, render_template, request, send_from_directory, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -100,16 +100,20 @@ def journeybuilder_execute():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        #entry_de_customer_key = "D5118761-5863-43DC-8022-941CE864DA83"
-        #decrypted_token = "{\"inArguments\": [{\"tokens\": {\"token\": \"0bICaQjRzb5eVIj1GdBUzhwD4p91AuU60INp8kZUUlZ1rBLyNkAH7NqqdT4MRQkCWqBZDjJKYx7FAx_Waekwx4JyWHEHfU5saEdf01SARu-AijzK4Tyv_40MsOPQ1DdSp0pGg4tUWoNkGFhUMhKyZsyD-HWFFLXSRizG-La2sdNSlPoK2ce8RpTAKXgdkHNltS5HkxUVmBsfZvJBoLoRIBTqeMyECu6BqbbXNTbosJ77Pjhmij7fnP0jIj1O_DvEzlgTw3IfEZHd2C7RqKoukTg\", \"fuel2token\": \"4gOqoNhxXALlUcxZtK9S3j3U\", \"expires\": 1592483764291, \"stackKey\": \"S4\"}, \"emailAddress\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"contactIdentifier\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"message\": \"someMessage\"}], \"outArguments\": [{\"SegmentMembership\": \"\"}], \"activityObjectID\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"journeyId\": \"65f1d3c8-33ab-467a-a18a-b3d186e675ad\", \"activityId\": \"3343520b-06fc-4f8e-bbac-c1af75bbb34d\", \"definitionInstanceId\": \"af848d2e-8df1-4d9c-b915-9fedb8c0a4fe\", \"activityInstanceId\": \"48811206-f9fc-46d3-a633-4d3079638420\", \"keyValue\": \"sgladden.10000.0003@hotmail.exacttargettest.com\", \"mode\": 0}"
+        #Debugging Logger
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
+        response = requests.post(LOG_NOTIFICATION_URL, data)
 
         decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhwPDUBZKFfU-cJ-tudH7ZjbD9NDANPMDXzdQnkRYng5k_hwD5lk1aF093m_MERY7QQqCEfRDyFrY2GIBYCzHUZfi6wohj5PSNlch820xTDuzh6uXD5wApj8vrcYy3xliaVOGl367wHATotxOIVZ--mVcHKlmNcIqT2kpiZtx0rnuCwrIKdShasMy8o6wbykkggNhO7MblKhl2PyOWAlCXftCFrdWC27wnd3yBF9owiyDQqQ3sPKwtuM8D1_AAfJM0g", "fuel2token": "4TRBSWz6neyuR8bVmCCrGTCQ", "expires": 1594733545770, "stackKey": "S4"}, "contactIdentifier": "47", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "unique_id_field": "EventID", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "Action", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "fb686a22-1341-40f8-82fd-8e8ef481d946", "journeyId": "d3a85ed8-e764-4e73-895e-0da0417f483d", "activityId": "fb686a22-1341-40f8-82fd-8e8ef481d946", "definitionInstanceId": "ff6b604b-afe1-46d5-a9b7-d4d98020c787", "activityInstanceId": "46d1e8fa-d42e-49f9-8114-e457be6c7b5c", "keyValue": "47", "mode": 0}
-        #import pdb; pdb.set_trace()
+
+        #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
         contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
         entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
         unique_id = decrypted_token['inArguments'][0]['unique_id_field']
-        type = "Filed A Case"
+        is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
+        is_template = decrypted_token['inArguments'][0]['is_template']
+        #action = "Filed A Case"
 
         #Get access token
         response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
@@ -121,18 +125,33 @@ def journeybuilder_execute():
 
         entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
 
+        fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+
         #import pdb; pdb.set_trace()
-        #unique_id = "EmailAddress"    
-
-        #fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
-
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
 
-        #if type == "Filed A Case":
+        if is_template == "GenericUserEvent":
             # Retrieve the Data Extension Object Json
-        #    with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
-        #        retrieve_json = json.load(json_file)
+            with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
+                retrieve_json = json.load(json_file)
+
+            #assign the actual value of each field to the vars that will be used to make the call to Interaction Studio
+            user_id = get_event_value(is_event_mappings['user_id'], fields_values)
+            action = get_event_value(is_event_mappings['action'], fields_values)
+            event_source = get_event_value(is_event_mappings['source'], fields_values)
+            event_date = get_event_value(is_event_mappings['event_date'], fields_values)
+
+            #if an event date was assigned, use it for the event date in IS, otherwise use todays date
+            if event_date == "":
+                current_date = dt.today().strftime("%m-%d-%Y")
+                my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
+                current_date_millis = helper_unix_time_millis(my_dt)
+            else:
+                current_date = "06-14-2020"
+                my_dt = dt.strptime(current_date, '%m-%d-%Y')
+                #import pdb; pdb.set_trace()    
+                current_date_millis = helper_unix_time_millis(my_dt)
 
 
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
@@ -148,11 +167,6 @@ def journeybuilder_execute():
         
         #make an api call to evergage
         #response = requests.post(IS_ENDPOINT, json=retrieve_json)
-
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
-        #data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command'}
-
-        response = requests.post(LOG_NOTIFICATION_URL, data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     #import pdb; pdb.set_trace()
@@ -580,6 +594,17 @@ def return_formatted_xml_tree(tree, value, access_token):
     ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
 
     return formatted_xml_tree
+
+
+def get_event_value(event_field, list_of_values):
+
+    try:
+        value = list_of_values[event_field]
+    except KeyError:
+        value = ""
+
+    return value
+
 
 
 if __name__ == '__main__':
