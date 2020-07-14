@@ -147,7 +147,7 @@ def journeybuilder_execute():
 
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
 
 
@@ -167,7 +167,7 @@ def journeybuilder_save():
 
     response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
 
 
@@ -186,7 +186,7 @@ def journeybuilder_publish():
 
     response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
 
 @app.route('/journeybuilder/stop/', methods=['POST'])
@@ -204,7 +204,7 @@ def journeybuilder_stop():
 
     response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
 
 
@@ -224,7 +224,7 @@ def journeybuilder_validate():
 
     response = requests.post(LOG_NOTIFICATION_URL, data)
 
-    jsonified_test = { "SegmentMembership": "{this is a test}"}    
+    jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
 
 

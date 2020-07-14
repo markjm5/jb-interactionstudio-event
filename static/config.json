@@ -15,12 +15,6 @@
   },
   "arguments": {
       "execute": {
-          "inArguments": [
-            {
-              "message": ""
-          }
-
-          ],
           "outArguments": [
             {
                 "SegmentMembership": ""
