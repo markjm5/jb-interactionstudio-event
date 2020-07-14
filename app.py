@@ -58,26 +58,9 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 def index_html():
     path_to_static = os.path.join(request.url_root, "static/")
 
-    #if request.method == 'POST':
-    #    data = {'title': 'Pyton request', 'body': 'This is the Execute Command POST'}
-    #    debug_message = "this is a POST request to index.html"
-    #else:
     data = {'title': 'Python request', 'body': 'this is a GET request to index.html', 'data': request.data}
-    #debug_message = "This is a test" #auth_header_json_data
-    
-    # Deprecated calls to obtain de_customer_key from the published journey.
-    # We are instead allowing the user to specify the de_customer_key
-
-    #journey_id = "87ebbd51-11c0-41c7-bd53-5dd16e93b712" 
-    # event_definition_key = journey_id_to_event_key(journey_id)    
-    # entry_de_customer_key = event_key_to_de_customer_key(event_definition_key)
-
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #response_content = json.loads(response._content)
 
     notification1_response = requests.post(LOG_NOTIFICATION_URL, data)
-
-    #access_token = json.loads(response._content)["access_token"]
 
     return render_template('index.html', static_path=path_to_static)
 
@@ -158,10 +141,6 @@ def journeybuilder_execute():
             #import pdb; pdb.set_trace()
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
         ## In doing so, dynamically create dict1
-
-        #current_date = "06-14-2020"
-        #my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
-        #current_date_millis = helper_unix_time_millis(my_dt)
 
         # should be dynamically created. This is just a test to make sure we can post to evergage api
         #dict1 = { 'action': action ,'user': {'id': contactIdentifier, 'attributes': fields_values}, 'source': {'channel': 'Call Center', 'time': current_date_millis}}
