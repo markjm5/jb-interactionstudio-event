@@ -26,6 +26,7 @@ if is_prod:
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
     APPLICATION_EXTENSION_KEY = os.environ.get('APPLICATION_EXTENSION_KEY')
+    APPLICATION_DOMAIN = "https://jb-interactionstudio-event.herokuapp.com"
     EXECUTE_METHOD = "POST"
 else:
     from config_dev import Config
@@ -41,7 +42,7 @@ else:
     IS_ENDPOINT = Config.IS_ENDPOINT
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG
-    APPLICATION_EXTENSION_KEY = Config.APPLICATION_EXTENSION_KEY
+    APPLICATION_DOMAIN = Config.APPLICATION_DOMAIN
     EXECUTE_METHOD = "GET"
 
 auth_header_json_data = { "grant_type": "client_credentials",
@@ -110,7 +111,6 @@ def journeybuilder_execute():
 
         fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
 
-        #import pdb; pdb.set_trace()
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
 
@@ -128,29 +128,33 @@ def journeybuilder_execute():
             #if an event date was assigned, use it for the event date in IS, otherwise use todays date
             if event_date == "":
                 current_date = dt.today().strftime("%m-%d-%Y")
-                #my_dt = datetime.strptime(current_date, '%m-%d-%Y')    
                 current_date_millis = helper_unix_time_millis(current_date)
             else:
-                #current_date = "06-14-2020"
-                #my_dt = dt.strptime(current_date, '%m-%d-%Y')
-
                 my_dt = dt.strptime(event_date, '%m/%d/%Y %H:%M:%S %p')
                 current_date_millis = helper_unix_time_millis(my_dt)
 
+            # if Event Source or Action is empty, set them to a value
+            if event_source == "":
+                event_source = "Journey Builder"
 
-            #import pdb; pdb.set_trace()
-        ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
-        ## In doing so, dynamically create dict1
+            if action == "":
+                action = "Journey Builder Action"
 
-        # should be dynamically created. This is just a test to make sure we can post to evergage api
-        #dict1 = { 'action': action ,'user': {'id': contactIdentifier, 'attributes': fields_values}, 'source': {'channel': 'Call Center', 'time': current_date_millis}}
-        #retrieve_json.update(dict1)
-        
-        #make an api call to evergage
-        #response = requests.post(IS_ENDPOINT, json=retrieve_json)
+            #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
 
-    jsonified_test = { "SegmentMembership": "this is a test"}    
-    #import pdb; pdb.set_trace()
+            ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
+            ## In doing so, dynamically create dict1
+            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+            retrieve_json.update(dict1)
+
+            #make an api call to evergage
+            response = requests.post(IS_ENDPOINT, json=retrieve_json)
+
+            #send the returned Next Best Action back to journey builder
+            campaign_response = json.loads(response._content)['campaignResponses']
+
+    jsonified_test = {"SegmentMembership": "this is a test"}    
+
     return jsonify(jsonified_test)
 
 
@@ -239,13 +243,10 @@ def send_js(path):
 def send_config_json():
 
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "static/", "config.json")
-    data = json.load(open(json_url))
 
-    applicationExtensionKey = APPLICATION_EXTENSION_KEY
+    application_domain = APPLICATION_DOMAIN
 
-    #return render_template('showjson.jade', applicationExtensionKey=applicationExtensionKey)
-    return render_template('showjson.jade', data=data)
+    return render_template('showjson.jade', application_domain=application_domain)
 
 
 @app.route('/static/salesforce-lightning-design-system-static-resource-2.11.9/icons/action/<path:path>')
