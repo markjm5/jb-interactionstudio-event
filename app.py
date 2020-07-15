@@ -25,8 +25,7 @@ if is_prod:
     IS_ENDPOINT = os.environ.get('IS_ENDPOINT')
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
-    APPLICATION_EXTENSION_KEY = os.environ.get('APPLICATION_EXTENSION_KEY')
-    APPLICATION_DOMAIN = "https://jb-interactionstudio-event.herokuapp.com"
+    APPLICATION_DOMAIN = os.environ.get('APPLICATION_DOMAIN')
     EXECUTE_METHOD = "POST"
 else:
     from config_dev import Config
@@ -88,7 +87,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         response = requests.post(LOG_NOTIFICATION_URL, data)
 
-        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
+        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
