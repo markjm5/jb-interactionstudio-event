@@ -291,8 +291,11 @@ def journeybuilder_get_de_fields():
 
 def debug_logger(data):
 
-    #Debugging Logger
-    response = requests.post(LOG_NOTIFICATION_URL, data)
+    #Check if a notification url was specified
+    if LOG_NOTIFICATION_URL.strip():
+        response = requests.post(LOG_NOTIFICATION_URL, data)
+    else:
+        return None
 
     return response
 
