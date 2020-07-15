@@ -58,9 +58,9 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 def index_html():
     path_to_static = os.path.join(request.url_root, "static/")
 
+    #Debugging Logger
     data = {'title': 'Python request', 'body': 'this is a GET request to index.html', 'data': request.data}
-
-    notification1_response = requests.post(LOG_NOTIFICATION_URL, data)
+    debug_logger(data)
 
     return render_template('index.html', static_path=path_to_static)
 
