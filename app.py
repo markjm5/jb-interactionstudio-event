@@ -147,7 +147,7 @@ def journeybuilder_execute():
             retrieve_json.update(dict1)
 
             #Debugging Logger
-            data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': retrieve_json}
+            data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
             debug_logger(data)
 
             #make an api call to evergage
