@@ -67,12 +67,6 @@ def index_html():
 
 @app.route('/journeybuilder/execute/', methods=['POST', 'GET'])
 def journeybuilder_execute():
-    # Article for execute method not firing: https://salesforce.stackexchange.com/questions/51912/trouble-getting-journeybuilder-to-call-execute-url-on-custom-activity-platform
-    # https://salesforce.stackexchange.com/questions/186332/one-to-many-data-binding-journey-custom-activity/186338
-    # https://salesforce.stackexchange.com/questions/269769/sfmc-custom-activity-error-a-custom-activity-or-entry-source-failed-validation
-    # https://salesforce.stackexchange.com/questions/185511/journey-builder-custom-activity-not-a-valid-argument?rq=1
-    # https://salesforce.stackexchange.com/questions/185792/accessing-entry-event-data-journey-builder-custom-activity
-    # https://salesforce.stackexchange.com/questions/283981/sfmc-journey-builder-custom-activity
     
     decrypted_token = ""
     
@@ -87,13 +81,15 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
+        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
-        contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
         entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
+
         unique_id = decrypted_token['inArguments'][0]['unique_id_field']
+        contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
+
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
         is_template = decrypted_token['inArguments'][0]['is_template']
         #action = "Filed A Case"
@@ -108,7 +104,10 @@ def journeybuilder_execute():
 
         entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
 
-        fields_values = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+        fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+
+        #import pdb; pdb.set_trace()
+        # use the primary keys to get the de rows
 
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
@@ -261,6 +260,7 @@ def send_static(path):
 #                                              Helper Functions                                                #
 ################################################################################################################
 
+# This is called by ajax code in index.html
 @app.route('/journeybuilder/getdefields/', methods=['POST'])
 def journeybuilder_get_de_fields():
 
@@ -507,6 +507,8 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
     # Retrieve the Data Extension Object ID
     retrieve_de_fields_xml = os.path.join(SITE_ROOT, "static/templates/", "template_retrieveDERow.xml")
 
+    primary_keys = []
+
     tree = ET.parse(retrieve_de_fields_xml)
 
     to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
@@ -523,7 +525,6 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
     value_element.text = contactIdentifier
     objecttype_element.text = "DataExtensionObject[%s]" % de_name
 
-    property_element.text = unique_id
 
     for key in de_fields:
         #if key["FieldType"] == "EmailAddress":
@@ -531,6 +532,10 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
 
         c = ET.Element("Properties")
         c.text = key["Name"]
+
+        if key["IsPrimaryKey"] == 'true':
+            primary_keys.append(key["Name"])
+        
         retrieverequest_element.insert(1,c)
 
     body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
@@ -541,13 +546,20 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
     ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
     ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
     
-    #import pdb; pdb.set_trace()
-
     headers = {'Content-Type': 'text/xml'} # set what your server accepts
 
-    tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
-    
-    tree1_properties_element = tree1.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveResponseMsg/{http://exacttarget.com/wsdl/partnerAPI}Results/{http://exacttarget.com/wsdl/partnerAPI}Properties")[0]
+    tree1_properties_element = ""
+
+    #Dynamically use each primary key in DE to try an retrieve row
+    for key in primary_keys:
+        property_element.text = key ##THIS NEEDS TO BE DYNAMICALLY LOADED
+        tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
+
+        try:
+            tree1_exists = tree1.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveResponseMsg/{http://exacttarget.com/wsdl/partnerAPI}Results/{http://exacttarget.com/wsdl/partnerAPI}Properties")[0]
+            tree1_properties_element = tree1_exists
+        except IndexError:
+            pass
 
     field_values = {}
 
@@ -558,7 +570,7 @@ def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, co
 
         field_values[attr_name] = helper_xstr(attr_value)
 
-    return field_values
+    return field_values, primary_keys
 
 def helper_unix_time_millis(dt):
     epoch = dt.utcfromtimestamp(0)
