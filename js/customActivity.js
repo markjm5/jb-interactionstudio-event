@@ -9,7 +9,7 @@ define([
     var payload = {};
     var authTokens = {};
     var lastStepEnabled = false;
-    var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false"};
+    var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var pks = [];
     var de_name = "";
 
