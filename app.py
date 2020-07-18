@@ -87,7 +87,7 @@ def journeybuilder_execute():
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
         entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
 
-        unique_id = decrypted_token['inArguments'][0]['unique_id_field']
+        #unique_id = decrypted_token['inArguments'][0]['unique_id_field']
         contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
 
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
@@ -104,7 +104,8 @@ def journeybuilder_execute():
 
         entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
 
-        fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+        #fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
+        fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, entry_de_fields, contactIdentifier, access_token)
 
         #import pdb; pdb.set_trace()
         # use the primary keys to get the de rows
@@ -495,7 +496,7 @@ def de_customer_key_to_fields(de_customer_key, access_token):
     return fields
 
 
-def retrieve_de_fields_values(de_customer_key, de_name, unique_id, de_fields, contactIdentifier, access_token):
+def retrieve_de_fields_values(de_customer_key, de_name, de_fields, contactIdentifier, access_token):
 
     #Get authentication token
     #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
