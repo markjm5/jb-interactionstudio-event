@@ -81,6 +81,8 @@ define([
                                         $("#message1").html("Success! Click Next to Continue");
                                         $("#message2").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
 
+                                        $("#summary-view").empty();
+
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
