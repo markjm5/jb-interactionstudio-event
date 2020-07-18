@@ -182,7 +182,7 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
         //$("#message").html(JSON.stringify(inArguments));
-        $("#message").html("1. Enter the Customer Key of the Entry Data Extension 2. Select an IS Template 3. Click SAVE EVENT SETTINGS 4. Click NEXT");
+        $("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
