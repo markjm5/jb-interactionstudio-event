@@ -78,7 +78,7 @@ define([
                                     case 'GenericUserEvent':
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                                        $("#message").html("Success! Click Next to Continue");
+                                        $("#message1").html("Success! Click Next to Continue");
                                         $("#message2").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
 
                                         var arr_de_fields = json_response.de_fields;
