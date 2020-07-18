@@ -55,7 +55,7 @@ define([
             var json_response = "Nada";
             if(customer_key.replace(/\s/g,'') == ""){
 
-                $("#message").html("You cannot leave the Customer Key Empty. Please enter a valid Customer Key");
+                $("#message1").html("You cannot leave the Customer Key Empty. Please enter a valid Customer Key");
             }else{
                 $.ajax({
                     type: "POST",
@@ -79,7 +79,7 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
+                                        $("#message2").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
 
                                         var arr_de_fields = json_response.de_fields;
                                         var field_group = "";
@@ -112,24 +112,24 @@ define([
                                     case 'ProductPurchase':
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                                        $("#message").html("Success! Click Next to Continue");
-                                        $("#message1").html(JSON.stringify(json_response));
+                                        $("#message1").html("Success! Click Next to Continue");
+                                        $("#message2").html(JSON.stringify(json_response));
                                         break;
 
                                     default:
                                         message = false;
-                                        $("#message").html("Please Select an Event Template");                                        
+                                        $("#message1").html("Please Select an Event Template");                                        
                                         var element = document.getElementById("event_template_selection");
                                         element.classList.add("slds-has-error");
                                 }
 
                             }else{
 
-                                $("#message").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                                $("#message1").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
                                 connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                             }
                         } else {
-                            $("#message").html("An error has occurred, please remove custom activity from journey and try again.");
+                            $("#message1").html("An error has occurred, please remove custom activity from journey and try again.");
                             connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                         }
                     },
