@@ -127,7 +127,7 @@ def journeybuilder_execute():
             first_name = get_event_value(is_event_mappings['first_name'], fields_values)
             last_name = get_event_value(is_event_mappings['last_name'], fields_values)
 
-            userName = "%s %s " % (first_name, last_name)
+            userName = "%s %s" % (first_name, last_name)
 
             if userName.strip():
                 fields_values["userName"] = userName
