@@ -81,7 +81,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
+        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -124,8 +124,16 @@ def journeybuilder_execute():
             event_source = get_event_value(is_event_mappings['source'], fields_values)
             event_date = get_event_value(is_event_mappings['event_date'], fields_values)
 
+            first_name = get_event_value(is_event_mappings['first_name'], fields_values)
+            last_name = get_event_value(is_event_mappings['last_name'], fields_values)
+
+            userName = "%s %s " % (first_name, last_name)
+
+            if userName.strip():
+                fields_values["userName"] = userName
+
             #if an event date was assigned, use it for the event date in IS, otherwise use todays date
-            if event_date == "":
+            if not event_date.strip():
                 current_date = dt.today().strftime("%m-%d-%Y")
                 current_date_millis = helper_unix_time_millis(current_date)
             else:
@@ -133,17 +141,19 @@ def journeybuilder_execute():
                 current_date_millis = helper_unix_time_millis(my_dt)
 
             # if Event Source or Action is empty, set them to a value
-            if event_source == "":
+            if not event_source.strip():
                 event_source = "Journey Builder"
 
-            if action == "":
+            if not action.strip():
                 action = "Journey Builder Action"
 
             #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
 
             ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
             ## In doing so, dynamically create dict1
+
             dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+
             retrieve_json.update(dict1)
 
             #Debugging Logger
