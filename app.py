@@ -81,7 +81,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_e1OWp767KIb643uRgzAOuIhTpUQ9CohE2EByfDn_Zp7XJProiIl_CpHkO2kyTAf0ByXcY_OALoruBMe_oS_q_4gY9gK9n4nUtTgHmJGj406EVJt_ls5PBhhgLoE0Ey6gi5CW8DBrlgxt4j54oiW80ksznA6Yw1jW9Eei-zc3tOLWpChwAKDa2wTIzIV4-MQ8e0fgI06am2WbbLWrYT_x---ZhXKeD7rrUi1F2jhKwwB3RKLq62nt-etXF_U95A4w", "fuel2token": "4ik9NTfcH9PLnzARSuMvkWcG", "expires": 1594739767789, "stackKey": "S4"}, "contactIdentifier": "51", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "AdvisorName", "event_date": "EventDate"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e27bc19a-6265-4c14-9088-82981e5d59c5", "journeyId": "13624365-43b2-4998-a414-4ffbfb828db6", "activityId": "e27bc19a-6265-4c14-9088-82981e5d59c5", "definitionInstanceId": "65f09729-9bdb-45d5-8038-c5a8de875ff1", "activityInstanceId": "a85c9fb1-c38d-46bd-a76a-8a8052947028", "keyValue": "51", "mode": 0}
+        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhwhpEbF9z_vbV2dOieTpSzN3Qw656HUuoX39BEKgTp6rwCJuVzraNdBSE8KkkLVcqtWS25Mv4G297zuneqJ8iPRyPmZnoA9NCAxja0gfxrdBeJgb_ADTloqrJayQD1Zgl6K2snSWQeaQnT0g2jxzhDFiNiyyYXkZcx6CQZ4EEY7fLfzpDxuCGVspOiQMzUig4gmXkLu-OdiVZDuGcE0kWtjqN6EDPPGZtm84001SsiYyubabOtKeQUNRA9d4Tv3Krw", "fuel2token": "4W5HhSkdPIUsV7JpquAAqn67", "expires": 1595067396309, "stackKey": "S4"}, "contactIdentifier": "59", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": ""}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "17c1b26d-6954-4dcc-8cd6-ff1210859866", "journeyId": "7bd3dfd6-12c3-4123-8b27-1d3ce2691354", "activityId": "17c1b26d-6954-4dcc-8cd6-ff1210859866", "definitionInstanceId": "05c2b1df-0316-4cd9-8260-1d9ea2d14e21", "activityInstanceId": "9aab807f-9bcb-4955-819c-19274e93984a", "keyValue": "59", "mode": 0}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -134,8 +134,11 @@ def journeybuilder_execute():
 
             #if an event date was assigned, use it for the event date in IS, otherwise use todays date
             if not event_date.strip():
+
                 current_date = dt.today().strftime("%m-%d-%Y")
-                current_date_millis = helper_unix_time_millis(current_date)
+                my_dt = dt.strptime(current_date, '%m-%d-%Y')
+
+                current_date_millis = helper_unix_time_millis(my_dt)
             else:
                 my_dt = dt.strptime(event_date, '%m/%d/%Y %H:%M:%S %p')
                 current_date_millis = helper_unix_time_millis(my_dt)
