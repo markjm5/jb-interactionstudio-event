@@ -357,7 +357,11 @@ define([
             var val2 = $('#de-field-' + i).val();
 
             //alert(val1 + ": " + val2);
-            field_mapping_dict[val1] = val2;
+            if(!val2){
+                field_mapping_dict[val1] = '';
+            }else {
+                field_mapping_dict[val1] = val2;
+            }
         }
 
         //Need to write JS to retrieve mapping selections and put them into an array
