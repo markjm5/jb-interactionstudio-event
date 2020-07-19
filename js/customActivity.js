@@ -356,7 +356,7 @@ define([
         
         for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].Name;
-            de_field_values_dict[val1] = "{{Contact.Attribute.\"" + de_name + "\".\"" + val1 + "\"}}";
+            de_field_values_dict[val1] = "{{Event." + eventDefinitionKey + ".\"" + val1 + "\"}}";
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
