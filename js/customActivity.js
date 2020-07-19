@@ -323,6 +323,10 @@ define([
         //obsolete - example of using event
         //in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
 
+        in_args_dict["test1"] = '{{Contact.Attribute."Cumulus_IS_Members2"."Gender"}}';
+        in_args_dict["test2"] = '{{Contact.Attribute.Persona."Gender"}}';
+        in_args_dict["test3"] = '{{Interaction.C80D9DE8-D7FD-483C-8D49-F63B512BB359."Gender"}}';
+
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
