@@ -37,7 +37,6 @@ define([
     connection.on('requestedSchema', requestedSchemaModel);    
     connection.on('requestedInteraction', requestedInteractionModel);    
 
-    connection.trigger('requestSchema');
         
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
@@ -79,8 +78,8 @@ define([
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
 
-        connection.trigger('requestTriggerEventDefinition');    
-        connection.trigger('requestInteraction');    
+        //connection.trigger('requestTriggerEventDefinition');    
+        //connection.trigger('requestInteraction');    
 
         var message = false;
 
@@ -120,6 +119,8 @@ define([
 
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
+
+        connection.trigger('requestSchema');
 
         alert('init called:' + de_schema.length);
 
