@@ -62,7 +62,7 @@ define([
             //alert('test: ' + JSON.stringify(data.schema[i]));
             de_schema.push(data.schema[i]);
         }       
-        //alert('Length: ' + de_schema.length);
+        alert('Length: ' + de_schema.length);
      }    
 
      function requestedInteractionModel(interaction) {
