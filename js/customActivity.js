@@ -327,7 +327,7 @@ define([
         in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
-        //in_args_dict["de_field_mappings"] = DEFieldMappings;
+        in_args_dict["de_field_mappings"] = DEFieldMappings;
 
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
@@ -405,7 +405,7 @@ define([
         }       
         alert(JSON.stringify(de_field_mapping_dict));
 
-        return de_field_mapping_dict;
+        return JSON.stringify(de_field_mapping_dict);
 
     }
 
