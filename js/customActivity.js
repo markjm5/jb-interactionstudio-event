@@ -16,7 +16,9 @@ define([
     var eventDefinitionKey;
 
     connection.trigger('requestTriggerEventDefinition');
-    
+
+    //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
+    // from the entry evnet https://salesforce.stackexchange.com/questions/221821/get-the-name-of-the-data-extension-you-are-working-with-custom-activity
     
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
@@ -344,7 +346,7 @@ define([
         //in_args_dict["test1"] = '{{Contact.Attribute."Cumulus_IS_Members2"."Gender"}}';
         //in_args_dict["test2"] = '{{Contact.Attribute.Persona."Gender"}}';
         
-        in_args_dict["test1"] = '{{Event.' + eventDefinitionKey + '."Gender"}}';
+        //in_args_dict["test1"] = '{{Event.' + eventDefinitionKey + '."Gender"}}';
 
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
@@ -360,7 +362,6 @@ define([
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
-        alert('here: ' + JSON.stringify(de_field_values_dict));
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         /*payload['arguments'].execute.inArguments = [{
