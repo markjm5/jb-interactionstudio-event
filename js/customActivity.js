@@ -348,11 +348,11 @@ define([
         in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
-        in_args_dict["entry_de_name"] = de_name;
+        //in_args_dict["entry_de_name"] = de_name;
         
         for(i=0; i < arr_de_fields.length; i++){
-            var val1 = arr_de_fields[i].Name;
-            de_field_values_dict[val1] = "{{Event." + eventDefinitionKey + ".\"" + val1 + "\"}}";
+            var val1 = arr_de_fields[i].key.split('.')[2];
+            de_field_values_dict[val1] = arr_de_fields[i].key;
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
@@ -410,30 +410,6 @@ define([
 
         //Need to write JS to retrieve mapping selections and put them into an array
         return field_mapping_dict; //$("#select-01").val();
-    }
-
-    function getDEFieldMappings() {  
-        var de_name = $('#message2').text();
-        var de_field_mapping_dict = {};
-        var i;
-        
-        //alert('customer_key: ' + customer_key);
-        //alert('de_name: '+ de_name);
-        //alert('de_fields: ' + JSON.stringify(arr_de_fields));
-
-        for(i=0; i < arr_de_fields.length; i++){
-
-            var val1 = arr_de_fields[i].Name;
-            var val2 = '{{Contact.Attribute.' + de_name + '.' + val1 + '}}';
-
-            //alert(val2);
-
-            de_field_mapping_dict[val1] = val2; 
-        }       
-        alert(JSON.stringify(de_field_mapping_dict));
-
-        return JSON.stringify(de_field_mapping_dict);
-
     }
 
 });

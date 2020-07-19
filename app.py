@@ -94,7 +94,7 @@ def journeybuilder_execute():
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
 
         fields_values = decrypted_token['inArguments'][0]['de_field_mappings']
-        entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
+        #entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
 
         is_template = decrypted_token['inArguments'][0]['is_template']
         #action = "Filed A Case"
