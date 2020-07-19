@@ -208,7 +208,8 @@ define([
                     var i;
 
                     for(i=0; i < arr_de_fields.length; i++){
-                        var field_name = arr_de_fields[i].Name.split('.')[2];
+                        var field_name = arr_de_fields[i].key.split('.')[2];
+                        //alert(field_name);
                         dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
                         if(arr_de_fields[i].isPrimaryKey === 'true'){
                             pks.push(arr_de_fields[i].Name)
@@ -216,7 +217,7 @@ define([
                     }       
 
                     var is_template_data = eval(json_is_template_fields_event);
-
+                    alert('dropdown options: ' + JSON.stringify(dropdown_options));
                     i=0;
                     for (var key in is_template_data) {
                         i++;
@@ -226,6 +227,8 @@ define([
                             field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
                         }
                     }
+
+                    alert('field group: ' + JSON.stringify(field_group));
 
                     $("#summary-view").prepend(field_group);      // Append the new elements
 
