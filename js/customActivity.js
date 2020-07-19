@@ -212,7 +212,7 @@ define([
                         //alert(field_name);
                         dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
                         if(arr_de_fields[i].isPrimaryKey === 'true'){
-                            pks.push(arr_de_fields[i].Name)
+                            pks.push(field_name);
                         }
                     }       
 
@@ -228,7 +228,7 @@ define([
                         }
                     }
 
-                    alert('field group: ' + JSON.stringify(field_group));
+                    alert('pks: ' + JSON.stringify(pks));
 
                     $("#summary-view").prepend(field_group);      // Append the new elements
 
