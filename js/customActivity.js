@@ -391,7 +391,7 @@ define([
         for(i=0; i < arr_de_fields.length; i++){
 
             var val1 = arr_de_fields[i].Name;
-            var val2 = 'Contact.Attribute.' + de_name + '.' + val1;
+            var val2 = '{{Contact.Attribute.' + de_name + '.' + val1 + '}}';
 
             //alert(val2);
 
