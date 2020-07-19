@@ -37,6 +37,8 @@ define([
     connection.on('requestedSchema', requestedSchemaModel);    
     connection.on('requestedInteraction', requestedInteractionModel);    
 
+    connection.trigger('requestSchema');
+        
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
            // alert('here2');
@@ -77,7 +79,6 @@ define([
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
 
-        connection.trigger('requestSchema');
         connection.trigger('requestTriggerEventDefinition');    
         connection.trigger('requestInteraction');    
 
