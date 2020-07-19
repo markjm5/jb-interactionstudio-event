@@ -16,7 +16,7 @@ define([
     var eventDefinitionKey;
 
     connection.trigger('requestTriggerEventDefinition');
-    connection.trigger('requestSchema');
+    connection.trigger('requestedInteraction');
 
 
     //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
@@ -38,7 +38,7 @@ define([
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
-    connection.on('requestedSchema', requestedSchema());    
+    connection.on('requestedInteraction', requestedInteraction());    
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
@@ -53,7 +53,7 @@ define([
     
     }
 
-    function requestedSchema(data) {
+    function requestedInteraction(data) {
         // save schema
         console.log('*** Schema ***', JSON.stringify(data));
      }    
