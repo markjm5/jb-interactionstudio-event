@@ -120,7 +120,7 @@ define([
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
-        alert('init called');
+        alert('init called:' + de_schema.length);
 
         if(de_schema.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
