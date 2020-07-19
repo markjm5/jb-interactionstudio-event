@@ -352,7 +352,7 @@ define([
         
         for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].key.split('.')[2];
-            de_field_values_dict[val1] = arr_de_fields[i].key;
+            de_field_values_dict[val1] = '{{' + arr_de_fields[i].key + '}}'; 
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
