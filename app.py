@@ -81,7 +81,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_R_DYEz0IzJvx_n-1lrkcM-cJ3VpXZXlqYVOS8AugyGqn8mIt2PpFgG1guRnO75jV3ZDkAG8qFL5t-Z2jmTaPzk5sogQN_lZmund9we5yNgV9NlaS6TqXcrKGxTiDpLT-jnd4RgfD_x2RArmWBlLMnkZ0lYnujybExjifEd8_6QdLQh_5u9ctvM9Vou0iS4ikuNZq5L9Skr06RJ1Z9q5FTwmzA4ke3_VbewJtB11MlIJSgKGd7Awat-BnIp1WDb-g", "fuel2token": "4V6QVcmopVY1Aeh2sYQLQ1ni", "expires": 1595074853558, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "unique_id_field": "EventID", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "customer_key": "C80D9DE8-D7FD-483C-8D49-F63B512BB359", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "EventDate", "first_name": "FirstName", "last_name": "LastName"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "c0bdb3bf-78ae-40b9-97c0-4ece2854628e", "journeyId": "932c31ff-0645-4c71-a29e-0375d8abe7bc", "activityId": "c0bdb3bf-78ae-40b9-97c0-4ece2854628e", "definitionInstanceId": "66ffd2aa-d211-4a1a-b898-8cdda1b4c08c", "activityInstanceId": "25eb8d88-81e4-4d1e-84c7-0902ad1a37e4", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
+        decrypted_token = {"inArguments": [{"test": "M", "tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhzeEswpR1owBCA81MsYi4prCV3RxnqbsbJr82R9iUSMzU4esbGDjQ2L6o0ZUSoNIDpl1VnMqi0nMXAlL7kN8INYJ4SS_bsI2sgmGQYM84AtSvPl3GlThjeKv0fgftJyG32pmesTaHL67BInConOiCCmcEyfKMSWaDRflivwdosT6slzPi4qXGXzI3qJPWTpAr2cEzRY13Fqjboly_TaGr-LP7JvW_oQ1_DUQWeJxomxOQfzWbX9achC_Or9EweT8hw", "fuel2token": "45qGR8pfIeFBI89lG7ARoSwZ", "expires": 1595138501288, "stackKey": "S4"}, "contactIdentifier": "80", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": ""}, "de_field_mappings": {"UserID": "1000000080", "EmailAddress": "mmukherjee@salesforce.com", "EventID": "80", "AdvisorName": "Journey Builder Event", "Action": "Email Sent", "Gender": "M", "SegmentMembership": "", "EventDate": "7/17/2020 12:00:00 AM", "LastName": "Mukherjee", "LocalBranch": "", "FirstName": "Mark"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "9b6134d3-eb22-408b-a9b0-c015a93967b8", "journeyId": "33241d53-81b4-4a6c-a39f-73daa35f04f1", "activityId": "9b6134d3-eb22-408b-a9b0-c015a93967b8", "definitionInstanceId": "e69a3ea5-1c65-4f87-abc5-9bdaec5bb8d6", "activityInstanceId": "b07f27a9-9296-45d1-bdad-63bfdf12384b", "keyValue": "80", "mode": 0}
         #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
@@ -92,6 +92,10 @@ def journeybuilder_execute():
         contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
 
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
+
+        #fields_values = decrypted_token['inArguments'][0]['de_field_mappings']
+        #entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
+
         is_template = decrypted_token['inArguments'][0]['is_template']
         #action = "Filed A Case"
 

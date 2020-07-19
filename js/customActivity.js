@@ -323,18 +323,14 @@ define([
         //obsolete - example of using event
         //in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
 
-        in_args_dict["test"] = '{{Contact.Attribute."Cumulus_IS_Members"."Gender"}}';
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
         in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
+        in_args_dict["entry_de_name"] = de_name;
         
-        //alert('customer_key: ' + customer_key);
-        //alert('de_name: '+ de_name);
-        //alert('de_fields: ' + JSON.stringify(arr_de_fields));
-
         for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].Name;
             de_field_values_dict[val1] = "{{Contact.Attribute.\"" + de_name + "\".\"" + val1 + "\"}}";
