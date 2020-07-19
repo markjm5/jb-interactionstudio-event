@@ -122,6 +122,14 @@ define([
 
         alert('init called');
 
+        if(de_schema.length == 0){
+            $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
+
+        }else{
+            $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
+
+        }
+
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
                 if(key === 'customer_key'){
