@@ -317,7 +317,7 @@ define([
         //payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
 
-        in_args_dict["test"] = '{{Contact.Attribute."Cumulus_IS_Members"."Gender"}}';
+        in_args_dict["test"] = '{{Event.87BDC216-17C5-4827-8BD0-49FCE274BBCA."Gender"}}';
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
