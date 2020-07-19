@@ -63,9 +63,14 @@ define([
         }       
         if(de_schema.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
+            $("#activity-name_label").hide();
+            $("#event_template_selection").hide();
+
 
         }else{
             $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
+            $("#activity-name_label").show();
+            $("#event_template_selection").show();
 
         }
 
@@ -131,18 +136,6 @@ define([
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
         alert('Init Called');
-
-        if(de_schema.length == 0){
-            $("#message").html("Please go back and select an Entry Data Extension first");
-            $("#activity-name_label").hide();
-            $("#event_template_selection").hide();
-
-        }else{
-            $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
-            //$("#activity-name_label").show();
-            //$("#event_template_selection").show();
-
-        }
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
