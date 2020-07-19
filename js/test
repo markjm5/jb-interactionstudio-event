@@ -1,0 +1,188 @@
+function onRender() {
+        // JB will respond the first time 'ready' is called with 'initActivity'
+        connection.trigger('ready');
+
+        connection.trigger('requestTokens');
+        connection.trigger('requestEndpoints');
+
+        connection.trigger('requestSchema');
+        connection.trigger('requestTriggerEventDefinition');    
+        connection.trigger('requestInteraction');    
+
+        // Disable the next button if a value isn't selected
+        $('#submit').click(function() {
+            customer_key = getCustomerKey();
+
+            var e = document.getElementById("select-01");
+            var event_template = e.options[e.selectedIndex].value;
+
+            //alert('m1:' + customer_key);
+            //alert('m1a:' + event_template);
+
+            var message = false;
+            var url = "https://jb-interactionstudio-event.herokuapp.com/journeybuilder/getdefields/"; 
+
+            var sendInfo = {
+                DECustomerKey: customer_key,
+            };
+            var json_response = "Nada";
+            if(customer_key.replace(/\s/g,'') == ""){
+
+                $("#message1").html("You cannot leave the Customer Key Empty. Please enter a valid Customer Key");
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    success: function (msg) {
+                        if (msg) {
+
+                            json_response = JSON.parse(JSON.stringify(msg));    
+                            //alert('m3:' + json_response);
+
+                            //location.reload(true);
+                            if(json_response.error == 'False'){
+                                var element = document.getElementById("event_template_selection");
+
+                                element.classList.remove("slds-has-error");
+                                $("#template_type").html("\"" + event_template + "\"");
+
+                                switch(event_template) {
+                                    case 'GenericUserEvent':
+                                        message = true;
+                                        connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message1").html("Success! Click Next to Continue");
+                                        //$("#message2").html(JSON.stringify(json_response.de_name));
+                                        $("#message2").html(json_response.de_name);
+
+                                        $("#summary-view").empty();
+
+                                        arr_de_fields = json_response.de_fields;
+                                        var field_group = "";
+                                        var dropdown_options = "";
+                                        var i;
+
+                                        for(i=0; i < arr_de_fields.length; i++){
+                                            dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
+                                            if(arr_de_fields[i].IsPrimaryKey === 'true'){
+                                                pks.push(arr_de_fields[i].Name)
+                                            }
+                                        }       
+
+                                        var is_template_data = eval(json_is_template_fields_event);
+
+                                        i=0;
+                                        for (var key in is_template_data) {
+                                            i++;
+                                            if (is_template_data[key] == 'true') { // this will check if key is a required field
+                                                field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                                            }else{
+                                                field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                                            }
+                                        }
+
+                                        $("#summary-view").prepend(field_group);      // Append the new elements
+
+                                        break;
+
+                                    case 'ProductPurchase':
+                                        message = true;
+                                        connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                                        $("#message1").html("Success! Click Next to Continue");
+                                        $("#message2").html(JSON.stringify(json_response));
+                                        break;
+
+                                    default:
+                                        message = false;
+                                        $("#message1").html("Please Select an Event Template");                                        
+                                        var element = document.getElementById("event_template_selection");
+                                        element.classList.add("slds-has-error");
+                                }
+
+                            }else{
+
+                                $("#message1").html("Could Not Find Data Extension. Please try again with a valid Customer Key");
+                                connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                            }
+                        } else {
+                            $("#message1").html("An error has occurred, please remove custom activity from journey and try again.");
+                            connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+                        }
+                    },
+
+                    data: sendInfo
+                });
+            }
+            //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+
+        });
+
+        
+        /*
+        // Toggle step 4 active/inactive
+        // If inactive, wizard hides it and skips over it during navigation
+        $('#toggleLastStep').click(function() {
+            lastStepEnabled = !lastStepEnabled; // toggle status
+            steps[3].active = !steps[3].active; // toggle active
+
+            connection.trigger('updateSteps', steps);
+        });*/
+    }
+
+
+    //var element = document.getElementById("event_template_selection");
+    //element.classList.add("slds-has-error");
+    /*
+    $('#combobox-id-1').click(function() {
+
+        //alert("Second Submit Button Clicked");
+        var element = document.getElementById("combobox1");
+        element.classList.add("slds-is-open");
+
+    });
+    */
+
+    function initialize (data) {
+        if (data) {
+            payload = data;
+        }
+
+        var message;
+        var hasInArguments = Boolean(
+            payload['arguments'] &&
+            payload['arguments'].execute &&
+            payload['arguments'].execute.inArguments &&
+            payload['arguments'].execute.inArguments.length > 0
+        );
+
+        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+
+        //$("#message").html(JSON.stringify(inArguments));
+        $("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
+
+        $.each(inArguments, function(index, inArgument) {
+            $.each(inArgument, function(key, val) {
+                if(key === 'customer_key'){
+                    $('#activity-name-input').val(val);
+                }
+
+                if(key === 'is_template'){
+                    $('#select-01').val(val);
+                    
+                }
+
+                if(key === 'is_event_mappings'){
+                    //alert('key:val - ' + key + ': ' + val);
+                    var json_selected_fields = [];
+                    var field_group = "";
+                    var i = 0;
+                    $.each(val, function(key1, val1) {
+                        //message = val;
+                        i++;
+                        field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"> <div class=\"deupdate-attribute-list\"> <div class=\"slds-grid\"> <div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"> <div id=\"dropdownc109\"> <div class=\"slds-combobox_container\"> <div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"> <div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"> <input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"dropdownc109-input\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" + key1 + "\"> </div> </div> </div> </div> </div> <div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div> <div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"> <div id=\"dropdownc109\"> <div class=\"slds-combobox_container\"> <div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"> <div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"> <input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"de-field-" + i + "\" aria-controls=\"de-field-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" + val1 + "\"> </div> </div> </div> </div> </div> </div> </div> </div> </div>";
+                    });
+                    $("#summary-view").prepend(field_group);
+                    //alert(JSON.stringify(json_selected_fields));
+                }
+            });
+        });
