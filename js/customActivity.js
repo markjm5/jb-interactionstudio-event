@@ -300,6 +300,7 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
+        var DEFieldMappings = getDEFieldMappings();
         
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -320,7 +321,8 @@ define([
             "emailAddress": "{{InteractionDefaults.Email}}",  
             "customer_key": customerKey,
             "is_template": isTemplate,
-            "is_event_mappings": ISEventMappings
+            "is_event_mappings": ISEventMappings,
+            "de_field_mappings": DEFieldMappings
         }];
 
         payload['metaData'].isConfigured = true;
