@@ -11,8 +11,8 @@ define([
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var pks = [];
-    var de_name = "";
     var arr_de_fields = [];
+    var customer_key = "";
 
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
@@ -39,7 +39,7 @@ define([
 
         // Disable the next button if a value isn't selected
         $('#submit').click(function() {
-            var customer_key = getCustomerKey();
+            customer_key = getCustomerKey();
 
             var e = document.getElementById("select-01");
             var event_template = e.options[e.selectedIndex].value;
@@ -381,7 +381,7 @@ define([
     }
 
     function getDEFieldMappings() {  
-        var de_name = $('#message2').text();
+        //var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
         var i;
 
@@ -391,7 +391,7 @@ define([
         for(i=0; i < arr_de_fields.length; i++){
 
             var val1 = arr_de_fields[i].Name;
-            var val2 = '{{Contact.Attribute.' + de_name + '.' + val1 + '}}';
+            var val2 = '{{Event.' + customer_key + '."' + val1 + '"}}';
 
             //alert(val2);
 
