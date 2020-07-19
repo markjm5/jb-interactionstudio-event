@@ -14,7 +14,7 @@ define([
     var arr_de_fields = [];
     //var customer_key = "";
     var eventDefinitionKey;
-    var de_schema = [];
+    //var de_schema = [];
     //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
     // from the entry evnet https://salesforce.stackexchange.com/questions/221821/get-the-name-of-the-data-extension-you-are-working-with-custom-activity
     
@@ -59,9 +59,10 @@ define([
         var i;
         for(i=0; i < data.schema.length; i++){
             //alert('test: ' + JSON.stringify(data.schema[i]));
-            de_schema.push(data.schema[i]);
+            arr_de_fields.push(data.schema[i]);
+
         }       
-        if(de_schema.length == 0){
+        if(arr_de_fields.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
             $("#activity-name_label").hide();
             $("#event_template_selection").hide();
@@ -182,7 +183,7 @@ define([
 
     $( "#select-01" ).change(function() {
         //alert( "Handler for .change() called:" + JSON.stringify(de_schema));
-        if(de_schema.length > 0){
+        if(arr_de_fields.length > 0){
 
             var e = document.getElementById("select-01");
             var event_template = e.options[e.selectedIndex].value;
@@ -201,14 +202,15 @@ define([
 
 
                     // I AM UP TO HERE. Need to do transformations found it test1 document
-                    arr_de_fields = json_response.de_fields; // The critical part. this need to change and de_schema needs to align with this.
+                    //arr_de_fields = json_response.de_fields; // The critical part. this need to change and de_schema needs to align with this.
                     var field_group = "";
                     var dropdown_options = "";
                     var i;
 
                     for(i=0; i < arr_de_fields.length; i++){
-                        dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
-                        if(arr_de_fields[i].IsPrimaryKey === 'true'){
+                        var field_name = arr_de_fields[i].Name.split('.')[2];
+                        dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
+                        if(arr_de_fields[i].isPrimaryKey === 'true'){
                             pks.push(arr_de_fields[i].Name)
                         }
                     }       
