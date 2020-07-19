@@ -183,7 +183,7 @@ define([
         }*/
     }
     $( "#select-01" ).change(function() {
-        alert( "Handler for .change() called." );
+        alert( "Handler for .change() called:" + JSON.stringify(de_schema));
     });    
 
     function onGetTokens (tokens) {
