@@ -57,7 +57,8 @@ define([
         console.log('>>>Request Schema', JSON.stringify(data.schema));
         var i;
         for(i=0; i < data.schema.length; i++){
-            alert('test: ' + data.schema[i]);
+            alert('test: ' + JSON.stringify(data.schema[i]));
+            de_schema.push(data.schema[i]);
         }       
 
         de_schema = data.schema;
