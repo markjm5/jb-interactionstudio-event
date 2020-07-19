@@ -12,6 +12,7 @@ define([
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var pks = [];
     var de_name = "";
+    var arr_de_fields = [];
 
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
@@ -83,7 +84,7 @@ define([
 
                                         $("#summary-view").empty();
 
-                                        var arr_de_fields = json_response.de_fields;
+                                        arr_de_fields = json_response.de_fields;
                                         var field_group = "";
                                         var dropdown_options = "";
                                         var i;
@@ -371,7 +372,8 @@ define([
         var de_field_mapping_dict = {};
 
         alert('de_name: '+ de_name);
-
+        alert('de_fields: ' + arr_de_fields);
+        
         return de_field_mapping_dict;
 
     }
