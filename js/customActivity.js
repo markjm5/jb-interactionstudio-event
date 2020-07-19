@@ -302,8 +302,9 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
-        var DEFieldMappings = getDEFieldMappings();
+        //var DEFieldMappings = getDEFieldMappings();
         var in_args_dict = {};
+        var de_name = $('#message2').text();
         
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -327,8 +328,19 @@ define([
         in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
-        in_args_dict["de_field_mappings"] = DEFieldMappings;
+        //in_args_dict["de_field_mappings"] = DEFieldMappings;
 
+        //var de_field_mapping_dict = {};
+        var i;
+        
+        //alert('customer_key: ' + customer_key);
+        //alert('de_name: '+ de_name);
+        //alert('de_fields: ' + JSON.stringify(arr_de_fields));
+
+        for(i=0; i < arr_de_fields.length; i++){
+            var val1 = arr_de_fields[i].Name;
+            in_args_dict[val1] = '{{Contact."' + de_name + '"."' + val1 + '"}}';
+        }       
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         /*payload['arguments'].execute.inArguments = [{
