@@ -317,6 +317,7 @@ define([
         //payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
 
+        in_args_dict["test"] = '{{Contact.Attribute."Cumulus_IS_Members".Gender}}';
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
@@ -324,6 +325,7 @@ define([
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
         in_args_dict["de_field_mappings"] = DEFieldMappings;
+
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         /*payload['arguments'].execute.inArguments = [{
@@ -381,7 +383,7 @@ define([
     }
 
     function getDEFieldMappings() {  
-        //var de_name = $('#message2').text();
+        var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
         var i;
         
