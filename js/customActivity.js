@@ -182,8 +182,7 @@ define([
             showStep(null, 1);
         }*/
     }
-
-    $( ".select-01" ).change(function() {
+    $( "#select-01" ).change(function() {
         alert( "Handler for .change() called." );
     });    
 
