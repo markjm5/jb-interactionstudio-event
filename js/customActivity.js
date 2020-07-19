@@ -78,7 +78,7 @@ define([
 
         var message = false;
 
-        alert(de_schema);
+        alert(JSON.stringify(de_schema));
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
