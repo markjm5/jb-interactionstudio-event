@@ -61,7 +61,15 @@ define([
             //alert('test: ' + JSON.stringify(data.schema[i]));
             de_schema.push(data.schema[i]);
         }       
-        alert('Length: ' + de_schema.length);
+        if(de_schema.length == 0){
+            $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
+
+        }else{
+            $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
+
+        }
+
+        //alert('Length: ' + de_schema.length);
      }    
 
      function requestedInteractionModel(interaction) {
@@ -77,7 +85,9 @@ define([
 
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
+        connection.trigger('requestSchema');
 
+        alert('On Render Called');
         //connection.trigger('requestTriggerEventDefinition');    
         //connection.trigger('requestInteraction');    
 
@@ -120,9 +130,7 @@ define([
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
-        connection.trigger('requestSchema');
-
-        alert('init called:' + de_schema.length);
+        alert('init called:');
 
         if(de_schema.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
