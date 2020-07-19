@@ -374,6 +374,21 @@ define([
         alert('de_name: '+ de_name);
         alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
+        for(i=0; i < arr_de_fields.length; i++){
+
+            var val1 = arr_de_fields[i].Name;
+            var val2 = 'Contact.Attribute.' + de_name + '.' + val1;
+
+            alert(val2);
+
+            /*
+            dropdown_options += "<option value=\"" + arr_de_fields[i].Name + "\">" + arr_de_fields[i].Name + ' (' + arr_de_fields[i].FieldType + ")</option>";
+            if(arr_de_fields[i].IsPrimaryKey === 'true'){
+                pks.push(arr_de_fields[i].Name)
+            }
+            */
+        }       
+
         return de_field_mapping_dict;
 
     }
