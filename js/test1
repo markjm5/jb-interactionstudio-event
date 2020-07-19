@@ -1,0 +1,192 @@
+Outcome needed:
+{
+  "de_fields": [
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "200",
+      "Name": "Action",
+      "Ordinal": "8"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "50",
+      "Name": "AdvisorName",
+      "Ordinal": "7"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "100",
+      "Name": "LastName",
+      "Ordinal": "2"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "4000",
+      "Name": "SegmentMembership",
+      "Ordinal": "5"
+    },
+    {
+      "FieldType": "EmailAddress",
+      "IsPrimaryKey": "false",
+      "IsRequired": "true",
+      "MaxLength": "254",
+      "Name": "EmailAddress",
+      "Ordinal": "0"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "50",
+      "Name": "Gender",
+      "Ordinal": "3"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "true",
+      "IsRequired": "true",
+      "MaxLength": "50",
+      "Name": "EventID",
+      "Ordinal": "10"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "50",
+      "Name": "LocalBranch",
+      "Ordinal": "6"
+    },
+    {
+      "FieldType": "Date",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "Name": "EventDate",
+      "Ordinal": "9"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "false",
+      "IsRequired": "false",
+      "MaxLength": "100",
+      "Name": "FirstName",
+      "Ordinal": "1"
+    },
+    {
+      "FieldType": "Text",
+      "IsPrimaryKey": "true",
+      "IsRequired": "true",
+      "MaxLength": "100",
+      "Name": "UserID",
+      "Ordinal": "4"
+    }
+  ],
+  "de_name": "Cumulus_IS_Members2",
+  "error": "False"
+}
+
+
+Current input:
+{
+   "schema":[
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.EmailAddress",
+         "type":"EmailAddress",
+         "length":254,
+         "default":null,
+         "isNullable":null,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.FirstName",
+         "type":"Text",
+         "length":100,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.LastName",
+         "type":"Text",
+         "length":100,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.Gender",
+         "type":"Text",
+         "length":50,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.UserID",
+         "type":"Text",
+         "length":100,
+         "default":null,
+         "isNullable":null,
+         "isPrimaryKey":true
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.SegmentMembership",
+         "type":"Text",
+         "length":4000,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.LocalBranch",
+         "type":"Text",
+         "length":50,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.AdvisorName",
+         "type":"Text",
+         "length":50,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.Action",
+         "type":"Text",
+         "length":200,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.EventDate",
+         "type":"Date",
+         "length":null,
+         "default":null,
+         "isNullable":true,
+         "isPrimaryKey":null
+      },
+      {
+         "key":"Event.DEAudience-9f45eb60-1266-4ec7-02d5-f37286afbc3f.EventID",
+         "type":"Text",
+         "length":50,
+         "default":null,
+         "isNullable":null,
+         "isPrimaryKey":true
+      }
+   ]
+}
+
+
+

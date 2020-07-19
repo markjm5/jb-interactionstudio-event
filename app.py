@@ -288,7 +288,9 @@ def journeybuilder_get_de_fields():
     jsonified_text = {}
 
     if request.method == 'POST':
-        de_customer_key = request.form["DECustomerKey"]
+       # de_customer_key = request.form["DECustomerKey"]
+
+        de_customer_key = json.loads(request.data)["DECustomerKey"]
 
         response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
         response_content = json.loads(response._content)
