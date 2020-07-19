@@ -10,7 +10,6 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
-    //var pks = [];
     var arr_de_fields = [];
     //var customer_key = "";
     var eventDefinitionKey;
@@ -93,7 +92,7 @@ define([
         connection.trigger('requestEndpoints');
         connection.trigger('requestSchema');
 
-        alert('On Render Called');
+        //alert('On Render Called');
         //connection.trigger('requestTriggerEventDefinition');    
         //connection.trigger('requestInteraction');    
 
@@ -136,7 +135,7 @@ define([
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
-        alert('Init Called');
+        //alert('Init Called');
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
@@ -209,11 +208,7 @@ define([
 
                     for(i=0; i < arr_de_fields.length; i++){
                         var field_name = arr_de_fields[i].key.split('.')[2];
-                        //alert(field_name);
                         dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
-                        if(arr_de_fields[i].isPrimaryKey === 'true'){
-                            pks.push(field_name);
-                        }
                     }       
 
                     var is_template_data = eval(json_is_template_fields_event);
@@ -227,8 +222,6 @@ define([
                             field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
                         }
                     }
-
-                    alert('pks: ' + JSON.stringify(pks));
 
                     $("#summary-view").prepend(field_group);      // Append the new elements
 
