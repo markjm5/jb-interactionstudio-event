@@ -118,9 +118,9 @@ def journeybuilder_execute():
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
 
-        #import pdb; pdb.set_trace()
-
-        if is_template == "GenericUserEvent":
+        #TODO: Handle case of product purchase details sent across as well!!
+        
+        if is_template == "GenericUserEvent": 
             # Retrieve the Data Extension Object Json
             with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
                 retrieve_json = json.load(json_file)

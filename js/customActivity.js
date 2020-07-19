@@ -189,8 +189,7 @@ define([
 
             switch(event_template) {
                 case 'GenericUserEvent':
-                    //message = true;
-                    //connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
+
                     connection.trigger('updateButton', { button: 'next', enabled: true });
 
                     $("#message1").html("Success! Click Next to Continue");
@@ -199,9 +198,6 @@ define([
 
                     $("#summary-view").empty();
 
-
-                    // I AM UP TO HERE. Need to do transformations found it test1 document
-                    //arr_de_fields = json_response.de_fields; // The critical part. this need to change and de_schema needs to align with this.
                     var field_group = "";
                     var dropdown_options = "";
                     var i;
@@ -227,13 +223,39 @@ define([
 
                     break;
 
-                case 'ProductPurchase':
-                    message = true;
-                    connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
-                   // $("#message1").html("Success! Click Next to Continue");
-                   // $("#message2").html(JSON.stringify(json_response));
-                    break;
+                case 'ProductPurchase': //TODO: Add product purchases to existing template
+                    connection.trigger('updateButton', { button: 'next', enabled: true });
 
+                    $("#message1").html("Success! Click Next to Continue");
+
+                    //$("#message2").html(json_response.de_name); SINCE WE DON"T KNOW THE DE NAME
+
+                    $("#summary-view").empty();
+
+                    var field_group = "";
+                    var dropdown_options = "";
+                    var i;
+
+                    for(i=0; i < arr_de_fields.length; i++){
+                        var field_name = arr_de_fields[i].key.split('.')[2];
+                        dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
+                    }       
+
+                    var is_template_data = eval(json_is_template_fields_event);
+                    //alert('dropdown options: ' + JSON.stringify(dropdown_options));
+                    i=0;
+                    for (var key in is_template_data) {
+                        i++;
+                        if (is_template_data[key] == 'true') { // this will check if key is a required field
+                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                        }else{
+                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                        }
+                    }
+
+                    $("#summary-view").prepend(field_group);      // Append the new elements
+
+                    break;
                 default:
                     message = false;
                     $("#message1").html("Please Select an Event Template");                                        
@@ -333,14 +355,6 @@ define([
         console.log('Here1');
         //payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
-
-        //obsolete - example of using event
-        //in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
-
-        //in_args_dict["test1"] = '{{Contact.Attribute."Cumulus_IS_Members2"."Gender"}}';
-        //in_args_dict["test2"] = '{{Contact.Attribute.Persona."Gender"}}';
-        
-        //in_args_dict["test1"] = '{{Event.' + eventDefinitionKey + '."Gender"}}';
 
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
