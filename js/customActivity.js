@@ -133,10 +133,14 @@ define([
         alert('Init Called');
 
         if(de_schema.length == 0){
-            $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
+            $("#message").html("Please go back and select an Entry Data Extension first");
+            $("#activity-name_label").hide();
+            $("#event_template_selection").hide();
 
         }else{
             $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
+            $("#activity-name_label").show();
+            $("#event_template_selection").show();
 
         }
 
