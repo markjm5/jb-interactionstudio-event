@@ -34,7 +34,7 @@ define([
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
-    connection.on('requestedInteraction', requestedInteraction);    
+    connection.on('requestedInteraction', requestedInteraction(interaction));    
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
