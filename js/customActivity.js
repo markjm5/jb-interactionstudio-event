@@ -372,8 +372,8 @@ define([
         var de_field_mapping_dict = {};
 
         alert('de_name: '+ de_name);
-        alert('de_fields: ' + arr_de_fields);
-        
+        alert('de_fields: ' + JSON.stringify(arr_de_fields));
+
         return de_field_mapping_dict;
 
     }
