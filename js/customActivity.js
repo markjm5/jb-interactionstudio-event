@@ -139,8 +139,8 @@ define([
 
         }else{
             $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
-            $("#activity-name_label").show();
-            $("#event_template_selection").show();
+            //$("#activity-name_label").show();
+            //$("#event_template_selection").show();
 
         }
 
