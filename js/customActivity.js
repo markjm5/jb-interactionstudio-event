@@ -38,7 +38,7 @@ define([
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
-    connection.on('requestedInteraction', requestedInteraction);    
+    connection.on('requestSchema', requestSchema);    
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
@@ -53,9 +53,9 @@ define([
     
     }
 
-    function requestedInteraction(data) {
+    function requestSchema(data) {
         // save schema
-        console.log('*** Schema ***', JSON.stringify(data));
+        console.log('>>>Request Schema', JSON.stringify(data));
      }    
 
     function onRender() {
