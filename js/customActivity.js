@@ -38,6 +38,7 @@ define([
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
+            alert('here2');
     
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
             //alert('event def model' + JSON.stringify(eventDefinitionModel));
@@ -51,7 +52,7 @@ define([
 
     function requestedInteraction(interaction) {
         // save schema
-        alert('here!');
+        alert('here1');
         console.log('>>>Request Interaction', JSON.stringify(interaction));
      }    
 
