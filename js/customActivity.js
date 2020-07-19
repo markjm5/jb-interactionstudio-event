@@ -319,7 +319,7 @@ define([
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
-        in_args_dict["customer_key"] = customer_key;
+        in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
         in_args_dict["de_field_mappings"] = DEFieldMappings;
