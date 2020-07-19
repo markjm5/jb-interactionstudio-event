@@ -169,7 +169,7 @@ def journeybuilder_execute():
             #Debugging Logger
             data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
             debug_logger(data)
-            import pdb; pdb.set_trace()
+            #import pdb; pdb.set_trace()
             #make an api call to evergage
             response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
