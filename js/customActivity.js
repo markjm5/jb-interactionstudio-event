@@ -16,6 +16,8 @@ define([
     var eventDefinitionKey;
 
     connection.trigger('requestTriggerEventDefinition');
+    connection.trigger('requestSchema');
+
 
     //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
     // from the entry evnet https://salesforce.stackexchange.com/questions/221821/get-the-name-of-the-data-extension-you-are-working-with-custom-activity
@@ -36,6 +38,7 @@ define([
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
+    connection.on('requestedSchema', requestedSchema());    
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
@@ -49,6 +52,11 @@ define([
         }
     
     }
+
+    function requestedSchema(data) {
+        // save schema
+        console.log('*** Schema ***', JSON.stringify(data['schema']));
+     }    
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'

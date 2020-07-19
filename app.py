@@ -641,3 +641,10 @@ def get_event_value(event_field, list_of_values):
 
 if __name__ == '__main__':
     app.run()
+
+
+# Notes #
+
+# Example GET Request to create Product Tags:
+# https://salesforcesandbox.devergage.com/twreceiver?_ak=salesforcesandbox&_ds=mmukherjee&_ne=true&userId=mmukherjee@salesforce.com&action=View Tag&.item={"_id":"Child2","type":"t","tagType":"ItemClass"}
+
