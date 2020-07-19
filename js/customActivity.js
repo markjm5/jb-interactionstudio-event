@@ -10,11 +10,11 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
-    var pks = [];
+    //var pks = [];
     var arr_de_fields = [];
-    var customer_key = "";
+    //var customer_key = "";
     var eventDefinitionKey;
-
+    var de_schema = {}
     //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
     // from the entry evnet https://salesforce.stackexchange.com/questions/221821/get-the-name-of-the-data-extension-you-are-working-with-custom-activity
     
@@ -55,6 +55,7 @@ define([
         // save schema
         alert('here1');
         console.log('>>>Request Schema', JSON.stringify(data));
+        de_schema = data['schema'];
      }    
 
      function requestedInteractionModel(interaction) {
@@ -76,6 +77,8 @@ define([
         connection.trigger('requestInteraction');    
 
         var message = false;
+
+        alert(de_schema);
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
