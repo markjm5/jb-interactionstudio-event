@@ -81,7 +81,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        decrypted_token = {"inArguments": [{"test": "M", "tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhzeEswpR1owBCA81MsYi4prCV3RxnqbsbJr82R9iUSMzU4esbGDjQ2L6o0ZUSoNIDpl1VnMqi0nMXAlL7kN8INYJ4SS_bsI2sgmGQYM84AtSvPl3GlThjeKv0fgftJyG32pmesTaHL67BInConOiCCmcEyfKMSWaDRflivwdosT6slzPi4qXGXzI3qJPWTpAr2cEzRY13Fqjboly_TaGr-LP7JvW_oQ1_DUQWeJxomxOQfzWbX9achC_Or9EweT8hw", "fuel2token": "45qGR8pfIeFBI89lG7ARoSwZ", "expires": 1595138501288, "stackKey": "S4"}, "contactIdentifier": "80", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": ""}, "de_field_mappings": {"UserID": "1000000080", "EmailAddress": "mmukherjee@salesforce.com", "EventID": "80", "AdvisorName": "Journey Builder Event", "Action": "Email Sent", "Gender": "M", "SegmentMembership": "", "EventDate": "7/17/2020 12:00:00 AM", "LastName": "Mukherjee", "LocalBranch": "", "FirstName": "Mark"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "9b6134d3-eb22-408b-a9b0-c015a93967b8", "journeyId": "33241d53-81b4-4a6c-a39f-73daa35f04f1", "activityId": "9b6134d3-eb22-408b-a9b0-c015a93967b8", "definitionInstanceId": "e69a3ea5-1c65-4f87-abc5-9bdaec5bb8d6", "activityInstanceId": "b07f27a9-9296-45d1-bdad-63bfdf12384b", "keyValue": "80", "mode": 0}
+        decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh6XGz_25iqNXikeo6nXEr4RavIgz8qQfD7blumMw1AHzsedAVJlYT1zNMckbNlJ_2vr_-sfpRcnjXYOV-RMla38k5vQI1cuSSG0fmawoiFqKYduKyM6jjnm1OYdKVMJAWuHOWKP_GtSI1brpj9lRRJ1kxiICTAhXZ1RxBnhWaSGiUFgFIYyLd4IAntQU-QKDuDtHgP999wQ6OjH6a2ccmTVHNMsrvRPAEOnVAG-S4gQG3uZJ5FBnqlchE8DpYvyZ-A", "fuel2token": "4TVqSgdX6HUaRDBTnicFZB2p", "expires": 1595139092281, "stackKey": "S4"}, "contactIdentifier": "81", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": ""}, "entry_de_name": "Cumulus_IS_Members", "de_field_mappings": {"UserID": "1000000081", "EmailAddress": "mmukherjee@salesforce.com", "EventID": "81", "AdvisorName": "Journey Builder Event", "Action": "Email Sent", "Gender": "M", "SegmentMembership": "", "EventDate": "7/17/2020 12:00:00 AM", "LastName": "Mukherjee", "LocalBranch": "", "FirstName": "Mark"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "b09ccab9-83a7-4032-af25-45e736d95397", "journeyId": "9109e2c2-9e8d-4821-ae40-ffdf950576cd", "activityId": "b09ccab9-83a7-4032-af25-45e736d95397", "definitionInstanceId": "3926f841-d05d-435e-a7b9-a16342479c94", "activityInstanceId": "c8348ec1-ecf2-47fd-a929-880903cef852", "keyValue": "81", "mode": 0}
         #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
@@ -93,8 +93,8 @@ def journeybuilder_execute():
 
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
 
-        #fields_values = decrypted_token['inArguments'][0]['de_field_mappings']
-        #entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
+        fields_values = decrypted_token['inArguments'][0]['de_field_mappings']
+        entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
 
         is_template = decrypted_token['inArguments'][0]['is_template']
         #action = "Filed A Case"
@@ -105,12 +105,12 @@ def journeybuilder_execute():
         access_token = json.loads(response._content)["access_token"]
 
         #Process here the decrypted data, and match it to evergage event api fields
-        entry_de_name = retrieve_de_name(entry_de_customer_key, access_token)
+        #entry_de_name = retrieve_de_name(entry_de_customer_key, access_token)
 
-        entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
+        #entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
 
         #fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
-        fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, entry_de_fields, contactIdentifier, access_token)
+        #fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, entry_de_fields, contactIdentifier, access_token)
 
         #import pdb; pdb.set_trace()
         # use the primary keys to get the de rows
@@ -169,7 +169,7 @@ def journeybuilder_execute():
             #Debugging Logger
             data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
             debug_logger(data)
-
+            import pdb; pdb.set_trace()
             #make an api call to evergage
             response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
@@ -627,6 +627,8 @@ def return_formatted_xml_tree(tree, value, access_token):
 
 
 def get_event_value(event_field, list_of_values):
+
+    #import pdb; pdb.set_trace()
 
     try:
         value = list_of_values[event_field]
