@@ -317,7 +317,10 @@ define([
         //payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
 
-        in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
+        //obsolete - example of using event
+        //in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
+
+        in_args_dict["test"] = '{{Contact."Cumulus_IS_Members"."Gender"}}';
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
@@ -394,7 +397,7 @@ define([
         for(i=0; i < arr_de_fields.length; i++){
 
             var val1 = arr_de_fields[i].Name;
-            var val2 = '{{Event.' + customer_key + '."' + val1 + '"}}';
+            var val2 = '{{Contact."' + de_name + '"."' + val1 + '"}}';
 
             //alert(val2);
 
