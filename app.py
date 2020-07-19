@@ -81,7 +81,8 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzhwhpEbF9z_vbV2dOieTpSzN3Qw656HUuoX39BEKgTp6rwCJuVzraNdBSE8KkkLVcqtWS25Mv4G297zuneqJ8iPRyPmZnoA9NCAxja0gfxrdBeJgb_ADTloqrJayQD1Zgl6K2snSWQeaQnT0g2jxzhDFiNiyyYXkZcx6CQZ4EEY7fLfzpDxuCGVspOiQMzUig4gmXkLu-OdiVZDuGcE0kWtjqN6EDPPGZtm84001SsiYyubabOtKeQUNRA9d4Tv3Krw", "fuel2token": "4W5HhSkdPIUsV7JpquAAqn67", "expires": 1595067396309, "stackKey": "S4"}, "contactIdentifier": "59", "unique_id_field": "EventID", "emailAddress": "mmukherjee@salesforce.com", "customer_key": "87BDC216-17C5-4827-8BD0-49FCE274BBCA", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": ""}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "17c1b26d-6954-4dcc-8cd6-ff1210859866", "journeyId": "7bd3dfd6-12c3-4123-8b27-1d3ce2691354", "activityId": "17c1b26d-6954-4dcc-8cd6-ff1210859866", "definitionInstanceId": "05c2b1df-0316-4cd9-8260-1d9ea2d14e21", "activityInstanceId": "9aab807f-9bcb-4955-819c-19274e93984a", "keyValue": "59", "mode": 0}
+        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh_R_DYEz0IzJvx_n-1lrkcM-cJ3VpXZXlqYVOS8AugyGqn8mIt2PpFgG1guRnO75jV3ZDkAG8qFL5t-Z2jmTaPzk5sogQN_lZmund9we5yNgV9NlaS6TqXcrKGxTiDpLT-jnd4RgfD_x2RArmWBlLMnkZ0lYnujybExjifEd8_6QdLQh_5u9ctvM9Vou0iS4ikuNZq5L9Skr06RJ1Z9q5FTwmzA4ke3_VbewJtB11MlIJSgKGd7Awat-BnIp1WDb-g", "fuel2token": "4V6QVcmopVY1Aeh2sYQLQ1ni", "expires": 1595074853558, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "unique_id_field": "EventID", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "customer_key": "C80D9DE8-D7FD-483C-8D49-F63B512BB359", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "EventDate", "first_name": "FirstName", "last_name": "LastName"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "c0bdb3bf-78ae-40b9-97c0-4ece2854628e", "journeyId": "932c31ff-0645-4c71-a29e-0375d8abe7bc", "activityId": "c0bdb3bf-78ae-40b9-97c0-4ece2854628e", "definitionInstanceId": "66ffd2aa-d211-4a1a-b898-8cdda1b4c08c", "activityInstanceId": "25eb8d88-81e4-4d1e-84c7-0902ad1a37e4", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
+        #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -112,6 +113,8 @@ def journeybuilder_execute():
 
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
+
+        import pdb; pdb.set_trace()
 
         if is_template == "GenericUserEvent":
             # Retrieve the Data Extension Object Json

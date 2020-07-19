@@ -79,7 +79,7 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message1").html("Success! Click Next to Continue");
-                                        $("#message2").html("You have chosen the Data Extension " + JSON.stringify(json_response.de_name));
+                                        $("#message2").html(JSON.stringify(json_response.de_name));
 
                                         $("#summary-view").empty();
 
@@ -300,9 +300,6 @@ define([
         var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
-
-        // This needs to be addressed!!! Must be dynamically loaded!!!
-        var unique_id_field = "EventID"
         
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -320,7 +317,6 @@ define([
         payload['arguments'].execute.inArguments = [{
             "tokens": authTokens, 
             "contactIdentifier": "{{Contact.Key}}",
-            "unique_id_field": unique_id_field,
             "emailAddress": "{{InteractionDefaults.Email}}",  
             "customer_key": customerKey,
             "is_template": isTemplate,
@@ -349,7 +345,7 @@ define([
         var is_template_data = eval(json_is_template_fields_event);
         var array_length = Object.keys(is_template_data).length;
         var i;
-        var field_mapping_dict = {}
+        var field_mapping_dict = {};
 
         for(i=1; i < array_length + 1; i++){
 
@@ -368,5 +364,11 @@ define([
         return field_mapping_dict; //$("#select-01").val();
     }
 
+    function getDEFieldMappings() {  
+        de_field_mapping_dict = {};
+
+        return de_field_mapping_dict;
+
+    }
 
 });
