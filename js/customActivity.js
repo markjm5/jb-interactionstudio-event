@@ -217,7 +217,7 @@ define([
                     }       
 
                     var is_template_data = eval(json_is_template_fields_event);
-                    alert('dropdown options: ' + JSON.stringify(dropdown_options));
+                    //alert('dropdown options: ' + JSON.stringify(dropdown_options));
                     i=0;
                     for (var key in is_template_data) {
                         i++;
