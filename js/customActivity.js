@@ -80,7 +80,8 @@ define([
                                         message = true;
                                         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
                                         $("#message1").html("Success! Click Next to Continue");
-                                        $("#message2").html(JSON.stringify(json_response.de_name));
+                                        //$("#message2").html(JSON.stringify(json_response.de_name));
+                                        $("#message2").html(json_response.de_name);
 
                                         $("#summary-view").empty();
 

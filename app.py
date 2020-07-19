@@ -114,7 +114,7 @@ def journeybuilder_execute():
         #action = "Filed a Case"
         #user_id = fields_values['UserID']
 
-        import pdb; pdb.set_trace()
+        #import pdb; pdb.set_trace()
 
         if is_template == "GenericUserEvent":
             # Retrieve the Data Extension Object Json
