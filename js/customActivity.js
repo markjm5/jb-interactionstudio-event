@@ -371,14 +371,14 @@ define([
         var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
         var i;
-        
+
         alert('de_name: '+ de_name);
         alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
         for(i=0; i < arr_de_fields.length; i++){
 
             var val1 = arr_de_fields[i].Name;
-            var val2 = 'Contact.Attribute.' + de_name + '.' + val1;
+            var val2 = 'Contact.Attribute.' + de_name + '."' + val1 + '"';
 
             alert(val2);
 
