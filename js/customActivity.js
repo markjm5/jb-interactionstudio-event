@@ -169,7 +169,7 @@ define([
         
         //alert(Object.keys(inArguments[0])[3]);
         // If there is no message selected, disable the next button
-        if (document.getElementById('activity-name-input').value === "") {
+        /*if (document.getElementById('activity-name-input').value === "") {
             //alert('value NOT selected!');
 
             showStep(null, 1);
@@ -180,7 +180,7 @@ define([
             $("#select1").find('option[value='+ message +']').attr('selected', 'selected');
             //$("#message").html(message);
             showStep(null, 1);
-        }
+        }*/
     }
 
     $( ".select-01" ).change(function() {
