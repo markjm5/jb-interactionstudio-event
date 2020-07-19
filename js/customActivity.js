@@ -13,7 +13,11 @@ define([
     var pks = [];
     var arr_de_fields = [];
     var customer_key = "";
+    var eventDefinitionKey;
 
+    connection.trigger('requestTriggerEventDefinition');
+    
+    
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Step 1", "key": "step1" },
         { "label": "Step 2", "key": "step2" }
@@ -29,6 +33,20 @@ define([
     connection.on('clickedNext', onClickedNext);
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
+    connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
+
+    function eventDefinitionModel(eventDefinitionModel) {
+        if(eventDefinitionModel){
+    
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+            alert('event def model' + JSON.stringify(eventDefinitionModel));
+            console.log(">>>Event Definition Key " + eventDefinitionKey);
+            /*If you want to see all*/
+            console.log('>>>Request Trigger', 
+            JSON.stringify(eventDefinitionModel));
+        }
+    
+    }
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
