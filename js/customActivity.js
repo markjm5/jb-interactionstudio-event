@@ -39,7 +39,7 @@ define([
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
-            alert('here2');
+           // alert('here2');
     
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
             //alert('event def model' + JSON.stringify(eventDefinitionModel));
@@ -53,20 +53,19 @@ define([
 
     function requestedSchemaModel(data) {
         // save schema
-        alert('here1');
+        //alert('here1');
         console.log('>>>Request Schema', JSON.stringify(data.schema));
         var i;
         for(i=0; i < data.schema.length; i++){
-            alert('test: ' + JSON.stringify(data.schema[i]));
+            //alert('test: ' + JSON.stringify(data.schema[i]));
             de_schema.push(data.schema[i]);
         }       
-
-        alert('Length: ' + de_schema.length);
+        //alert('Length: ' + de_schema.length);
      }    
 
      function requestedInteractionModel(interaction) {
         // save schema
-        alert('here3');
+        //alert('here3');
         console.log('>>>Request Interaction', JSON.stringify(interaction));
      }    
 
@@ -84,7 +83,7 @@ define([
 
         var message = false;
 
-        alert(JSON.stringify(de_schema));
+        //alert(JSON.stringify(de_schema));
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
@@ -120,6 +119,8 @@ define([
 
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
+
+        alert('init called');
 
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
