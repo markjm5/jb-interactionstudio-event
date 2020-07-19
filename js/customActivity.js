@@ -55,6 +55,11 @@ define([
         // save schema
         alert('here1');
         console.log('>>>Request Schema', JSON.stringify(data.schema));
+        var i;
+        for(i=0; i < data.schema.length; i++){
+            alert('test: ' + data.schema[i]);
+        }       
+
         de_schema = data.schema;
      }    
 
