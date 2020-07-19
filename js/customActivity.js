@@ -14,7 +14,7 @@ define([
     var arr_de_fields = [];
     //var customer_key = "";
     var eventDefinitionKey;
-    var de_schema = {}
+    var de_schema = [];
     //TODO: We don't need to put the customer key of the DE into a text field. We can just use postmonger to get the DE name and Key 
     // from the entry evnet https://salesforce.stackexchange.com/questions/221821/get-the-name-of-the-data-extension-you-are-working-with-custom-activity
     
@@ -54,8 +54,8 @@ define([
     function requestedSchemaModel(data) {
         // save schema
         alert('here1');
-        console.log('>>>Request Schema', JSON.stringify(data));
-        de_schema = data['schema'];
+        console.log('>>>Request Schema', JSON.stringify(data.schema));
+        de_schema = data.schema;
      }    
 
      function requestedInteractionModel(interaction) {
