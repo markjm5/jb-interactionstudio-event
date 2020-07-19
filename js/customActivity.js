@@ -337,10 +337,10 @@ define([
         //alert('de_name: '+ de_name);
         //alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
-        /*for(i=0; i < arr_de_fields.length; i++){
+        for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].Name;
             in_args_dict[val1] = "{{Contact.\"" + de_name + "\".\"" + val1 + "\"}}";
-        }*/       
+        }       
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         /*payload['arguments'].execute.inArguments = [{
