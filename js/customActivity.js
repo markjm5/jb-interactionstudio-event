@@ -51,6 +51,7 @@ define([
 
     function requestedInteraction(interaction) {
         // save schema
+        alert('here!');
         console.log('>>>Request Interaction', JSON.stringify(interaction));
      }    
 
