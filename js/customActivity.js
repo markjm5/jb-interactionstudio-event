@@ -184,6 +184,10 @@ define([
     }
     $( "#select-01" ).change(function() {
         alert( "Handler for .change() called:" + JSON.stringify(de_schema));
+        if(de_schema.length > 0){
+            connection.trigger('updateButton', { button: 'next', enabled: true });
+        }
+
     });    
 
     function onGetTokens (tokens) {
