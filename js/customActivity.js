@@ -370,7 +370,8 @@ define([
     function getDEFieldMappings() {  
         var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
-
+        var i;
+        
         alert('de_name: '+ de_name);
         alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
