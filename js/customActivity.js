@@ -317,7 +317,7 @@ define([
         //payload['arguments'].execute.inArguments = [{"message":customerKey}];
         console.log('Here2');
 
-        in_args_dict["test"] = '{{Event.87BDC216-17C5-4827-8BD0-49FCE274BBCA."Gender"}}';
+        in_args_dict["test"] = '{{Event.APIEvent-78cb2bff-796b-d3ce-b911-f2e81f1621ed."Gender"}}';
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
