@@ -63,9 +63,8 @@ define([
         connection.trigger('requestTokens');
         connection.trigger('requestEndpoints');
 
-        connection.trigger('requestTriggerEventDefinition');
         connection.trigger('requestedInteraction');
-    
+        connection.trigger('requestTriggerEventDefinition');    
 
         // Disable the next button if a value isn't selected
         $('#submit').click(function() {
