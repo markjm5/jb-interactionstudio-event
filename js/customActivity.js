@@ -384,7 +384,8 @@ define([
         //var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
         var i;
-
+        
+        alert('customer_key: ' + customer_key);
         //alert('de_name: '+ de_name);
         //alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
