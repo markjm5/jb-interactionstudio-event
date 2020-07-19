@@ -55,7 +55,7 @@ define([
 
     function requestedSchema(data) {
         // save schema
-        console.log('*** Schema ***', JSON.stringify(data['schema']));
+        console.log('*** Schema ***', JSON.stringify(data));
      }    
 
     function onRender() {
