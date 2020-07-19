@@ -367,7 +367,7 @@ define([
     }
 
     function getDEFieldMappings() {  
-        var de_name = $('#message2').val();
+        var de_name = $('#message2').text();
         var de_field_mapping_dict = {};
 
         alert('de_name: '+ de_name);
