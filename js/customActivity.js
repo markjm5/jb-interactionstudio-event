@@ -325,7 +325,7 @@ define([
 
         in_args_dict["test1"] = '{{Contact.Attribute."Cumulus_IS_Members2"."Gender"}}';
         in_args_dict["test2"] = '{{Contact.Attribute.Persona."Gender"}}';
-        in_args_dict["test3"] = '{{Interaction.C80D9DE8-D7FD-483C-8D49-F63B512BB359."Gender"}}';
+        //in_args_dict["test3"] = '{{Interaction.C80D9DE8-D7FD-483C-8D49-F63B512BB359."Gender"}}';
 
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
