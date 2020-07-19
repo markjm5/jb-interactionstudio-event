@@ -39,7 +39,7 @@ define([
         if(eventDefinitionModel){
     
             eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
-            alert('event def model' + JSON.stringify(eventDefinitionModel));
+            //alert('event def model' + JSON.stringify(eventDefinitionModel));
             console.log(">>>Event Definition Key " + eventDefinitionKey);
             /*If you want to see all*/
             console.log('>>>Request Trigger', 
@@ -344,10 +344,7 @@ define([
         //in_args_dict["test1"] = '{{Contact.Attribute."Cumulus_IS_Members2"."Gender"}}';
         //in_args_dict["test2"] = '{{Contact.Attribute.Persona."Gender"}}';
         
-        in_args_dict["activityObjectID"] = '{{Event.DEAudience-9500e95a-38bc-43a2-ad7b-7b0c478fc459."Gender"}}';
-        in_args_dict["interactionId"] = '{{Event.DEAudience-98bbde933-7e7f-4923-ad5a-9ca3a272f790."Gender"}}';
-        in_args_dict["originalDefinitionId"] = '{{Event.DEAudience-8bbde933-7e7f-4923-ad5a-9ca3a272f790."Gender"}}';
-        in_args_dict["interactionKey"] = '{{Event.DEAudience-fbc2ebd6-c05a-c057-a311-19538472dcc8."Gender"}}';
+        in_args_dict["test1"] = '{{Event.' + eventDefinitionKey + '."Gender"}}';
 
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
