@@ -34,7 +34,7 @@ define([
     connection.on('clickedBack', onClickedBack);
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
-    connection.on('requestSchema', requestSchema);    
+    connection.on('requestedInteraction', requestedInteraction);    
 
     function eventDefinitionModel(eventDefinitionModel) {
         if(eventDefinitionModel){
@@ -49,9 +49,9 @@ define([
     
     }
 
-    function requestSchema(data) {
+    function requestedInteraction(interaction) {
         // save schema
-        console.log('>>>Request Schema', JSON.stringify(data));
+        console.log('>>>Request Interaction', JSON.stringify(interaction));
      }    
 
     function onRender() {
@@ -62,7 +62,7 @@ define([
         connection.trigger('requestEndpoints');
 
         connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestSchema');
+        connection.trigger('requestedInteraction');
     
 
         // Disable the next button if a value isn't selected
