@@ -337,6 +337,7 @@ define([
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
+        alert('here: ' + de_field_values_dict);
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
         /*payload['arguments'].execute.inArguments = [{
