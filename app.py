@@ -86,7 +86,7 @@ def journeybuilder_execute():
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
-        entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
+        #entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
 
         #unique_id = decrypted_token['inArguments'][0]['unique_id_field']
         contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']

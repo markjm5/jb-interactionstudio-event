@@ -313,7 +313,7 @@ define([
     
     function save() {
         var name = $("#select1").find('option:selected').html();
-        var customerKey = getCustomerKey();
+        //var customerKey = getCustomerKey();
         var isTemplate = getISTemplate();
         var ISEventMappings = getISEventMappings();
         //var DEFieldMappings = getDEFieldMappings();
@@ -345,7 +345,7 @@ define([
         in_args_dict["tokens"] = authTokens;
         in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
         in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
-        in_args_dict["customer_key"] = customerKey;
+        //in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
         //in_args_dict["entry_de_name"] = de_name;
