@@ -327,7 +327,7 @@ define([
         in_args_dict["customer_key"] = customerKey;
         in_args_dict["is_template"] = isTemplate;
         in_args_dict["is_event_mappings"] = ISEventMappings;
-        in_args_dict["de_field_mappings"] = DEFieldMappings;
+        //in_args_dict["de_field_mappings"] = DEFieldMappings;
 
 
         //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
@@ -390,7 +390,7 @@ define([
         var de_field_mapping_dict = {};
         var i;
         
-        alert('customer_key: ' + customer_key);
+        //alert('customer_key: ' + customer_key);
         //alert('de_name: '+ de_name);
         //alert('de_fields: ' + JSON.stringify(arr_de_fields));
 
@@ -403,6 +403,7 @@ define([
 
             de_field_mapping_dict[val1] = val2; 
         }       
+        alert(de_field_mapping_dict);
 
         return de_field_mapping_dict;
 
