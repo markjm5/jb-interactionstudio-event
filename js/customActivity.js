@@ -61,7 +61,7 @@ define([
             de_schema.push(data.schema[i]);
         }       
 
-        de_schema = data.schema;
+        alert('Length: ' + de_schema.length);
      }    
 
      function requestedInteractionModel(interaction) {
