@@ -143,13 +143,13 @@ define([
                 alert('key: ' + key);
                 alert('val: ' + val);
 
-                if(key === 'customer_key'){
-                    $('#activity-name-input').val(val);
-                }
+                //if(key === 'customer_key'){
+                //    $('#activity-name-input').val(val);
+                //}
 
                 if(key === 'is_template'){
                     $('#select-01').val(val);
-                    
+                    connection.trigger('updateButton', { button: 'next', enabled: true });
                 }
 
                 if(key === 'is_event_mappings'){
