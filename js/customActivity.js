@@ -102,9 +102,6 @@ define([
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
-        event_template = $("#select-01").val();
-        alert('onRender: ' + event_template);
-
 
     }
 
@@ -150,6 +147,9 @@ define([
 
                 if(key === 'is_template'){
                     $('#select-01').val(val);
+                    event_template = $("#select-01").val();
+                    alert('Initialize: ' + event_template);
+            
                     connection.trigger('updateButton', { button: 'next', enabled: true });
                 }
 
