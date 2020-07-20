@@ -103,6 +103,7 @@ define([
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
         event_template = $("#select-01").val();
+        alert('onRender: ' + event_template);
 
 
     }
