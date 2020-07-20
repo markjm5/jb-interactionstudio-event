@@ -11,7 +11,8 @@ define([
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "orderId": "true", "currency": "true","lineItems": "true"};
-    
+    var event_template = "";
+
     var arr_de_fields = [];
     //var customer_key = "";
     var eventDefinitionKey;
@@ -186,7 +187,7 @@ define([
         if(arr_de_fields.length > 0){
 
             var e = document.getElementById("select-01");
-            var event_template = e.options[e.selectedIndex].value;
+            event_template = e.options[e.selectedIndex].value;
 
             switch(event_template) {
                 case 'GenericUserEvent':
@@ -400,12 +401,20 @@ define([
     }
     function getISTemplate() {  
 
-        return $("#select-01").val();
+        //return $("#select-01").val();
+        return event_template;
     }
 
     function getISEventMappings() {  
 
-        var is_template_data = eval(json_is_template_fields_event); //NEEDS TO BE DYNAMIC TO CATER FOR OTHER TEMPLATES IE: json_is_template_fields_purchase
+        switch(event_template){
+            case "GenericUserEvent":
+                var is_template_data = eval(json_is_template_fields_event); //NEEDS TO BE DYNAMIC TO CATER FOR OTHER TEMPLATES IE: json_is_template_fields_purchase
+
+            case "ProductPurchase":
+                var is_template_data = eval(json_is_template_fields_purchase); //NEEDS TO BE DYNAMIC TO CATER FOR OTHER TEMPLATES IE: json_is_template_fields_purchase
+
+        }
         var array_length = Object.keys(is_template_data).length;
         var i;
         var field_mapping_dict = {};
