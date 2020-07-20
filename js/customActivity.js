@@ -10,7 +10,7 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
-    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "orderId": "true", "totalValue": "true","currency": "true","lineItems": "true"};
+    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "orderId": "true", "currency": "true","lineItems": "true"};
     
     var arr_de_fields = [];
     //var customer_key = "";
@@ -364,7 +364,10 @@ define([
         
         for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].key.split('.')[2];
-            de_field_values_dict[val1] = '{{' + arr_de_fields[i].key + '}}'; 
+            var val2 = '{{' + arr_de_fields[i].key + '}}';
+            if(val2){
+                de_field_values_dict[val1] = val2; 
+            }
         }       
 
         in_args_dict["de_field_mappings"] = de_field_values_dict;
