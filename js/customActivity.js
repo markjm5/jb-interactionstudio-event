@@ -10,7 +10,7 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
-    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "orderId": "true", "currency": "true","lineItems": "true"};
+    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "order_id": "true", "currency": "true","line_items": "true"};
     var event_template = "";
 
     var arr_de_fields = [];
@@ -102,6 +102,9 @@ define([
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
+        event_template = $("#select-01").val();
+
+
     }
 
 
@@ -131,7 +134,6 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-        event_template = $("#select-01").val();
 
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
