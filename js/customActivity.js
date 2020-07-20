@@ -131,6 +131,7 @@ define([
         );
 
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+        event_template = $("#select-01").val();
 
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
