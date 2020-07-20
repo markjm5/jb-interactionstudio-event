@@ -81,7 +81,7 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh3c-Vh8exMVbYQcQAgit-adiJsnmF77uXYU1p6NtxyYGGe69dHHRhwEXPMzzlz8fFTZEr522FXBGQBJ89Az9Hd_Kr18aUyKsostgB3Zatxh_k17NW6KqUQviarcw3uKzsRReutVcWi63Y5paEdslKKsB917pJ4Ttbo_rhXl5Ra9UhRlgie4my1XqnD1qQxmX4UlAq3NTZxlGP8wqokBnmfS1O3dJnNX9tJuGUSSud_3hMVp04Hf4S0WjoM7N_Bia6g", "fuel2token": "4Z4ZPAnZPFCJ01kIf9pgjkwc", "expires": 1595140877687, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "customer_key": "C80D9DE8-D7FD-483C-8D49-F63B512BB359", "is_template": "GenericUserEvent", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "Action", "event_date": "EventDate", "first_name": "FirstName", "last_name": "LastName"}, "entry_de_name": "Cumulus_IS_Members2", "de_field_mappings": {"Action": "", "AdvisorName": "", "LastName": "", "SegmentMembership": "", "EmailAddress": "", "Gender": "", "EventID": "", "LocalBranch": "", "EventDate": "", "FirstName": "", "UserID": ""}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "a695a00f-7c4c-419c-a119-b3cb65e6c624", "journeyId": "ff9ae462-d72b-4844-9a86-9c9f8b97fa1c", "activityId": "a695a00f-7c4c-419c-a119-b3cb65e6c624", "definitionInstanceId": "2339cfde-7b9f-46a0-996d-bb9e03f07bc5", "activityInstanceId": "1518bb1c-1092-413b-8a7e-770c8708cdbb", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
+        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh9GGUa_NuSk0hgAGD98SHduS2HuZSIaB9QowiNVJ18f5P1TwACqbccdhp49DyQUOuulR_x1rwCwphIBnNo6pcG4LqgZPU5-f2gs20itvGI5Xzm4GC9bDVdGg7lR_b-De0gRhM9_38soxZKIxf19MjHa8Y4BoyDEyCWRysbrXWah5vBnq1GRSBIb-wV7GFrTz3Ls4B0CZVP71jP4Dk_1mJ-VQieQe9PfULuQ13VCIYYGT377Q36sC_cbz__5KG_0afw", "fuel2token": "4jx7QDo0rum56JoGrAW5cYzG", "expires": 1595286291433, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": "", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "FirstName": "Kennith", "LastName": "Hildreth", "Gender": "M", "UserID": "100000001", "SegmentMembership": "", "LocalBranch": "", "AdvisorName": "", "Action": "Viewed Product Page", "EventDate": "6/18/2020 12:00:00 AM", "EventID": "5", "OrderID": "12", "Currency": "USD", "LineItems": "[{_id: MarkTest,price: 90.00,quantity: 1},{_id: 100PlusIsotonicCanDrink-Original,price: 90.00,quantity: 1}]"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "2d214b57-2a77-4491-9260-8ed25b33aad5", "journeyId": "e502f4c5-acdd-414b-8982-2e37215eeec2", "activityId": "2d214b57-2a77-4491-9260-8ed25b33aad5", "definitionInstanceId": "dfaab964-d026-43c7-bc91-47e86d69bf79", "activityInstanceId": "5c80883b-c8e1-4f62-b960-c7f3e43a6eb9", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
         #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
@@ -120,61 +120,78 @@ def journeybuilder_execute():
 
         #TODO: Handle case of product purchase details sent across as well!!
         
+        # Retrieve the Data Extension Object Json
+        with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
+            retrieve_json = json.load(json_file)
+
+        #assign the actual value of each field to the vars that will be used to make the call to Interaction Studio
+        user_id = get_event_value(is_event_mappings['user_id'], fields_values)
+        action = get_event_value(is_event_mappings['action'], fields_values)
+        event_source = get_event_value(is_event_mappings['source'], fields_values)
+        event_date = get_event_value(is_event_mappings['event_date'], fields_values)
+
+        first_name = get_event_value(is_event_mappings['first_name'], fields_values)
+        last_name = get_event_value(is_event_mappings['last_name'], fields_values)
+
+        userName = "%s %s" % (first_name, last_name)
+
+        if userName.strip():
+            fields_values["userName"] = userName
+
+        #if an event date was assigned, use it for the event date in IS, otherwise use todays date
+        if not event_date.strip():
+
+            current_date = dt.today().strftime("%m-%d-%Y")
+            my_dt = dt.strptime(current_date, '%m-%d-%Y')
+
+            current_date_millis = helper_unix_time_millis(my_dt)
+        else:
+            my_dt = dt.strptime(event_date, '%m/%d/%Y %H:%M:%S %p')
+            current_date_millis = helper_unix_time_millis(my_dt)
+
+        # if Event Source or Action is empty, set them to a value
+        if not event_source.strip():
+            event_source = "Journey Builder"
+
+        if not action.strip():
+            action = "Journey Builder Action"
+
+        #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
+
+        ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
+        ## In doing so, dynamically create dict1
+
         if is_template == "GenericUserEvent": 
-            # Retrieve the Data Extension Object Json
-            with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
-                retrieve_json = json.load(json_file)
+            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
-            #assign the actual value of each field to the vars that will be used to make the call to Interaction Studio
-            user_id = get_event_value(is_event_mappings['user_id'], fields_values)
-            action = get_event_value(is_event_mappings['action'], fields_values)
-            event_source = get_event_value(is_event_mappings['source'], fields_values)
-            event_date = get_event_value(is_event_mappings['event_date'], fields_values)
+        elif is_template == 'ProductPurchase':
 
-            first_name = get_event_value(is_event_mappings['first_name'], fields_values)
-            last_name = get_event_value(is_event_mappings['last_name'], fields_values)
-
-            userName = "%s %s" % (first_name, last_name)
-
-            if userName.strip():
-                fields_values["userName"] = userName
-
-            #if an event date was assigned, use it for the event date in IS, otherwise use todays date
-            if not event_date.strip():
-
-                current_date = dt.today().strftime("%m-%d-%Y")
-                my_dt = dt.strptime(current_date, '%m-%d-%Y')
-
-                current_date_millis = helper_unix_time_millis(my_dt)
-            else:
-                my_dt = dt.strptime(event_date, '%m/%d/%Y %H:%M:%S %p')
-                current_date_millis = helper_unix_time_millis(my_dt)
-
-            # if Event Source or Action is empty, set them to a value
-            if not event_source.strip():
-                event_source = "Journey Builder"
-
-            if not action.strip():
-                action = "Journey Builder Action"
-
-            #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
-
-            ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
-            ## In doing so, dynamically create dict1
+            order_id = get_event_value(is_event_mappings['order_id'], fields_values)
+            currency = get_event_value(is_event_mappings['currency'], fields_values)
+            line_items = get_event_value(is_event_mappings['line_items'], fields_values)
+            #try: TO DO HERE!!!!
+            line_items_dict = json.loads(line_items)
+            #except json.decoder.JSONDecodeError as e: 
+            #    import pdb; pdb.set_trace()
 
             dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
-            retrieve_json.update(dict1)
+        else:
+            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
-            #Debugging Logger
-            data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
-            debug_logger(data)
-            #import pdb; pdb.set_trace()
-            #make an api call to evergage
-            response = requests.post(IS_ENDPOINT, json=retrieve_json)
+        retrieve_json.update(dict1)
 
-            #send the returned Next Best Action back to journey builder
-            campaign_response = json.loads(response._content)['campaignResponses']
+        #Debugging Logger
+        data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
+        debug_logger(data)
+        #import pdb; pdb.set_trace()
+        #make an api call to evergage
+        response = requests.post(IS_ENDPOINT, json=retrieve_json)
+
+        #send the returned Next Best Action back to journey builder
+        campaign_response = json.loads(response._content)['campaignResponses']
+
+
 
     jsonified_test = {"SegmentMembership": "this is a test"}    
 
