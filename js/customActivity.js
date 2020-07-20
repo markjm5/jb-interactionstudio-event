@@ -140,8 +140,6 @@ define([
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
 
-                alert('key: ' + key);
-
                 //if(key === 'customer_key'){
                 //    $('#activity-name-input').val(val);
                 //}
@@ -166,8 +164,8 @@ define([
                 }
 
                 if(key === 'de_field_mappings'){
-                    alert('key: ' + key);
-                    alert('val: ' + val);    
+                    //alert('key: ' + key);
+                    alert('val: ' + JSON.stringify(val));    
                 }
 
             });
