@@ -10,6 +10,8 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
+    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "orderId": "true", "totalValue": "true","currency": "true","lineItems": "true"};
+    
     var arr_de_fields = [];
     //var customer_key = "";
     var eventDefinitionKey;
@@ -236,7 +238,7 @@ define([
                         dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
                     }       
 
-                    var is_template_data = eval(json_is_template_fields_event);
+                    var is_template_data = eval(json_is_template_fields_purchase);
                     //alert('dropdown options: ' + JSON.stringify(dropdown_options));
                     i=0;
                     for (var key in is_template_data) {
@@ -398,7 +400,7 @@ define([
 
     function getISEventMappings() {  
 
-        var is_template_data = eval(json_is_template_fields_event);
+        var is_template_data = eval(json_is_template_fields_event); //NEEDS TO BE DYNAMIC TO CATER FOR OTHER TEMPLATES IE: json_is_template_fields_purchase
         var array_length = Object.keys(is_template_data).length;
         var i;
         var field_mapping_dict = {};
