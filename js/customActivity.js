@@ -370,6 +370,7 @@ define([
         for(i=0; i < arr_de_fields.length; i++){
             var val1 = arr_de_fields[i].key.split('.')[2];
             var val2 = '{{' + arr_de_fields[i].key + '}}';
+            alert('Save: val1-' + val1 + ' val2-' + val2);
             if(val2){
                 de_field_values_dict[val1] = val2; 
             }
