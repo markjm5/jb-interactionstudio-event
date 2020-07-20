@@ -193,8 +193,6 @@ define([
 
                     $("#message1").html("Success! Click Next to Continue");
 
-                    //$("#message2").html(json_response.de_name); SINCE WE DON"T KNOW THE DE NAME
-
                     $("#summary-view").empty();
 
                     var field_group = "";
@@ -226,8 +224,6 @@ define([
                     connection.trigger('updateButton', { button: 'next', enabled: true });
 
                     $("#message1").html("Success! Click Next to Continue");
-
-                    //$("#message2").html(json_response.de_name); SINCE WE DON"T KNOW THE DE NAME
 
                     $("#summary-view").empty();
 
@@ -339,7 +335,6 @@ define([
         var ISEventMappings = getISEventMappings();
         //var DEFieldMappings = getDEFieldMappings();
         var in_args_dict = {};
-        var de_name = $('#message2').text();
         var de_field_values_dict = {};
         var i;
 
