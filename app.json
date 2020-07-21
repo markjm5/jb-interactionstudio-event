@@ -10,7 +10,7 @@
 			"required": "true"
         },
 		"IS_ENDPOINT": {
-			"description": "Application extension key - from Journey Builder.",
+			"description": "Fully qualified IS Event API URL (format: https://[ACCOUNT].devergage.com/api2/event/[DATASET]])",
 			"required": "true"
 		},
 		"LOG_NOTIFICATION_URL": {
@@ -18,9 +18,14 @@
             "required": false
 		},
 		"APPLICATION_DOMAIN": {
-            "description": "URL of your Heroku App, without the trailing backslash",
+            "description": "URL of your Heroku App, without the trailing backslash (format: https://[APP NAME].herokuapp.com)",
 			"required": "true"            
-		}
+        },
+        "IS_PRODUCTION": {
+            "description": "Flag to indicated production environment. Must always be True",
+            "required": "true",            
+            "value": "True"            
+		}    
 	}
 
 }
