@@ -66,6 +66,7 @@ define([
             $("#activity-name_label").hide();
             $("#event_template_selection").hide();
 
+            connection.trigger('updateButton', { button: 'next', enabled: true });
 
         }else{
             $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
