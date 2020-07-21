@@ -60,8 +60,7 @@ define([
             arr_de_fields.push(data.schema[i]);
 
         }       
-        //alert('requestedSchema Called: ' + JSON.stringify(arr_de_fields));
-
+  
         if(arr_de_fields.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
             $("#activity-name_label").hide();
@@ -76,8 +75,7 @@ define([
 
         }
 
-        //alert('Length: ' + de_schema.length);
-     }    
+    }    
 /*
      function requestedInteractionModel(interaction) {
         // save schema
@@ -138,19 +136,12 @@ define([
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
 
-        //alert('Init Called');
-
         $.each(inArguments, function(index, inArgument) {
             $.each(inArgument, function(key, val) {
-
-                //if(key === 'customer_key'){
-                //    $('#activity-name-input').val(val);
-                //}
 
                 if(key === 'is_template'){
                     $('#select-01').val(val);
                     event_template = $("#select-01").val();
-                    //alert('Initialize: ' + event_template);
             
                     connection.trigger('updateButton', { button: 'next', enabled: true });
                 }
@@ -165,8 +156,6 @@ define([
                         //message = val;
                         i++;
                         if(!val1){ //for missing flelds we want to display a drop down
-                            //alert('initialize key: ' + key1); 
-                            //field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key1 + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
                             field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"> <div class=\"deupdate-attribute-list\"> <div class=\"slds-grid\"> <div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"> <div id=\"dropdownc109\"> <div class=\"slds-combobox_container\"> <div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"> <div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"> <input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"dropdownc109-input\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" + key1 + "\"> </div> </div> </div> </div> </div> <div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div> <div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"> <div id=\"dropdownc109\"> <div class=\"slds-combobox_container\"> <div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"> <div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"> <input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"de-field-" + i + "\" aria-controls=\"de-field-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Empty\" readonly=\"\" value=\"" + val1 + "\"> </div> </div> </div> </div> </div> </div> </div> </div> </div>";
 
                         }else{
@@ -174,7 +163,6 @@ define([
                         }
                     });
                     $("#summary-view").prepend(field_group);
-                    //alert(JSON.stringify(json_selected_fields));                    
                 }
 
             });
@@ -197,9 +185,6 @@ define([
     }
 
     $( "#select-01" ).change(function() {
-        //alert( "Handler for .change() called:" + JSON.stringify(de_schema));
-        //alert('Called from Select Change: ' + JSON.stringify(arr_de_fields));
-
 
         if(arr_de_fields.length > 0){
 
@@ -225,7 +210,7 @@ define([
                     }       
 
                     var is_template_data = eval(json_is_template_fields_event);
-                    //alert('dropdown options: ' + JSON.stringify(dropdown_options));
+
                     i=0;
                     for (var key in is_template_data) {
                         i++;
@@ -259,7 +244,7 @@ define([
                     }       
 
                     var is_template_data = eval(json_is_template_fields_purchase);
-                    //alert('dropdown options: ' + JSON.stringify(dropdown_options));
+
                     i=0;
                     for (var key in is_template_data) {
                         i++;
@@ -327,7 +312,7 @@ define([
                 $("#step1").show();
                 connection.trigger('updateButton', {
                     button: 'next',
-                    enabled: Boolean(getCustomerKey())
+                    enabled: Boolean(false)
                 });
                 connection.trigger('updateButton', {
                     button: 'back',
@@ -411,10 +396,11 @@ define([
     }
     
 
-    function getCustomerKey() {  
+    /*function getCustomerKey() {  
 
         return $("#activity-name-input").val();
-    }
+    }*/
+
     function getISTemplate() {  
 
         //return $("#select-01").val();
@@ -440,7 +426,6 @@ define([
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
 
-            //alert(val1 + ": " + val2);
             if(!val2){
                 field_mapping_dict[val1] = '';
             }else {
