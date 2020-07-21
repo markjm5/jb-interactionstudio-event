@@ -148,9 +148,6 @@ def journeybuilder_execute():
         if not event_source.strip():
             event_source = "Journey Builder"
 
-        if not action.strip():
-            action = "Journey Builder Action"
-
         #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
 
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
@@ -165,6 +162,9 @@ def journeybuilder_execute():
 
             if userName.strip():
                 fields_values["userName"] = userName
+
+            if not action.strip():
+                action = "Journey Builder Action"
 
             dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
