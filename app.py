@@ -20,11 +20,11 @@ is_prod = os.environ.get('IS_PRODUCTION', None)
 if is_prod:
 
     JWT_SIGNING_SECRET = os.environ.get('JWT_SIGNING_SECRET')
-    CLIENT_ID = os.environ.get('CLIENT_ID')
-    CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
-    MC_AUTH_ENDPOINT = os.environ.get('MC_AUTH_ENDPOINT')    
-    MC_HOST_ENDPOINT = os.environ.get('MC_HOST_ENDPOINT')    
-    MC_SOAP_ENDPOINT = os.environ.get('MC_SOAP_ENDPOINT')   
+    #CLIENT_ID = os.environ.get('CLIENT_ID')
+    #CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+    #MC_AUTH_ENDPOINT = os.environ.get('MC_AUTH_ENDPOINT')    
+    #MC_HOST_ENDPOINT = os.environ.get('MC_HOST_ENDPOINT')    
+    #MC_SOAP_ENDPOINT = os.environ.get('MC_SOAP_ENDPOINT')   
     IS_ENDPOINT = os.environ.get('IS_ENDPOINT')
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
@@ -36,21 +36,21 @@ else:
 
     DEBUG = Config.DEBUG
     JWT_SIGNING_SECRET = Config.JWT_SIGNING_SECRET
-    CLIENT_ID = Config.CLIENT_ID
-    CLIENT_SECRET = Config.CLIENT_SECRET
-    MC_AUTH_ENDPOINT = Config.MC_AUTH_ENDPOINT
-    MC_HOST_ENDPOINT = Config.MC_HOST_ENDPOINT
-    MC_SOAP_ENDPOINT = Config.MC_SOAP_ENDPOINT
+    #CLIENT_ID = Config.CLIENT_ID
+    #CLIENT_SECRET = Config.CLIENT_SECRET
+    #MC_AUTH_ENDPOINT = Config.MC_AUTH_ENDPOINT
+    #MC_HOST_ENDPOINT = Config.MC_HOST_ENDPOINT
+    #MC_SOAP_ENDPOINT = Config.MC_SOAP_ENDPOINT
     IS_ENDPOINT = Config.IS_ENDPOINT
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG
     APPLICATION_DOMAIN = Config.APPLICATION_DOMAIN
     EXECUTE_METHOD = "GET"
 
-auth_header_json_data = { "grant_type": "client_credentials",
-    "client_id" : CLIENT_ID,
-    "client_secret" : CLIENT_SECRET
-}
+#auth_header_json_data = { "grant_type": "client_credentials",
+#    "client_id" : CLIENT_ID,
+#    "client_secret" : CLIENT_SECRET
+#}
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
@@ -62,7 +62,7 @@ def index_html():
     path_to_static = os.path.join(request.url_root, "static/")
 
     #Debugging Logger
-    data = {'title': 'Python request', 'body': 'this is a GET request to index.html', 'data': request.data}
+    data = {'title': 'inArguments Request', 'body': 'this is a GET request to index.html', 'data': request.data}
     debug_logger(data)
 
     return render_template('index.html', static_path=path_to_static)
@@ -81,7 +81,7 @@ def journeybuilder_execute():
             decrypted_token = {}
 
         #Debugging Logger
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token)}
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
         if not is_prod:
@@ -181,7 +181,7 @@ def journeybuilder_execute():
         retrieve_json.update(dict1)
 
         #Debugging Logger
-        data = {'title': 'Python request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
+        data = {'title': 'Interaction Studio Request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
         debug_logger(data)
         #import pdb; pdb.set_trace()
         #make an api call to evergage
@@ -214,7 +214,7 @@ def journeybuilder_save():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Save Command', 'decrypted token': json.dumps(decrypted_token)}
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Save Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
@@ -232,7 +232,7 @@ def journeybuilder_publish():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Publish Command', 'decrypted token': json.dumps(decrypted_token)}
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Publish Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
@@ -249,7 +249,7 @@ def journeybuilder_stop():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Stop Command', 'decrypted token': json.dumps(decrypted_token)}
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Stop Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
@@ -268,7 +268,7 @@ def journeybuilder_validate():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Validate Command', 'decrypted token': json.dumps(decrypted_token)}
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Validate Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
