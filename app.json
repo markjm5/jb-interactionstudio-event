@@ -14,15 +14,15 @@
 			"required": "true"
 		},
 		"LOG_NOTIFICATION_URL": {
-            "description": "External request.bin notification url",
+            "description": "External request.bin notification url for logs",
             "required": false
 		},
 		"APPLICATION_DOMAIN": {
-            "description": "URL of your Heroku App, without the trailing backslash (format: https://[APP NAME].herokuapp.com)",
+            "description": "URL of your Heroku App, without the trailing backslash (format: https://[APP-NAME].herokuapp.com)",
 			"required": "true"            
         },
         "IS_PRODUCTION": {
-            "description": "Flag to indicated production environment. Must always be True",
+            "description": "Flag to indicate production environment. Must always be True",
             "required": "true",            
             "value": "True"            
 		}    
