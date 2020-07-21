@@ -81,7 +81,7 @@ def journeybuilder_execute():
             decrypted_token = {}
 
         #Debugging Logger
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token)}
         debug_logger(data)
 
         if not is_prod:
@@ -229,10 +229,8 @@ def journeybuilder_save():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Save Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
-
-
-    response = requests.post(LOG_NOTIFICATION_URL, data)
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Save Command', 'decrypted token': json.dumps(decrypted_token)}
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -249,9 +247,8 @@ def journeybuilder_publish():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Publish Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
-
-    response = requests.post(LOG_NOTIFICATION_URL, data)
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Publish Command', 'decrypted token': json.dumps(decrypted_token)}
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -267,9 +264,8 @@ def journeybuilder_stop():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Stop Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
-
-    response = requests.post(LOG_NOTIFICATION_URL, data)
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Stop Command', 'decrypted token': json.dumps(decrypted_token)}
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -287,9 +283,8 @@ def journeybuilder_validate():
         except jwt.DecodeError as e:
             decrypted_token = {}
 
-        data = {'title': 'Python request', 'body': 'This is a POST request to the Validate Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
-
-    response = requests.post(LOG_NOTIFICATION_URL, data)
+        data = {'title': 'Python request', 'body': 'This is a POST request to the Validate Command', 'decrypted token': json.dumps(decrypted_token)}
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -356,7 +351,8 @@ def debug_logger(data):
         response = requests.post(LOG_NOTIFICATION_URL, data)
     else:
         return None
-    logging_string = "INFO: %s %s" % (dt.now(), data)
+
+    logging_string = "INFO: %s %s\n\n" % (dt.now(), data)
 
     #Set logging properties
     sys.stderr.write(logging_string)
