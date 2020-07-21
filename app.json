@@ -1,8 +1,8 @@
 {
-    "name": "Node.js Sample",
-    "description": "A barebones Node.js app using Express",
+    "name": "Interaction Studio Event Journey Builder Activity",
+    "description": "A Custom Activity that sends requests from a Journey Entry DE to Interaction Studio",
     "repository": "https://github.com/markjm5/jb-interactionstudio-event",
-    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "logo": "http://jb-interactionstudio-event.herokuapp.com/static/icon1.png",
     "keywords": ["salesforce", "journey", "builder", "marketing", "cloud", "custom", "activity"],
     "env": {
 		"JWT_SIGNING_SECRET": {
