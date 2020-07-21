@@ -57,7 +57,7 @@ define([
         //console.log('>>>Request Schema', JSON.stringify(data.schema));
         var i;
         for(i=0; i < data.schema.length; i++){
-            //alert('test: ' + JSON.stringify(data.schema[i]));
+            alert('requestedSchema Called: ' + JSON.stringify(data.schema[i]));
             arr_de_fields.push(data.schema[i]);
 
         }       
@@ -135,7 +135,7 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
 
-        alert(JSON.stringify(arr_de_fields));
+        alert('Called from Initialize: ' + JSON.stringify(arr_de_fields));
 
         var j = 0;
         var dropdown_options = "";
@@ -208,6 +208,9 @@ define([
 
     $( "#select-01" ).change(function() {
         //alert( "Handler for .change() called:" + JSON.stringify(de_schema));
+        alert('Called from Select Change: ' + JSON.stringify(arr_de_fields));
+
+
         if(arr_de_fields.length > 0){
 
             var e = document.getElementById("select-01");
