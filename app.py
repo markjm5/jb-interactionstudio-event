@@ -1,10 +1,12 @@
 import os
+import logging
 import traceback
 import json
 import jwt
 import requests
 import re
 import xml.etree.ElementTree as ET
+from logging.handlers import TimedRotatingFileHandler
 from datetime import datetime as dt
 from os import environ
 from flask import Flask, render_template, request, send_from_directory, jsonify, url_for
@@ -12,6 +14,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 from urllib.request import urlopen
 app = Flask(__name__, static_folder="static")
+
+
 
 is_prod = os.environ.get('IS_PRODUCTION', None)
 
@@ -82,8 +86,9 @@ def journeybuilder_execute():
         data = {'title': 'Python request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token), 'data': request.data}
         debug_logger(data)
 
-        #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh9GGUa_NuSk0hgAGD98SHduS2HuZSIaB9QowiNVJ18f5P1TwACqbccdhp49DyQUOuulR_x1rwCwphIBnNo6pcG4LqgZPU5-f2gs20itvGI5Xzm4GC9bDVdGg7lR_b-De0gRhM9_38soxZKIxf19MjHa8Y4BoyDEyCWRysbrXWah5vBnq1GRSBIb-wV7GFrTz3Ls4B0CZVP71jP4Dk_1mJ-VQieQe9PfULuQ13VCIYYGT377Q36sC_cbz__5KG_0afw", "fuel2token": "4jx7QDo0rum56JoGrAW5cYzG", "expires": 1595286291433, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "", "last_name": "", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "FirstName": "Kennith", "LastName": "Hildreth", "Gender": "M", "UserID": "100000001", "SegmentMembership": "", "LocalBranch": "", "AdvisorName": "", "Action": "Viewed Product Page", "EventDate": "6/18/2020 12:00:00 AM", "EventID": "5", "OrderID": "12", "Currency": "USD", "LineItems": "[{_id: MarkTest,price: 90.00,quantity: 1},{_id: 100PlusIsotonicCanDrink-Original,price: 90.00,quantity: 1}]"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "2d214b57-2a77-4491-9260-8ed25b33aad5", "journeyId": "e502f4c5-acdd-414b-8982-2e37215eeec2", "activityId": "2d214b57-2a77-4491-9260-8ed25b33aad5", "definitionInstanceId": "dfaab964-d026-43c7-bc91-47e86d69bf79", "activityInstanceId": "5c80883b-c8e1-4f62-b960-c7f3e43a6eb9", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
-        #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
+        if not is_prod:
+            decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh-WQUk2vJGR6pP-Ss_j3zQnSUERr20uAGMvjYxBNF4PgonjKab5k5GILHwjLxl0Fxm7rgqH1hZPmvyUHVSFTUB7or9TsZw-Uh1y3dIV16dP0ihuvSjzbMQRuJcOp_pvOaXzjjTPQzo_G39HLyrjdKnjGJQyBjui2q5RJ8ABBSAt3wwkP4DMwLRjZVCmsYlCulJ74qNdQob6R5Vos5U0cKj8OH_mKS-BN7Qfn-KSRJIJAFSyToWChgV6kyvVquzZu7A", "fuel2token": "4P7RyK01c36ovpLSlWoQw2gl", "expires": 1595295001257, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "FirstName", "last_name": "LastName", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "FirstName": "Kennith", "LastName": "Hildreth", "Gender": "M", "UserID": "100000001", "SegmentMembership": "", "LocalBranch": "", "AdvisorName": "", "Action": "Closed a Case", "EventDate": "6/8/2020 12:00:00 AM", "EventID": "2", "OrderID": "", "Currency": "", "LineItems": ""}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "2ad157c6-d111-4124-b996-4a3a48b2b168", "journeyId": "78d81790-19da-41dd-9ca2-6fd25baa5699", "activityId": "2ad157c6-d111-4124-b996-4a3a48b2b168", "definitionInstanceId": "c28f000a-af24-4a8e-bcee-23e9555efc02", "activityInstanceId": "14ffd8b8-abdb-457c-a800-90c47be99b51", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
+            #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
@@ -195,7 +200,6 @@ def journeybuilder_execute():
 
             if dict2:
                 dict1["order"] = dict2
-
 
         retrieve_json.update(dict1)
 
@@ -354,6 +358,17 @@ def debug_logger(data):
         response = requests.post(LOG_NOTIFICATION_URL, data)
     else:
         return None
+
+    #Set logging properties
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    handler = TimedRotatingFileHandler('logger.log', when="midnight", interval=1, encoding='utf8')
+    handler.suffix = "%Y-%m-%d"
+    handler.setFormatter(formatter)
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.addHandler(handler)
+
+    logging.warning(data)
 
     return response
 
