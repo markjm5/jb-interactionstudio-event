@@ -145,7 +145,10 @@ define([
         for(j=0; j < arr_de_fields.length; j++){
             var field_name = arr_de_fields[j].key.split('.')[2];
             dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[j].type + ")</option>";
-        }       
+        }      
+        alert('Called from Initialize2: ' + JSON.stringify(arr_de_fields));
+
+        alert('Dropdown Options: ' + JSON.stringify(dropdown_options))
 
         //$("#message").html(JSON.stringify(inArguments));
         //$("#message").html("1. Enter the Customer Key of the Entry Data Extension<br>2. Select an IS Template<br>3. Click SAVE EVENT SETTINGS<br>4. Click NEXT");
