@@ -3,5 +3,24 @@
     "description": "A barebones Node.js app using Express",
     "repository": "https://github.com/markjm5/jb-interactionstudio-event",
     "logo": "https://node-js-sample.herokuapp.com/node.png",
-    "keywords": ["node", "express", "static"]
-  }
+    "keywords": ["salesforce", "journey", "builder", "marketing", "cloud", "custom", "activity"],
+    "env": {
+		"JWT_SIGNING_SECRET": {
+			"description": "JWT Signing Secret - from Journey Builder.",
+			"required": "true"
+        },
+		"IS_ENDPOINT": {
+			"description": "Application extension key - from Journey Builder.",
+			"required": "true"
+		},
+		"LOG_NOTIFICATION_URL": {
+            "description": "External request.bin notification url",
+            "required": false
+		},
+		"APPLICATION_DOMAIN": {
+            "description": "URL of your Heroku App, without the trailing backslash",
+			"required": "true"            
+		}
+	}
+
+}
