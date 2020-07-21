@@ -1,5 +1,5 @@
 import os
-import logging
+import sys
 import traceback
 import json
 import jwt
@@ -14,8 +14,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 from urllib.request import urlopen
 app = Flask(__name__, static_folder="static")
-
-
 
 is_prod = os.environ.get('IS_PRODUCTION', None)
 
@@ -358,18 +356,10 @@ def debug_logger(data):
         response = requests.post(LOG_NOTIFICATION_URL, data)
     else:
         return None
+    logging_string = "INFO: %s %s" % (dt.now(), data)
 
     #Set logging properties
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    handler = TimedRotatingFileHandler(os.path.join(SITE_ROOT, "static/", "logger.log"), when="midnight", interval=1, encoding='utf8')
-
-    handler.suffix = "%Y-%m-%d"
-    handler.setFormatter(formatter)
-    logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
-    logger.addHandler(handler)
-
-    logging.warning(data)
+    sys.stderr.write(logging_string)
 
     return response
 
