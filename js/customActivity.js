@@ -69,7 +69,7 @@ define([
             connection.trigger('updateButton', { button: 'next', enabled: false });
 
         }else{
-            $("#message").html("Entry Data Extension Selected. Please select an IS Event from the dropdown below");
+            $("#message").html("Please select an IS Event from the dropdown below");
             $("#activity-name_label").show();
             $("#event_template_selection").show();
 
