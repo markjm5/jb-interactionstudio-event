@@ -10,7 +10,7 @@ define([
     var authTokens = {};
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
-    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false", "order_id": "true", "currency": "true","line_items": "true"};
+    var json_is_template_fields_purchase = {"user_id":"true","action":"true","source":"false","event_date":"false", "order_id": "true", "currency": "true","line_items": "true"};
     var event_template = "";
 
     var arr_de_fields = [];
