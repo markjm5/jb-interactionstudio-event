@@ -130,7 +130,6 @@ def journeybuilder_execute():
 
         #assign the actual value of each field to the vars that will be used to make the call to Interaction Studio
         user_id = get_event_value(is_event_mappings['user_id'], fields_values)
-        action = get_event_value(is_event_mappings['action'], fields_values)
         event_source = get_event_value(is_event_mappings['source'], fields_values)
         event_date = get_event_value(is_event_mappings['event_date'], fields_values)
 
@@ -159,7 +158,7 @@ def journeybuilder_execute():
         dict1 = {}
 
         if is_template == 'GenericUserEvent':
-
+            action = get_event_value(is_event_mappings['action'], fields_values)
             first_name = get_event_value(is_event_mappings['first_name'], fields_values)
             last_name = get_event_value(is_event_mappings['last_name'], fields_values)
             userName = "%s %s" % (first_name, last_name)
