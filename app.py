@@ -216,9 +216,7 @@ def journeybuilder_execute():
         #make an api call to evergage
         response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
-        import pdb; pdb.set_trace()
         #send the returned Next Best Action back to journey builder
-
         if response.status_code == 200:
             try:
                 campaign_response = json.loads(response._content)['campaignResponses']
