@@ -209,8 +209,10 @@ def journeybuilder_execute():
         response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
         #send the returned Next Best Action back to journey builder
-        campaign_response = json.loads(response._content)['campaignResponses']
-
+        try:
+            campaign_response = json.loads(response._content)['campaignResponses']
+        except TypeError:
+            campaign_response = []
 
 
     jsonified_test = {"SegmentMembership": "this is a test"}    
