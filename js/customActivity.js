@@ -196,7 +196,7 @@ define([
 
                     connection.trigger('updateButton', { button: 'next', enabled: true });
 
-                    $("#message1").html("Success! Click Next to Continue");
+                    $("#message1").html("IS Event Selected! Click Next to Continue");
 
                     $("#summary-view").empty();
 
