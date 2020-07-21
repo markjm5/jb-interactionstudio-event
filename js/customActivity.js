@@ -57,10 +57,11 @@ define([
         //console.log('>>>Request Schema', JSON.stringify(data.schema));
         var i;
         for(i=0; i < data.schema.length; i++){
-            alert('requestedSchema Called: ' + JSON.stringify(data.schema[i]));
             arr_de_fields.push(data.schema[i]);
 
         }       
+        alert('requestedSchema Called: ' + JSON.stringify(arr_de_fields));
+
         if(arr_de_fields.length == 0){
             $("#message").html("Please go back and select an Entry Data Extension before proceeding further");
             $("#activity-name_label").hide();
@@ -135,6 +136,7 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
 
+        connection.trigger('requestSchema');
         alert('Called from Initialize: ' + JSON.stringify(arr_de_fields));
 
         var j = 0;
