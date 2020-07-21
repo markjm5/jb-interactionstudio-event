@@ -3,6 +3,7 @@ import traceback
 import json
 import jwt
 import requests
+import re
 import xml.etree.ElementTree as ET
 from datetime import datetime as dt
 from os import environ
@@ -161,23 +162,40 @@ def journeybuilder_execute():
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
         ## In doing so, dynamically create dict1
 
-        if is_template == "GenericUserEvent": 
-            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+        dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
-        elif is_template == 'ProductPurchase':
+        if is_template == 'ProductPurchase':
 
             order_id = get_event_value(is_event_mappings['order_id'], fields_values)
             currency = get_event_value(is_event_mappings['currency'], fields_values)
-            line_items = get_event_value(is_event_mappings['line_items'], fields_values)
-            #try: TO DO HERE!!!!
-            line_items_dict = json.loads(line_items)
-            #except json.decoder.JSONDecodeError as e: 
-            #    import pdb; pdb.set_trace()
+            totalValue = 0
+            line_items_arr = []
+            dict2 = {}
 
-            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+            if order_id and currency:
+                line_items = get_event_value(is_event_mappings['line_items'], fields_values)
+                if line_items:
+                    line_items = line_items.strip().replace(" ","")
+                    line_items = line_items.strip(']').strip('[').split('},{')
 
-        else:
-            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+                    for i in line_items:
+                        line_item_val = i.strip('{').strip('}')
+                        line_item_val = line_item_val.split(',')
+                        line_item_dict = {}
+                        for jj in line_item_val:
+                            val = jj.split(':')
+                            line_item_dict[val[0]] = val[1]
+                            if val[0].lower() == 'price':
+                                totalValue += float(val[1])                                
+                        line_items_arr.append(line_item_dict)
+
+
+                    totalValue = "%.2f" % round(totalValue,2)
+                    dict2 = {'orderId': order_id, 'totalValue': totalValue, 'currency': currency, 'lineItems': line_items_arr }
+
+            if dict2:
+                dict1["order"] = dict2
+
 
         retrieve_json.update(dict1)
 
