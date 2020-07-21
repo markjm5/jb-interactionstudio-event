@@ -134,14 +134,6 @@ def journeybuilder_execute():
         event_source = get_event_value(is_event_mappings['source'], fields_values)
         event_date = get_event_value(is_event_mappings['event_date'], fields_values)
 
-        first_name = get_event_value(is_event_mappings['first_name'], fields_values)
-        last_name = get_event_value(is_event_mappings['last_name'], fields_values)
-
-        userName = "%s %s" % (first_name, last_name)
-
-        if userName.strip():
-            fields_values["userName"] = userName
-
         #if an event date was assigned, use it for the event date in IS, otherwise use todays date
         if not event_date.strip():
 
@@ -164,10 +156,21 @@ def journeybuilder_execute():
 
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
         ## In doing so, dynamically create dict1
+        dict1 = {}
 
-        dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
+        if is_template == 'GenericUserEvent':
+            first_name = get_event_value(is_event_mappings['first_name'], fields_values)
+            last_name = get_event_value(is_event_mappings['last_name'], fields_values)
+
+            userName = "%s %s" % (first_name, last_name)
+
+            if userName.strip():
+                fields_values["userName"] = userName
+
+            dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
         if is_template == 'ProductPurchase':
+            dict1 = { 'action': action ,'user': {'id': user_id}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
             order_id = get_event_value(is_event_mappings['order_id'], fields_values)
             currency = get_event_value(is_event_mappings['currency'], fields_values)
