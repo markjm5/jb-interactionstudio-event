@@ -86,43 +86,16 @@ def journeybuilder_execute():
 
         if not is_prod:
             decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh0VhzAiY_0r2RGv3Ok4g3X2JMrrYaJLwfyR6T5e4BUDhDV5pdIs8PpB19dUOrDy93merVjgL8HJpz6BS58opkgJz6WKyVyDNPDM2cxzO04GYqxTKMVD3yC42q86V1W0iluviKdq4jveXQ1l5ebYWkZzkwtDBer0QKceS4I1QE8KjQgW43JJqXWc8ZkhAjqlfjbHTFE_wvg94SpQmwYnGk5emafrKXdIp_6AwRrsAbmwSCv3J8WHLtOtN3htuOVwJ5Q", "fuel2token": "4jzRKZK7erA0xBv6QaN3SaHm", "expires": 1595342819521, "stackKey": "S4"}, "contactIdentifier": "rmorris.10000.0000@gmail.exacttargettest.com", "emailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "EventDate", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "FirstName": "Rachel", "LastName": "Morris2", "Gender": "M", "UserID": "100000003", "SegmentMembership": "", "loyaltypoints": "", "loyaltytier": "", "Action": "Purchase", "EventDate": "7/4/2020 12:00:00 AM", "EventID": "11", "OrderID": "100031", "Currency": "USD", "LineItems": "[{_id: MarkTest,price: 90.00,quantity: 1},{_id: 100PlusIsotonicCanDrink-Original,price: 90.00,quantity: 1}]"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e869451f-60a0-401c-a065-196e241190d0", "journeyId": "feca1ca9-e848-4a1a-90b4-a4bcd1c0b391", "activityId": "e869451f-60a0-401c-a065-196e241190d0", "definitionInstanceId": "a66b2125-0c11-4180-ad83-2db789125e7d", "activityInstanceId": "20015f46-d17a-437a-92d3-139029e9ba55", "keyValue": "rmorris.10000.0000@gmail.exacttargettest.com", "mode": 0}
-            #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
         emailAddress = decrypted_token['inArguments'][0]['emailAddress']
-        #entry_de_customer_key = decrypted_token['inArguments'][0]['customer_key']
-
-        #unique_id = decrypted_token['inArguments'][0]['unique_id_field']
         contactIdentifier = decrypted_token['inArguments'][0]['contactIdentifier']
 
         is_event_mappings = decrypted_token['inArguments'][0]['is_event_mappings']
 
         fields_values = decrypted_token['inArguments'][0]['de_field_mappings']
-        #entry_de_name = decrypted_token['inArguments'][0]['entry_de_name']
 
         is_template = decrypted_token['inArguments'][0]['is_template']
-        #action = "Filed A Case"
-
-        #Get access token
-        response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-        response_content = json.loads(response._content)
-        access_token = json.loads(response._content)["access_token"]
-
-        #Process here the decrypted data, and match it to evergage event api fields
-        #entry_de_name = retrieve_de_name(entry_de_customer_key, access_token)
-
-        #entry_de_fields = de_customer_key_to_fields(entry_de_customer_key, access_token)
-
-        #fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, unique_id, entry_de_fields, contactIdentifier, access_token)
-        #fields_values, primary_keys = retrieve_de_fields_values(entry_de_customer_key, entry_de_name, entry_de_fields, contactIdentifier, access_token)
-
-        #import pdb; pdb.set_trace()
-        # use the primary keys to get the de rows
-
-        #action = "Filed a Case"
-        #user_id = fields_values['UserID']
-
-        #TODO: Handle case of product purchase details sent across as well!!
         
         # Retrieve the Data Extension Object Json
         with open(os.path.join(SITE_ROOT, "static/templates/", "template_IS_event.json")) as json_file:
@@ -147,8 +120,6 @@ def journeybuilder_execute():
         # if Event Source or Action is empty, set them to a value
         if not event_source.strip():
             event_source = "Journey Builder"
-
-        #fields_values1 = {'UserName': 'Test','EmailAddress':'mmukherjee@salesforce.com', 'FirstName': 'Mark', 'LocalBranch': '', 'LastName': 'Mukherjee', 'EventDate': '6/14/2020 12:00:00 AM', 'SegmentMembership': '', 'Gender': 'M', 'Action': 'Email Sent', 'AdvisorName': 'Journey Builder Event', 'EventID': '51', 'EmailAddress': 'mmukherjee@salesforce.com', 'UserID': '1000000051'}
 
         ## Using the evergage example json, match field names from field_values to evergage fields. If we can find a match, assign the values.
         ## In doing so, dynamically create dict1
@@ -216,6 +187,7 @@ def journeybuilder_execute():
         #make an api call to evergage
         response = requests.post(IS_ENDPOINT, json=retrieve_json)
 
+        campaign_response = []
         #send the returned Next Best Action back to journey builder
         if response.status_code == 200:
             try:
@@ -326,36 +298,6 @@ def send_static(path):
 #                                              Helper Functions                                                #
 ################################################################################################################
 
-# This is called by ajax code in index.html
-@app.route('/journeybuilder/getdefields/', methods=['POST'])
-def journeybuilder_get_de_fields():
-
-    jsonified_text = {}
-
-    if request.method == 'POST':
-       # de_customer_key = request.form["DECustomerKey"]
-
-        de_customer_key = json.loads(request.data)["DECustomerKey"]
-
-        response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-        response_content = json.loads(response._content)
-        access_token = json.loads(response._content)["access_token"]
-
-        #response = requests.post(LOG_NOTIFICATION_URL, de_customer_key)
-        try:
-            de_name = retrieve_de_name(de_customer_key, access_token)
-            de_fields = de_customer_key_to_fields(de_customer_key, access_token)
-
-            jsonified_text = {"error": "False","de_name": de_name, "de_fields": de_fields}  
-        except:
-            jsonified_text = {"error": "True"}
-
-        data = {'title': 'Python request', 'body': 'This is a POST request to Get DE Fields'}
-
-        response = requests.post(LOG_NOTIFICATION_URL, data)
-    
-    return jsonify(jsonified_text)
-
 
 def debug_logger(data):
 
@@ -372,278 +314,12 @@ def debug_logger(data):
 
     return response
 
-
-
 def to_pretty_json(value):
     return json.dumps(value, sort_keys=True,
                       indent=4, separators=(',', ': '))
 
 app.jinja_env.filters['tojson_pretty'] = to_pretty_json
 
-
-def journey_id_to_event_key(journey_id, access_token):
-
-    #Get authentication token
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #access_token = json.loads(response._content)["access_token"]
-    
-    #To make post request, we need to wet the auth header
-    authorization_headers = {'Content-Type': 'application/json', 'Authorization':  'Bearer ' + access_token}
-
-    response = requests.get(MC_HOST_ENDPOINT + 'interactions/' + journey_id, headers=authorization_headers)
-    account_journey_json_payload = json.loads(response._content)
-
-    event_definition_key = account_journey_json_payload['triggers'][0]['metaData']['eventDefinitionKey']
-
-    return event_definition_key
-
-
-def event_key_to_de_customer_key(event_definition_key, access_token):
-
-    #Get authentication token
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #access_token = json.loads(response._content)["access_token"
-    #To make post request, we need to wet the auth header
-    authorization_headers = {'Content-Type': 'application/json', 'Authorization':  'Bearer ' + access_token}
-
-    response = requests.get(MC_HOST_ENDPOINT + 'eventDefinitions/key:' + event_definition_key, headers=authorization_headers)
-    event_definition_json_payload = json.loads(response._content)
-
-    entry_de_id = event_definition_json_payload['dataExtensionId']
-
-    customer_key = retrieve_de_customer_key(entry_de_id, access_token)
-
-    return customer_key
-
-def retrieve_de_customer_key(entry_de_id, access_token):
-
-    # Retrieve the Data Extension Object ID
-    retrieve_de_object_xml = os.path.join(SITE_ROOT, "static/templates/", "template_retrieveDEObject.xml")
-
-    #tree = return_formatted_xml_tree(retrieve_de_object_xml, event_definition_key, access_token)
-    #import pdb; pdb.set_trace()
-    
-    tree = ET.parse(retrieve_de_object_xml)
-    to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
-    fueloauth_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://exacttarget.com}fueloauth")[0]
-    value_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Value")[0]
-    body_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body")[0]
-    retrieverequestmsg_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg")[0]
-
-    to_element.text = MC_SOAP_ENDPOINT
-    fueloauth_element.text = access_token
-    value_element.text = entry_de_id
-
-    body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    body_element.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
-    retrieverequestmsg_element.set("xmlns","http://exacttarget.com/wsdl/partnerAPI")
-
-    ET.register_namespace("s","http://www.w3.org/2003/05/soap-envelope")
-    ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
-    ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-    
-    headers = {'Content-Type': 'text/xml'} # set what your server accepts
-    #response = requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text
-
-    tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
-    customer_key = tree1.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveResponseMsg/{http://exacttarget.com/wsdl/partnerAPI}Results/{http://exacttarget.com/wsdl/partnerAPI}CustomerKey")[0].text
-
-    return customer_key
-
-
-def retrieve_de_name(de_customer_key, access_token):
-
-    # Retrieve the Data Extension Object ID
-    retrieve_de_object_xml = os.path.join(SITE_ROOT, "static/templates/", "template_retrieveDEObject.xml")
-
-    #tree = return_formatted_xml_tree(retrieve_de_object_xml, event_definition_key, access_token)
-    #import pdb; pdb.set_trace()
-    
-    tree = ET.parse(retrieve_de_object_xml)
-    to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
-    fueloauth_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://exacttarget.com}fueloauth")[0]
-    value_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Value")[0]
-    property_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Property")[0]
-    body_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body")[0]
-    retrieverequestmsg_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg")[0]
-
-    to_element.text = MC_SOAP_ENDPOINT
-    fueloauth_element.text = access_token
-    property_element.text = "CustomerKey"
-    value_element.text = de_customer_key
-
-    body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    body_element.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
-    retrieverequestmsg_element.set("xmlns","http://exacttarget.com/wsdl/partnerAPI")
-
-    ET.register_namespace("s","http://www.w3.org/2003/05/soap-envelope")
-    ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
-    ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-    
-    headers = {'Content-Type': 'text/xml'} # set what your server accepts
-
-    tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
-    de_name = tree1.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveResponseMsg/{http://exacttarget.com/wsdl/partnerAPI}Results/{http://exacttarget.com/wsdl/partnerAPI}Name")[0].text
-
-    return de_name
-
-
-def de_customer_key_to_fields(de_customer_key, access_token):
-
-    #Get authentication token
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #access_token = json.loads(response._content)["access_token"]
-    
-    #To make post request, we need to wet the auth header
-    authorization_headers = {'Content-Type': 'application/json', 'Authorization':  'Bearer ' + access_token}
-
-    # Retrieve the Data Extension Object ID
-    retrieve_de_fields_xml = os.path.join(SITE_ROOT, "static/templates/", "template_retrieveDEFields.xml")
-
-    #tree = return_formatted_xml_tree(retrieve_de_fields_xml, de_customer_key, access_token)
-    
-    tree = ET.parse(retrieve_de_fields_xml)
-    to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
-    fueloauth_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://exacttarget.com}fueloauth")[0]
-    value_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Value")[0]
-    body_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body")[0]
-    retrieverequestmsg_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg")[0]
-
-    to_element.text = MC_SOAP_ENDPOINT
-    fueloauth_element.text = access_token
-    value_element.text = de_customer_key
-
-    body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    body_element.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
-    retrieverequestmsg_element.set("xmlns","http://exacttarget.com/wsdl/partnerAPI")
-
-    ET.register_namespace("s","http://www.w3.org/2003/05/soap-envelope")
-    ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
-    ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-    
-
-    headers = {'Content-Type': 'text/xml'} # set what your server accepts
-    #response = requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text
-    tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
-
-    results_elements = tree1.findall('.//{http://exacttarget.com/wsdl/partnerAPI}Results')
-
-    fields = []
-
-    for field_name in results_elements:
-        field = {}
-
-        try:
-            field["Name"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}Name").text
-        except AttributeError as err:
-            pass
-
-        try:
-            field["MaxLength"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}MaxLength").text
-        except AttributeError as err:
-            pass
-
-        try:
-            field["IsRequired"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}IsRequired").text
-        except AttributeError as err:
-            pass
-
-        try:
-            field["Ordinal"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}Ordinal").text
-        except AttributeError as err:
-            pass
-
-        try:
-            field["IsPrimaryKey"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}IsPrimaryKey").text
-        except AttributeError as err:
-            pass
-
-        try:
-            field["FieldType"] = field_name.find("./{http://exacttarget.com/wsdl/partnerAPI}FieldType").text
-        except AttributeError as err:
-            pass
-
-        fields.append(field)
-
-    return fields
-
-
-def retrieve_de_fields_values(de_customer_key, de_name, de_fields, contactIdentifier, access_token):
-
-    #Get authentication token
-    #response = requests.post(MC_AUTH_ENDPOINT, auth_header_json_data)
-    #access_token = json.loads(response._content)["access_token"]
-    
-    #To make post request, we need to wet the auth header
-    authorization_headers = {'Content-Type': 'application/json', 'Authorization':  'Bearer ' + access_token}
-
-    # Retrieve the Data Extension Object ID
-    retrieve_de_fields_xml = os.path.join(SITE_ROOT, "static/templates/", "template_retrieveDERow.xml")
-
-    primary_keys = []
-
-    tree = ET.parse(retrieve_de_fields_xml)
-
-    to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
-    fueloauth_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://exacttarget.com}fueloauth")[0]
-    value_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Value")[0]
-    property_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Property")[0]
-    retrieverequest_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest")[0]
-    objecttype_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}ObjectType")[0]
-    body_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body")[0]
-    retrieverequestmsg_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg")[0]
-    
-    to_element.text = MC_SOAP_ENDPOINT
-    fueloauth_element.text = access_token
-    value_element.text = contactIdentifier
-    objecttype_element.text = "DataExtensionObject[%s]" % de_name
-
-
-    for key in de_fields:
-        #if key["FieldType"] == "EmailAddress":
-        #    property_element.text = key["Name"]
-
-        c = ET.Element("Properties")
-        c.text = key["Name"]
-
-        if key["IsPrimaryKey"] == 'true':
-            primary_keys.append(key["Name"])
-        
-        retrieverequest_element.insert(1,c)
-
-    body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    body_element.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
-    retrieverequestmsg_element.set("xmlns","http://exacttarget.com/wsdl/partnerAPI")
-
-    ET.register_namespace("s","http://www.w3.org/2003/05/soap-envelope")
-    ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
-    ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-    
-    headers = {'Content-Type': 'text/xml'} # set what your server accepts
-
-    tree1_properties_element = ""
-
-    #Dynamically use each primary key in DE to try an retrieve row
-    for key in primary_keys:
-        property_element.text = key ##THIS NEEDS TO BE DYNAMICALLY LOADED
-        tree1 = ET.fromstring(requests.post(MC_SOAP_ENDPOINT, data=ET.tostring(tree.getroot()), headers=headers).text)
-
-        try:
-            tree1_exists = tree1.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveResponseMsg/{http://exacttarget.com/wsdl/partnerAPI}Results/{http://exacttarget.com/wsdl/partnerAPI}Properties")[0]
-            tree1_properties_element = tree1_exists
-        except IndexError:
-            pass
-
-    field_values = {}
-
-    for child in tree1_properties_element:
-
-        attr_name = child[0].text
-        attr_value = child[1].text
-
-        field_values[attr_name] = helper_xstr(attr_value)
-
-    return field_values, primary_keys
 
 def helper_unix_time_millis(dt):
     epoch = dt.utcfromtimestamp(0)
@@ -653,30 +329,6 @@ def helper_xstr(s):
     if s is None:
         return ''
     return str(s)    
-
-def return_formatted_xml_tree(tree, value, access_token):
-    #Currently not being used
-
-    to_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://schemas.xmlsoap.org/ws/2004/08/addressing}To")[0]
-    fueloauth_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Header/{http://exacttarget.com}fueloauth")[0]
-    value_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequest/{http://exacttarget.com/wsdl/partnerAPI}Filter/{http://exacttarget.com/wsdl/partnerAPI}Value")[0]
-    body_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body")[0]
-    retrieverequestmsg_element = tree.findall("./{http://www.w3.org/2003/05/soap-envelope}Body/{http://exacttarget.com/wsdl/partnerAPI}RetrieveRequestMsg")[0]
-
-    to_element.text = MC_SOAP_ENDPOINT
-    fueloauth_element.text = access_token
-    value_element.text = value
-
-    body_element.set("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance")
-    body_element.set("xmlns:xsd", "http://www.w3.org/2001/XMLSchema")
-    retrieverequestmsg_element.set("xmlns","http://exacttarget.com/wsdl/partnerAPI")
-
-    ET.register_namespace("s","http://www.w3.org/2003/05/soap-envelope")
-    ET.register_namespace("a","http://schemas.xmlsoap.org/ws/2004/08/addressing")
-    ET.register_namespace("u","http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd")
-
-    return formatted_xml_tree
-
 
 def get_event_value(event_field, list_of_values):
 
@@ -690,13 +342,5 @@ def get_event_value(event_field, list_of_values):
     return value
 
 
-
 if __name__ == '__main__':
     app.run()
-
-
-# Notes #
-
-# Example GET Request to create Product Tags:
-# https://salesforcesandbox.devergage.com/twreceiver?_ak=salesforcesandbox&_ds=mmukherjee&_ne=true&userId=mmukherjee@salesforce.com&action=View Tag&.item={"_id":"Child2","type":"t","tagType":"ItemClass"}
-
