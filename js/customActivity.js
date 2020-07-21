@@ -159,6 +159,14 @@ define([
                     var json_selected_fields = [];
                     var field_group = "";
                     var i = 0;
+                    var j = 0;
+                    var dropdown_options = "";
+
+                    for(j=0; j < arr_de_fields.length; j++){
+                        var field_name = arr_de_fields[j].key.split('.')[2];
+                        dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[j].type + ")</option>";
+                    }       
+
                     $.each(val, function(key1, val1) {
                         //message = val;
                         i++;
