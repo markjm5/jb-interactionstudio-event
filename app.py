@@ -361,7 +361,8 @@ def debug_logger(data):
 
     #Set logging properties
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    handler = TimedRotatingFileHandler('logger.log', when="midnight", interval=1, encoding='utf8')
+    handler = TimedRotatingFileHandler(os.path.join(SITE_ROOT, "static/", "logger.log"), when="midnight", interval=1, encoding='utf8')
+
     handler.suffix = "%Y-%m-%d"
     handler.setFormatter(formatter)
     logger = logging.getLogger()
