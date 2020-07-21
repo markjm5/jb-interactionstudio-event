@@ -135,7 +135,7 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
 
-        connection.trigger('requestSchema');
+        alert(JSON.stringify(arr_de_fields));
 
         var j = 0;
         var dropdown_options = "";
