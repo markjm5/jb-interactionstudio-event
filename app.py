@@ -85,7 +85,7 @@ def journeybuilder_execute():
         debug_logger(data)
 
         if not is_prod:
-            decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh-WQUk2vJGR6pP-Ss_j3zQnSUERr20uAGMvjYxBNF4PgonjKab5k5GILHwjLxl0Fxm7rgqH1hZPmvyUHVSFTUB7or9TsZw-Uh1y3dIV16dP0ihuvSjzbMQRuJcOp_pvOaXzjjTPQzo_G39HLyrjdKnjGJQyBjui2q5RJ8ABBSAt3wwkP4DMwLRjZVCmsYlCulJ74qNdQob6R5Vos5U0cKj8OH_mKS-BN7Qfn-KSRJIJAFSyToWChgV6kyvVquzZu7A", "fuel2token": "4P7RyK01c36ovpLSlWoQw2gl", "expires": 1595295001257, "stackKey": "S4"}, "contactIdentifier": "khildreth.10000.0000@gmail.exacttargettest.com", "emailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "", "first_name": "FirstName", "last_name": "LastName", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "khildreth.10000.0000@gmail.exacttargettest.com", "FirstName": "Kennith", "LastName": "Hildreth", "Gender": "M", "UserID": "100000001", "SegmentMembership": "", "LocalBranch": "", "AdvisorName": "", "Action": "Closed a Case", "EventDate": "6/8/2020 12:00:00 AM", "EventID": "2", "OrderID": "", "Currency": "", "LineItems": ""}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "2ad157c6-d111-4124-b996-4a3a48b2b168", "journeyId": "78d81790-19da-41dd-9ca2-6fd25baa5699", "activityId": "2ad157c6-d111-4124-b996-4a3a48b2b168", "definitionInstanceId": "c28f000a-af24-4a8e-bcee-23e9555efc02", "activityInstanceId": "14ffd8b8-abdb-457c-a800-90c47be99b51", "keyValue": "khildreth.10000.0000@gmail.exacttargettest.com", "mode": 0}
+            decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh0VhzAiY_0r2RGv3Ok4g3X2JMrrYaJLwfyR6T5e4BUDhDV5pdIs8PpB19dUOrDy93merVjgL8HJpz6BS58opkgJz6WKyVyDNPDM2cxzO04GYqxTKMVD3yC42q86V1W0iluviKdq4jveXQ1l5ebYWkZzkwtDBer0QKceS4I1QE8KjQgW43JJqXWc8ZkhAjqlfjbHTFE_wvg94SpQmwYnGk5emafrKXdIp_6AwRrsAbmwSCv3J8WHLtOtN3htuOVwJ5Q", "fuel2token": "4jzRKZK7erA0xBv6QaN3SaHm", "expires": 1595342819521, "stackKey": "S4"}, "contactIdentifier": "rmorris.10000.0000@gmail.exacttargettest.com", "emailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "EventDate", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "FirstName": "Rachel", "LastName": "Morris2", "Gender": "M", "UserID": "100000003", "SegmentMembership": "", "loyaltypoints": "", "loyaltytier": "", "Action": "Made Purchase", "EventDate": "7/4/2020 12:00:00 AM", "EventID": "11", "OrderID": "100031", "Currency": "USD", "LineItems": "[{_id: MarkTest,price: 90.00,quantity: 1},{_id: 100PlusIsotonicCanDrink-Original,price: 90.00,quantity: 1}]"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e869451f-60a0-401c-a065-196e241190d0", "journeyId": "feca1ca9-e848-4a1a-90b4-a4bcd1c0b391", "activityId": "e869451f-60a0-401c-a065-196e241190d0", "definitionInstanceId": "a66b2125-0c11-4180-ad83-2db789125e7d", "activityInstanceId": "20015f46-d17a-437a-92d3-139029e9ba55", "keyValue": "rmorris.10000.0000@gmail.exacttargettest.com", "mode": 0}
             #interaction_studio_api = {"action": "Journey Builder Action", "user": {"id": "", "attributes": {}}, "source": {"channel": "Journey Builder", "time": 1595030400000.0}}
 
         #Retrieve important fields from request object
@@ -170,7 +170,7 @@ def journeybuilder_execute():
             dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
         if is_template == 'ProductPurchase':
-            dict1 = { 'action': action ,'user': {'id': user_id}, 'source': {'channel': event_source, 'time': current_date_millis}}
+            dict1 = { 'action': 'Purchase' ,'user': {'id': user_id}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
             order_id = get_event_value(is_event_mappings['order_id'], fields_values)
             currency = get_event_value(is_event_mappings['currency'], fields_values)
@@ -192,13 +192,17 @@ def journeybuilder_execute():
                             val = jj.split(':')
                             line_item_dict[val[0]] = val[1]
                             if val[0].lower() == 'price':
-                                totalValue += float(val[1])                                
+                                totalValue += float(val[1])         
+                                line_item_dict[val[0]] = float(val[1])
+                            elif val[0].lower() == 'quantity':
+                                line_item_dict[val[0]] = int(val[1])
+                            else:
+                                line_item_dict[val[0]] = val[1]
+
                         line_items_arr.append(line_item_dict)
 
-
-                    totalValue = "%.2f" % round(totalValue,2)
                     dict2 = {}
-                    dict3 = {'orderId': order_id, 'totalValue': totalValue, 'currency': currency, 'lineItems': line_items_arr }
+                    dict3 = {'orderId': order_id, 'totalValue': float(totalValue), 'currency': currency, 'lineItems': line_items_arr }
                     dict2["Product"] = dict3
 
             if dict2:
