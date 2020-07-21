@@ -194,7 +194,9 @@ def journeybuilder_execute():
 
 
                     totalValue = "%.2f" % round(totalValue,2)
-                    dict2 = {"Product:"{'orderId': order_id, 'totalValue': totalValue, 'currency': currency, 'lineItems': line_items_arr }}
+                    dict2 = {}
+                    dict3 = {'orderId': order_id, 'totalValue': totalValue, 'currency': currency, 'lineItems': line_items_arr }
+                    dict2["Product"] = dict3
 
             if dict2:
                 dict1["order"] = dict2
