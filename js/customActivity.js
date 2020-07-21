@@ -434,7 +434,7 @@ define([
                 field_mapping_dict[val1] = val2;
             }
         }
-        alert('FMD: ' + JSON.stringify(field_mapping_dict));
+        //alert('FMD: ' + JSON.stringify(field_mapping_dict));
         //Need to write JS to retrieve mapping selections and put them into an array
         return field_mapping_dict; //$("#select-01").val();
     }
