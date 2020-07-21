@@ -159,9 +159,9 @@ def journeybuilder_execute():
         dict1 = {}
 
         if is_template == 'GenericUserEvent':
+
             first_name = get_event_value(is_event_mappings['first_name'], fields_values)
             last_name = get_event_value(is_event_mappings['last_name'], fields_values)
-
             userName = "%s %s" % (first_name, last_name)
 
             if userName.strip():
