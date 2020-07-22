@@ -102,7 +102,6 @@ define([
 
         connection.trigger('updateButton', { button: 'next', enabled: Boolean(message) });
 
-
     }
 
 
@@ -183,14 +182,6 @@ define([
             showStep(null, 1);
         }*/
     }
-
-    $("#de-field-1").change(function(){
-
-        alert('call the do something function on option 2');
-
-    });
-
-
 
     $( "#select-01" ).change(function() {
 
