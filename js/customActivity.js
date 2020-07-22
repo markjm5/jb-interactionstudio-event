@@ -354,7 +354,7 @@ define([
         }
 
         Object.keys(is_template_data).forEach(function(key) {
-            alert(key, is_template_data[key]);
+            alert('key: ' + key + ' value: ' + is_template_data[key]);
         });
 
         //alert('isTemplate' + JSON.stringify(isTemplate));
