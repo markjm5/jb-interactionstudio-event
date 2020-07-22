@@ -37,7 +37,7 @@ define([
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
     connection.on('requestedSchema', requestedSchemaModel);    
-    //connection.on('requestedInteraction', requestedInteractionModel);    
+    connection.on('requestedInteraction', requestedInteractionModel);    
 
         
     function eventDefinitionModel(eventDefinitionModel) {
@@ -76,13 +76,13 @@ define([
         }
 
     }    
-/*
+
      function requestedInteractionModel(interaction) {
         // save schema
-        //alert('here3');
-        //console.log('>>>Request Interaction', JSON.stringify(interaction));
+        alert('here3');
+        console.log('>>>Request Interaction', JSON.stringify(interaction));
      }    
-*/
+
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
@@ -369,6 +369,8 @@ define([
         });
         if(throwError){
             alert('Handle Error Here');
+            connection.trigger('requestInteraction');
+
         }else{
             // 'payload' is initialized on 'initActivity' above.
             // Journey Builder sends an initial payload with defaults
