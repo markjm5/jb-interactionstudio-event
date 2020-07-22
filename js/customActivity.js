@@ -344,6 +344,8 @@ define([
         var in_args_dict = {};
         var de_field_values_dict = {};
         var i;
+        alert('isTemplate' + JSON.stringify(isTemplate));
+        alert('isEventMappings' + JSON.stringify(isEventMappings));
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
