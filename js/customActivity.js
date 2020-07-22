@@ -352,10 +352,10 @@ define([
         switch(isTemplate){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
-                alert('here');
+                break;
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
-                alert('there');
+                break;
 
         }
         alert('should NOT BE blank: ' + JSON.stringify(is_template_data));
@@ -435,9 +435,11 @@ define([
         switch(event_template){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
+                break;
 
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
+                break;
 
         }
         var array_length = Object.keys(is_template_data).length;
