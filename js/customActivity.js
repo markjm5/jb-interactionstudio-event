@@ -369,7 +369,7 @@ define([
         });
         if(throwError){
             alert('Handle Error Here');
-            connection.trigger('requestInteraction');
+            connection.trigger('ready');
 
         }else{
             // 'payload' is initialized on 'initActivity' above.
