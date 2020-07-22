@@ -343,9 +343,22 @@ define([
         //var DEFieldMappings = getDEFieldMappings();
         var in_args_dict = {};
         var de_field_values_dict = {};
+        var is_template_data = {}
         var i;
+
+        switch(is_template){
+            case "GenericUserEvent":
+                is_template_data = eval(json_is_template_fields_event); 
+            case "ProductPurchase":
+                is_template_data = eval(json_is_template_fields_purchase); 
+        }
+
+        Object.keys(is_template_data).forEach(function(key) {
+            alert(key, is_template_data[key]);
+        });
+
         //alert('isTemplate' + JSON.stringify(isTemplate));
-        //alert('isEventMappings' + JSON.stringify(ISEventMappings));
+        alert('isEventMappings' + JSON.stringify(ISEventMappings));
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -425,12 +438,8 @@ define([
 
         for(i=0; i < array_length; i++){
 
-  
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
-
-            alert('IS Template Data1: ' + val1);
-            alert('IS Template Data2: ' + is_template_data[val1]);
 
             if(!val2){
                 field_mapping_dict[val1] = '';
