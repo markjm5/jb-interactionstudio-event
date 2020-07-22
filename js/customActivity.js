@@ -345,6 +345,7 @@ define([
         var de_field_values_dict = {};
         var is_template_data = {}
         var i;
+        var throwError = false;
 
         //alert('isTemplate: ' + isTemplate);
         //alert('should be blank: ' + JSON.stringify(is_template_data));
@@ -362,59 +363,62 @@ define([
             if(is_template_data[key] === 'true'){
 
                 if(!ISEventMappings[key]){
-                    alert('Error!!');
+                    throwError = true;
                 }
             }
         });
+        if(throwError){
+            alert('Handle Error Here');
+        }else{
+            // 'payload' is initialized on 'initActivity' above.
+            // Journey Builder sends an initial payload with defaults
+            // set by this activity's config.json file.  Any property
+            // may be overridden as desired.
+            payload.name = name;
+            //var req = new XMLHttpRequest();
+            //req.open("POST", "https://mmdemofeedback.herokuapp.com/config.json");
+            //var resp = req.send();
+            console.log('Here1');
+            //payload['arguments'].execute.inArguments = [{"message":customerKey}];
+            console.log('Here2');
 
-        // 'payload' is initialized on 'initActivity' above.
-        // Journey Builder sends an initial payload with defaults
-        // set by this activity's config.json file.  Any property
-        // may be overridden as desired.
-        payload.name = name;
-        //var req = new XMLHttpRequest();
-        //req.open("POST", "https://mmdemofeedback.herokuapp.com/config.json");
-        //var resp = req.send();
-        console.log('Here1');
-        //payload['arguments'].execute.inArguments = [{"message":customerKey}];
-        console.log('Here2');
+            in_args_dict["tokens"] = authTokens;
+            in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
+            in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
+            //in_args_dict["customer_key"] = customerKey;
+            in_args_dict["is_template"] = isTemplate;
+            in_args_dict["is_event_mappings"] = ISEventMappings;
+            //in_args_dict["entry_de_name"] = de_name;
+            
+            for(i=0; i < arr_de_fields.length; i++){
+                var val1 = arr_de_fields[i].key.split('.')[2];
+                var val2 = '{{' + arr_de_fields[i].key + '}}';
 
-        in_args_dict["tokens"] = authTokens;
-        in_args_dict["contactIdentifier"] =  "{{Contact.Key}}";
-        in_args_dict["emailAddress"] = "{{InteractionDefaults.Email}}";
-        //in_args_dict["customer_key"] = customerKey;
-        in_args_dict["is_template"] = isTemplate;
-        in_args_dict["is_event_mappings"] = ISEventMappings;
-        //in_args_dict["entry_de_name"] = de_name;
-        
-        for(i=0; i < arr_de_fields.length; i++){
-            var val1 = arr_de_fields[i].key.split('.')[2];
-            var val2 = '{{' + arr_de_fields[i].key + '}}';
+                de_field_values_dict[val1] = val2; 
+            }       
 
-            de_field_values_dict[val1] = val2; 
-        }       
+            in_args_dict["de_field_mappings"] = de_field_values_dict;
 
-        in_args_dict["de_field_mappings"] = de_field_values_dict;
+            //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
+            /*payload['arguments'].execute.inArguments = [{
+                "tokens": authTokens, 
+                "contactIdentifier": "{{Contact.Key}}",
+                "emailAddress": "{{InteractionDefaults.Email}}",  
+                "customer_key": customerKey,
+                "is_template": isTemplate,
+                "is_event_mappings": ISEventMappings,
+                "de_field_mappings": DEFieldMappings
+            }];*/
 
-        //payload['arguments'].execute.inArguments = resp['arguments'].execute.inArguments;
-        /*payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens, 
-            "contactIdentifier": "{{Contact.Key}}",
-            "emailAddress": "{{InteractionDefaults.Email}}",  
-            "customer_key": customerKey,
-            "is_template": isTemplate,
-            "is_event_mappings": ISEventMappings,
-            "de_field_mappings": DEFieldMappings
-        }];*/
+            payload['arguments'].execute.inArguments = [];
+            payload['arguments'].execute.inArguments.push(in_args_dict);
 
-        payload['arguments'].execute.inArguments = [];
-        payload['arguments'].execute.inArguments.push(in_args_dict);
+            payload['metaData'].isConfigured = true;
 
-        payload['metaData'].isConfigured = true;
+            console.log(payload);
 
-        console.log(payload);
-
-        connection.trigger('updateActivity', payload);
+            connection.trigger('updateActivity', payload);
+        }
     }
     
 
