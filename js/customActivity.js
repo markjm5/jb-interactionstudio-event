@@ -37,7 +37,7 @@ define([
     connection.on('gotoStep', onGotoStep);
     connection.on('requestedTriggerEventDefinition', eventDefinitionModel);    
     connection.on('requestedSchema', requestedSchemaModel);    
-    connection.on('requestedInteraction', requestedInteractionModel);    
+    //connection.on('requestedInteraction', requestedInteractionModel);    
 
         
     function eventDefinitionModel(eventDefinitionModel) {
@@ -77,11 +77,11 @@ define([
 
     }    
 
-     function requestedInteractionModel(interaction) {
+     /*function requestedInteractionModel(interaction) {
         // save schema
         alert('here3');
         console.log('>>>Request Interaction', JSON.stringify(interaction));
-     }    
+     }*/    
 
 
     function onRender() {
@@ -368,7 +368,8 @@ define([
             }
         });
         if(throwError){
-            alert('Handle Error Here');
+
+            $("#message2").html("Please ensure you have mapped all the required fields before clicking Done");
             connection.trigger('ready');
 
         }else{
