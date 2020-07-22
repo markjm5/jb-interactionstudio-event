@@ -344,8 +344,8 @@ define([
         var in_args_dict = {};
         var de_field_values_dict = {};
         var i;
-        alert('isTemplate' + JSON.stringify(isTemplate));
-        alert('isEventMappings' + JSON.stringify(ISEventMappings));
+        //alert('isTemplate' + JSON.stringify(isTemplate));
+        //alert('isEventMappings' + JSON.stringify(ISEventMappings));
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
@@ -429,7 +429,8 @@ define([
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
 
-            alert('IS Template Data' + is_template_data[val1]);
+            alert('IS Template Data1: ' + val1);
+            alert('IS Template Data2: ' + is_template_data[val1]);
 
             if(!val2){
                 field_mapping_dict[val1] = '';
