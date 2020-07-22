@@ -11,6 +11,8 @@ define([
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var json_is_template_fields_purchase = {"user_id":"true","source":"false","event_date":"false", "order_id": "true", "currency": "true","line_items": "true"};
+    var json_is_template_fields_product_view = {"user_id":"true","action":"true","source":"false","event_date":"false", "product_id": "true", "name": "false","url": "false","imageUrl": "false","description": "false","price": "false","currency":"false","inventoryCount":"false"};
+
     var event_template = "";
 
     var arr_de_fields = [];
@@ -188,81 +190,52 @@ define([
         if(arr_de_fields.length > 0){
 
             var e = document.getElementById("select-01");
+            var field_group = "";
+            var dropdown_options = "";
+            var is_template_data = {};
+
             event_template = e.options[e.selectedIndex].value;
+
+            connection.trigger('updateButton', { button: 'next', enabled: true });
+
+            $("#message1").html("IS Event Selected! Click Next to Continue");
+
+            $("#summary-view").empty();
+            
+            for(i=0; i < arr_de_fields.length; i++){
+                var field_name = arr_de_fields[i].key.split('.')[2];
+                dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
+            }       
 
             switch(event_template) {
                 case 'GenericUserEvent':
-
-                    connection.trigger('updateButton', { button: 'next', enabled: true });
-
-                    $("#message1").html("IS Event Selected! Click Next to Continue");
-
-                    $("#summary-view").empty();
-
-                    var field_group = "";
-                    var dropdown_options = "";
-                    var i;
-
-                    for(i=0; i < arr_de_fields.length; i++){
-                        var field_name = arr_de_fields[i].key.split('.')[2];
-                        dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
-                    }       
-
-                    var is_template_data = eval(json_is_template_fields_event);
-
-                    i=0;
-                    for (var key in is_template_data) {
-                        i++;
-                        if (is_template_data[key] == 'true') { // this will check if key is a required field
-                            //field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
-                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\"></abbr></label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
-
-                        }else{
-                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
-                        }
-                    }
-
-                    $("#summary-view").prepend(field_group);      // Append the new elements
-
+                    is_template_data = eval(json_is_template_fields_event);
                     break;
 
-                case 'ProductPurchase': //TODO: Add product purchases to existing template
-                    connection.trigger('updateButton', { button: 'next', enabled: true });
-
-                    $("#message1").html("Success! Click Next to Continue");
-
-                    $("#summary-view").empty();
-
-                    var field_group = "";
-                    var dropdown_options = "";
-                    var i;
-
-                    for(i=0; i < arr_de_fields.length; i++){
-                        var field_name = arr_de_fields[i].key.split('.')[2];
-                        dropdown_options += "<option value=\"" + field_name + "\">" + field_name + ' (' + arr_de_fields[i].type + ")</option>";
-                    }       
-
-                    var is_template_data = eval(json_is_template_fields_purchase);
-
-                    i=0;
-                    for (var key in is_template_data) {
-                        i++;
-                        if (is_template_data[key] == 'true') { // this will check if key is a required field
-                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\"></abbr></label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
-                        }else{
-                            field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
-                        }
-                    }
-
-                    $("#summary-view").prepend(field_group);      // Append the new elements
-
+                case 'ProductPurchase': 
+                    is_template_data = eval(json_is_template_fields_purchase);
                     break;
-                default:
-                    message = false;
-                    $("#message1").html("Please Select an Event Template");                                        
-                    //var element = document.getElementById("event_template_selection");
-                    //element.classList.add("slds-has-error");
+
+                case 'ProductView': 
+                    is_template_data = eval(json_is_template_fields_product_view);
+                    break;
             }
+
+            var i;
+            i=0;
+            for (var key in is_template_data) {
+                i++;
+                if (is_template_data[key] == 'true') { // this will check if key is a required field
+                    //field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                    field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\"></abbr></label><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><label class=\"slds-form-element__label\" for=\"de-field-" + i + "\"><abbr class=\"slds-required\" title=\"required\">* </abbr>Required</label><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+
+                }else{
+                    field_group += "<div class=\"activity-detail slds-grid slds-m-bottom_medium\"><div class=\"deupdate-attribute-list\"><div class=\"slds-grid\"><div class=\"deupdate-field-dropdown slds-col slds-size_5-of-12\"><div id=\"dropdownc109\"><div class=\"slds-combobox_container\"><div class=\"slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist\" aria-expanded=\"false\" aria-haspopup=\"listbox\" role=\"combobox\"><div class=\"slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right\" role=\"none\"><input type=\"text\" class=\"slds-input slds-combobox__input\" id=\"is-template-" + i + "\" aria-controls=\"is-template-" + i + "\" autocomplete=\"off\" role=\"textbox\" placeholder=\"Select an Attribute\" readonly=\"\" value=\"" +  key + "\"></div></div></div></div></div><div class=\"slds-col slds-size_1-of-12 slds-text-align_center equals-symbol\"></div><div class=\"slds-form-element\"><div class=\"slds-form-element__control\"><div class=\"slds-select_container\"><select class=\"slds-select\" name=\"select-icecream\" id=\"de-field-" + i + "\" required=\"\"><option value=\"\" disabled selected>Please select</option>" +  dropdown_options + "</select></div></div></div></div></div></div>";
+                }
+            }
+
+            $("#summary-view").prepend(field_group);      // Append the new elements
+
 
         }
 
