@@ -346,7 +346,7 @@ define([
         var is_template_data = {}
         var i;
 
-        switch(is_template){
+        switch(isTemplate){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
             case "ProductPurchase":
