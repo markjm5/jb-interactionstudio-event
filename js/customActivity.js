@@ -184,6 +184,14 @@ define([
         }*/
     }
 
+    $("select[name='select-icecream']").change(function(){
+
+        alert('call the do something function on option 2');
+
+    });
+
+
+
     $( "#select-01" ).change(function() {
 
         if(arr_de_fields.length > 0){
@@ -269,12 +277,6 @@ define([
 
     });    
 
-
-   // $("select[name='select-icecream']").change(function(){
-
-   //     alert('call the do something function on option 2');
-
-    //});
 
     function onGetTokens (tokens) {
         // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
