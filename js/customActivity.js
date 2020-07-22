@@ -184,7 +184,7 @@ define([
         }*/
     }
 
-    $("select[name='select-icecream']").change(function(){
+    $("[name='select-icecream']").change(function(){
 
         alert('call the do something function on option 2');
 
