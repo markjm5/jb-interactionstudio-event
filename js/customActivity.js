@@ -269,6 +269,13 @@ define([
 
     });    
 
+
+    $('select[name="select-icecream"]').change(function(){
+
+        alert("call the do something function on option 2");
+
+    });​
+
     function onGetTokens (tokens) {
         // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
         // console.log(tokens);
