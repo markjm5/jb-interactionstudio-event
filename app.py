@@ -129,6 +129,51 @@ def journeybuilder_execute():
 
             dict1 = { 'action': action ,'user': {'id': user_id, 'attributes': fields_values}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
+        if is_template == 'ProductView':
+            action = get_event_value(is_event_mappings['action'], fields_values)
+            source_url = get_event_value(is_event_mappings['source_url'], fields_values)
+
+            product_id = get_event_value(is_event_mappings['product_id'], fields_values)
+            product_name = get_event_value(is_event_mappings['product_name'], fields_values)
+            product_url = get_event_value(is_event_mappings['product_url'], fields_values)
+            product_imageUrl = get_event_value(is_event_mappings['product_imageUrl'], fields_values)
+            product_description = get_event_value(is_event_mappings['product_description'], fields_values)
+            product_price = get_event_value(is_event_mappings['product_price'], fields_values)
+            product_currency = get_event_value(is_event_mappings['product_currency'], fields_values)
+            product_inventoryCount = get_event_value(is_event_mappings['product_inventoryCount'], fields_values)
+
+            #create the partial dictionaries
+            source_dict = {'channel': event_source, 'time': current_date_millis}
+            product_dict = {'Product'{'_id': product_id}}
+
+            if source_url.strip():
+                source_dict["url"] = source_url
+
+
+            if product_name.strip():
+                product_dict["name"] = product_name
+
+            if product_url.strip():
+                product_dict["url"] = product_url
+
+            if product_imageUrl.strip():
+                product_dict["imageUrl"] = product_imageUrl
+
+            if product_description.strip():
+                product_dict["description"] = product_description
+
+            if product_price.strip():
+                product_dict["price"] = product_price
+
+            if product_currency.strip():
+                product_dict["currency"] = product_currency
+
+            if product_inventoryCount.strip():
+                product_dict["inventoryCount"] = product_inventoryCount
+
+            dict1 = { 'action': action ,'user': {'id': user_id}, 'itemAction': 'View Item','catalog': { 'Product': product_dict }, 'source': source_dict}
+
+
         if is_template == 'ProductPurchase':
             dict1 = { 'action': 'Purchase' ,'user': {'id': user_id}, 'source': {'channel': event_source, 'time': current_date_millis}}
 
