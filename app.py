@@ -132,6 +132,7 @@ def journeybuilder_execute():
         if is_template == 'ProductView':
             action = get_event_value(is_event_mappings['action'], fields_values)
             source_url = get_event_value(is_event_mappings['source_url'], fields_values)
+            page_type = get_event_value(is_event_mappings['page_type'], fields_values)
 
             product_id = get_event_value(is_event_mappings['product_id'], fields_values)
             product_name = get_event_value(is_event_mappings['product_name'], fields_values)
@@ -148,7 +149,9 @@ def journeybuilder_execute():
 
             if source_url.strip():
                 source_dict["url"] = source_url
-
+                
+            if page_type.strip():
+                source_dict["pageType"] = page_type
 
             if product_name.strip():
                 product_dict["name"] = product_name

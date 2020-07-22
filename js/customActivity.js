@@ -11,7 +11,7 @@ define([
     var lastStepEnabled = false;
     var json_is_template_fields_event = {"user_id":"true","action":"true","source":"false","event_date":"false", "first_name":"false", "last_name":"false"};
     var json_is_template_fields_purchase = {"user_id":"true","source":"false","event_date":"false", "order_id": "true", "currency": "true","line_items": "true"};
-    var json_is_template_fields_product_view = {"user_id":"true","action":"true","source":"false","source_url": "false","event_date":"false", "product_id": "true", "product_name": "false","product_url": "false","product_imageUrl": "false","product_description": "false","product_price": "false","product_currency":"false","product_inventoryCount":"false"};
+    var json_is_template_fields_product_view = {"user_id":"true","action":"true","source":"false","source_url": "false","page_type": "false","event_date":"false", "product_id": "true", "product_name": "false","product_url": "false","product_imageUrl": "false","product_description": "false","product_price": "false","product_currency":"false","product_inventoryCount":"false"};
 
     var event_template = "";
 
