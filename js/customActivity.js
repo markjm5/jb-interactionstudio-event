@@ -349,6 +349,7 @@ define([
         switch(isTemplate){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
+
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
         }
@@ -424,6 +425,9 @@ define([
 
     function getISEventMappings() {  
         var is_template_data = {}
+
+        alert('Event Template: ' + event_template);
+
         switch(event_template){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
