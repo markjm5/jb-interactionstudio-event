@@ -361,6 +361,7 @@ define([
         Object.keys(is_template_data).forEach(function(key) {
             if(is_template_data[key] === 'true'){
                 alert('key: ' + key + ' value: ' + is_template_data[key]);
+                alert('mapped?: '+ ISEventMappings[key]);
             }
         });
 
