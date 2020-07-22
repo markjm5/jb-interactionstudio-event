@@ -330,6 +330,9 @@ define([
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
                 break;
+            case "ProductView":
+                is_template_data = eval(json_is_template_fields_product_view); 
+                break;                
         }
 
         Object.keys(is_template_data).forEach(function(key) {
@@ -421,6 +424,10 @@ define([
                 is_template_data = eval(json_is_template_fields_purchase); 
                 break;
 
+            case "ProductView":
+                is_template_data = eval(json_is_template_fields_product_view); 
+                break;
+    
         }
         var array_length = Object.keys(is_template_data).length;
         var i;
