@@ -144,7 +144,7 @@ def journeybuilder_execute():
 
             #create the partial dictionaries
             source_dict = {'channel': event_source, 'time': current_date_millis}
-            product_dict = {'Product'{'_id': product_id}}
+            product_dict = {'_id': product_id}
 
             if source_url.strip():
                 source_dict["url"] = source_url
