@@ -436,7 +436,7 @@ define([
         var i;
         var field_mapping_dict = {};
 
-        for(i=0; i < array_length; i++){
+        for(i=1; i < array_length + 1; i++){
 
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
