@@ -346,8 +346,8 @@ define([
         var is_template_data = {}
         var i;
 
-        alert('isTemplate: ' + isTemplate);
-        alert('should be blank: ' + JSON.stringify(is_template_data));
+        //alert('isTemplate: ' + isTemplate);
+        //alert('should be blank: ' + JSON.stringify(is_template_data));
 
         switch(isTemplate){
             case "GenericUserEvent":
@@ -356,16 +356,13 @@ define([
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
                 break;
-
         }
-        alert('should NOT BE blank: ' + JSON.stringify(is_template_data));
 
         Object.keys(is_template_data).forEach(function(key) {
-            alert('key: ' + key + ' value: ' + is_template_data[key]);
+            if(is_template_data[key] === 'true'){
+                alert('key: ' + key + ' value: ' + is_template_data[key]);
+            }
         });
-
-        //alert('isTemplate' + JSON.stringify(isTemplate));
-        alert('isEventMappings' + JSON.stringify(ISEventMappings));
 
         // 'payload' is initialized on 'initActivity' above.
         // Journey Builder sends an initial payload with defaults
