@@ -347,14 +347,18 @@ define([
         var i;
 
         alert('isTemplate: ' + isTemplate);
+        alert('should be blank: ' + JSON.stringify(is_template_data));
 
         switch(isTemplate){
             case "GenericUserEvent":
                 is_template_data = eval(json_is_template_fields_event); 
-
+                alert('here');
             case "ProductPurchase":
                 is_template_data = eval(json_is_template_fields_purchase); 
+                alert('there');
+
         }
+        alert('should NOT BE blank: ' + JSON.stringify(is_template_data));
 
         Object.keys(is_template_data).forEach(function(key) {
             alert('key: ' + key + ' value: ' + is_template_data[key]);
