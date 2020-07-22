@@ -20,11 +20,6 @@ is_prod = os.environ.get('IS_PRODUCTION', None)
 if is_prod:
 
     JWT_SIGNING_SECRET = os.environ.get('JWT_SIGNING_SECRET')
-    #CLIENT_ID = os.environ.get('CLIENT_ID')
-    #CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
-    #MC_AUTH_ENDPOINT = os.environ.get('MC_AUTH_ENDPOINT')    
-    #MC_HOST_ENDPOINT = os.environ.get('MC_HOST_ENDPOINT')    
-    #MC_SOAP_ENDPOINT = os.environ.get('MC_SOAP_ENDPOINT')   
     IS_ENDPOINT = os.environ.get('IS_ENDPOINT')
     app.debug = False
     LOG_NOTIFICATION_URL = os.environ.get('LOG_NOTIFICATION_URL')
@@ -36,11 +31,6 @@ else:
 
     DEBUG = Config.DEBUG
     JWT_SIGNING_SECRET = Config.JWT_SIGNING_SECRET
-    #CLIENT_ID = Config.CLIENT_ID
-    #CLIENT_SECRET = Config.CLIENT_SECRET
-    #MC_AUTH_ENDPOINT = Config.MC_AUTH_ENDPOINT
-    #MC_HOST_ENDPOINT = Config.MC_HOST_ENDPOINT
-    #MC_SOAP_ENDPOINT = Config.MC_SOAP_ENDPOINT
     IS_ENDPOINT = Config.IS_ENDPOINT
     LOG_NOTIFICATION_URL = Config.LOG_NOTIFICATION_URL 
     app.debug = DEBUG

@@ -410,23 +410,26 @@ define([
     }
 
     function getISEventMappings() {  
-
+        var is_template_data = {}
         switch(event_template){
             case "GenericUserEvent":
-                var is_template_data = eval(json_is_template_fields_event); 
+                is_template_data = eval(json_is_template_fields_event); 
 
             case "ProductPurchase":
-                var is_template_data = eval(json_is_template_fields_purchase); 
+                is_template_data = eval(json_is_template_fields_purchase); 
 
         }
         var array_length = Object.keys(is_template_data).length;
         var i;
         var field_mapping_dict = {};
 
-        for(i=1; i < array_length + 1; i++){
+        for(i=0; i < array_length; i++){
 
+  
             var val1 = $('#is-template-' + i).val();
             var val2 = $('#de-field-' + i).val();
+
+            alert('IS Template Data' + is_template_data[val1]);
 
             if(!val2){
                 field_mapping_dict[val1] = '';
