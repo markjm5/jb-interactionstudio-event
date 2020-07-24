@@ -53,7 +53,8 @@ def index_html():
 
     #Debugging Logger
     data = {'title': 'inArguments Request', 'body': 'this is a GET request to index.html', 'data': request.data}
-    debug_logger(json.dumps(data))
+   # import pdb; pdb.set_trace()
+    debug_logger(data)
 
     return render_template('index.html', static_path=path_to_static)
 
@@ -71,8 +72,8 @@ def journeybuilder_execute():
             decrypted_token = {}
 
         #Debugging Logger
-        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': json.dumps(decrypted_token)}
-        debug_logger(json.dumps(data))
+        data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Execute Command', 'decrypted token': decrypted_token}
+        debug_logger(data)
 
         if not is_prod:
             #decrypted_token = {"inArguments": [{"tokens": {"token": "0bICaQjRzb5eVIj1GdBUzh0VhzAiY_0r2RGv3Ok4g3X2JMrrYaJLwfyR6T5e4BUDhDV5pdIs8PpB19dUOrDy93merVjgL8HJpz6BS58opkgJz6WKyVyDNPDM2cxzO04GYqxTKMVD3yC42q86V1W0iluviKdq4jveXQ1l5ebYWkZzkwtDBer0QKceS4I1QE8KjQgW43JJqXWc8ZkhAjqlfjbHTFE_wvg94SpQmwYnGk5emafrKXdIp_6AwRrsAbmwSCv3J8WHLtOtN3htuOVwJ5Q", "fuel2token": "4jzRKZK7erA0xBv6QaN3SaHm", "expires": 1595342819521, "stackKey": "S4"}, "contactIdentifier": "rmorris.10000.0000@gmail.exacttargettest.com", "emailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "is_template": "ProductPurchase", "is_event_mappings": {"user_id": "UserID", "action": "Action", "source": "", "event_date": "EventDate", "order_id": "OrderID", "currency": "Currency", "line_items": "LineItems"}, "de_field_mappings": {"EmailAddress": "rmorris.10000.0000@gmail.exacttargettest.com", "FirstName": "Rachel", "LastName": "Morris2", "Gender": "M", "UserID": "100000003", "SegmentMembership": "", "loyaltypoints": "", "loyaltytier": "", "Action": "Purchase", "EventDate": "7/4/2020 12:00:00 AM", "EventID": "11", "OrderID": "100031", "Currency": "USD", "LineItems": "[{_id: MarkTest,price: 90.00,quantity: 1}]"}}], "outArguments": [{"SegmentMembership": ""}], "activityObjectID": "e869451f-60a0-401c-a065-196e241190d0", "journeyId": "feca1ca9-e848-4a1a-90b4-a4bcd1c0b391", "activityId": "e869451f-60a0-401c-a065-196e241190d0", "definitionInstanceId": "a66b2125-0c11-4180-ad83-2db789125e7d", "activityInstanceId": "20015f46-d17a-437a-92d3-139029e9ba55", "keyValue": "rmorris.10000.0000@gmail.exacttargettest.com", "mode": 0}
@@ -222,7 +223,7 @@ def journeybuilder_execute():
 
         #Debugging Logger
         data = {'title': 'Interaction Studio Request', 'body': 'This is a POST request to Interaction Studio', 'data': json.dumps(retrieve_json)}
-        debug_logger(json.dumps(data))
+        debug_logger(data)
         #import pdb; pdb.set_trace()
         #make an api call to evergage
         response = requests.post(IS_ENDPOINT, json=retrieve_json)
@@ -236,7 +237,7 @@ def journeybuilder_execute():
                 campaign_response = []
         else:
             data = {'title': 'ERROR', 'body': response.content}
-            debug_logger(json.dumps(data))
+            debug_logger(data)
 
     jsonified_test = {"SegmentMembership": campaign_response}    
 
@@ -255,7 +256,7 @@ def journeybuilder_save():
             decrypted_token = {}
 
         data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Save Command', 'decrypted token': json.dumps(decrypted_token)}
-        debug_logger(json.dumps(data))
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -273,7 +274,7 @@ def journeybuilder_publish():
             decrypted_token = {}
 
         data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Publish Command', 'decrypted token': json.dumps(decrypted_token)}
-        debug_logger(json.dumps(data))
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -290,7 +291,7 @@ def journeybuilder_stop():
             decrypted_token = {}
 
         data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Stop Command', 'decrypted token': json.dumps(decrypted_token)}
-        debug_logger(json.dumps(data))
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -309,7 +310,7 @@ def journeybuilder_validate():
             decrypted_token = {}
 
         data = {'title': 'inArguments Request', 'body': 'This is a POST request to the Validate Command', 'decrypted token': json.dumps(decrypted_token)}
-        debug_logger(json.dumps(data))
+        debug_logger(data)
 
     jsonified_test = { "SegmentMembership": "this is a test"}    
     return jsonify(jsonified_test)
@@ -348,7 +349,7 @@ def debug_logger(data):
         return None
 
     logging_string = "INFO: %s %s\n\n" % (dt.now(), data)
-
+    #import pdb; pdb.set_trace()
     #Set logging properties
     sys.stderr.write(logging_string)
 
