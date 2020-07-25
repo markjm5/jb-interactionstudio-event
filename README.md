@@ -164,3 +164,5 @@ http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 3. Locate the activity in Journey Builder
 
 <br>![](static/documentation/3.png)<br><br>
+
+## Step 4 - Using the Custom Activity
