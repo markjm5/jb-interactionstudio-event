@@ -63,7 +63,7 @@
 
 ## Step 3 - Validate your Heroku Deploy
 
-1. Test this URL after deployment:<br><br>
+1. Test this URL after deployment:<br>
 
 http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 
