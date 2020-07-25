@@ -65,7 +65,7 @@
 
 1. Test this URL after deployment:<br><br>
 
-http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json (http://[your_app_name_here].herokuapp.com/config.json)
+http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 
 
 <br>![](static/documentation/2.png)<br><br>
