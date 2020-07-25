@@ -37,7 +37,7 @@
 | Endpoint URL | *Nothing has been deployed to Heroku up to this point, however, we need to create this Activity in order to get the application key. For the time being (since this is a required field), enter in: https://herokuapp.com/ixn/activities/generic-activity and click Save.*|
 
 
-## Step 2 - Begin the Heroku deploy process
+## Step 2 - Deploy the Heroku Application
 
 1. Click the button below to deploy this application to Heroku (**You must be logged into your Heroku Account beforehand**).
 
