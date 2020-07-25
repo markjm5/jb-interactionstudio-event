@@ -12,16 +12,31 @@
 ### Create a package inside of Marketing Cloud, with a Jourey Builder component.
 
 1. Go to Administration
+![](static/documentation/1.png)
+
 2. Go to Platform Tools > Apps > Installed Packages
+![](static/documentation/2.png)
+
 3. Click on the 'New' button
+![](static/documentation/3.png)
+
 4. Enter something descriptive as your Package name
+![](static/documentation/4.png)
+
 5. Click 'Save'. 
+![](static/documentation/5.png)
+
+![](static/documentation/6.png)
 
 **IMPORTANT: Copy and paste the JWT SIGNING SECRET into a separate notepad document. We will need it bit later** 
 
-6. Select ‘Journey Builder Activity’ and click Next
+6. Select ‘Add Component’ button
 
-7. Enter the following:
+7. Select ‘Journey Builder Activity’ and click Next
+
+![](static/documentation/7.png)
+
+8. Enter the following:
 
  Field | Value  |
 | ------ | --------- |
@@ -30,9 +45,10 @@
 | Category | Customer Updates |
 | Endpoint URL | *Nothing has been deployed to Heroku up to this point, however, we need to create this Activity in order to get the application key. For the time being (since this is a required field), enter in: https://herokuapp.com/ixn/activities/generic-activity and click Save.*|
 
-#### 8. Your component should look something like this:
+8. Your component should look something like this:
 
-### Create the Package in Marketing Cloud
+![](static/documentation/9.png)
+
 
 ### Begin the Heroku deploy process
 
