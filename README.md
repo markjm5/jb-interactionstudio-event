@@ -185,32 +185,32 @@ Once you have selected your template, click ‘Next’<br><br>
 
  Template| Field | Type | Description  |
 | ------ | --------- |--------- |--------- |
-| Generic User Event | user_id |           |
-|        | action    |         |           |
-|        | source    |         |           |
-|        | event_date |        |           |
-|        | first_name |        |           |
-|        | last_name |         |           |
-| Product View |  user_id |         |           |
-|        | action |        |           |
-|        | source |        |           |
-|        | source_url |        |           |
-|        | page_type |        |           |
-|        | event_date |        |           |
-|        | product_id |        |           |
-|        | product_name |        |           |
-|        | product_url |        |           |
-|        | product_imageUrl |        |           |
-|        | product_description |        |           |
-|        | product_price |        |           |
-|        | product_currency |        |           |
-|        | product_inventoryCount |        |           |
-| Product Purchase | user_id |           |
-|        | source    |         |           |
-|        | event_date |        |           |
-|        | order_id |        |           |
-|        | currency |         |           |
-|        | line_items |         |           |
+| Generic User Event | user_id |     TBC     |  TBC  |
+|        | action    |    TBC     |   TBC        |
+|        | source    |    TBC     |    TBC       |
+|        | event_date |     TBC   |      TBC     |
+|        | first_name |     TBC   |      TBC     |
+|        | last_name |    TBC     |     TBC      |
+| Product View |  user_id |     TBC    |   TBC        |
+|        | action |    TBC    |    TBC       |
+|        | source |    TBC    |     TBC      |
+|        | source_url |   TBC     |     TBC      |
+|        | page_type |    TBC    |    TBC       |
+|        | event_date |   TBC     |     TBC      |
+|        | product_id |    TBC    |     TBC      |
+|        | product_name |    TBC    |    TBC       |
+|        | product_url |     TBC   |    TBC       |
+|        | product_imageUrl |    TBC    |    TBC       |
+|        | product_description |    TBC    |    TBC       |
+|        | product_price |     TBC   |      TBC     |
+|        | product_currency |    TBC    |    TBC       |
+|        | product_inventoryCount |    TBC    |      TBC     |
+| Product Purchase | user_id |    TBC       |TBC|
+|        | source    |    TBC     |    TBC       |
+|        | event_date |    TBC    |    TBC       |
+|        | order_id |   TBC     |     TBC      |
+|        | currency |   TBC      |     TBC      |
+|        | line_items |    TBC     |    TBC       |
 
 5. Click ‘Done’ once you have finished mapping the fields. 
 
