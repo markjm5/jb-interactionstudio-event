@@ -39,7 +39,7 @@
 
 ## Step 2 - Begin the Heroku deploy process
 
-1. Please click the button below to deploy this application to Heroku.
+1. Click the button below to deploy this application to Heroku (**You must be logged into your Heroku Account beforehand**).
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
