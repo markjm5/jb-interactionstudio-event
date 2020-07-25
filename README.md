@@ -211,3 +211,9 @@ Once you have selected your template, click ‘Next’<br><br>
 |        | order_id |        |           |
 |        | currency |         |           |
 |        | line_items |         |           |
+
+5. Click ‘Done’ once you have finished mapping the fields. 
+
+6. Activate the Journey.
+
+Whenever a contact enters the Journey and reaches the IS Event Custom Activity, their details will be sent to Interaction Studio using the template mapping rules that have been configured. 
