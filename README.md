@@ -14,7 +14,7 @@
 1. Go to Administration<br><br>
 ![](static/documentation/1.png)
 
-2. Go to Platform Tools > Apps > Installed Packages
+2. Go to Platform Tools > Apps > Installed Packages<br><br>
 ![](static/documentation/2.png)
 
 3. Click on the 'New' button<br><br>
