@@ -5,7 +5,7 @@
 
 ## Step 0 - Get Heroku
 
-<p>Verify you have a Heroku account.</p>
+[Verify you have a Heroku account.](https://www.heroku.com)
 
 ## Step 1 - Initial Setup
 
