@@ -169,7 +169,7 @@ http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 
 1. When creating a new Journey, ensure that you have selected an Entry Source first with a corresponding Data Extension. The IS Entry Custom Acivity will only work with an Entry Source Data Extension.<br><br>
 
-2. After selecting an Entry Source, drag the IS Event custom activity onto the journey canvas. Click on the custom activity to open the settings.
+2. After selecting an Entry Source, drag the IS Event custom activity onto the journey canvas. Click on the custom activity to open the settings.<br><br>
 
 3. Once the custom activity settings are opened, you will notice there are 2 steps. In Step 1, you will need to select from a list of templates, which are:
 
