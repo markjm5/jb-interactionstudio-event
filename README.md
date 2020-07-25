@@ -11,17 +11,17 @@
 
 ### Create a package inside of Marketing Cloud, with a Jourey Builder component.
 
-#### 1. Go to Administration
-#### 2. Go to Platform Tools > Apps > Installed Packages
-#### 3. Click on the 'New' button
-#### 4. Enter something descriptive as your Package name
-#### 5. Click 'Save'. 
+1. Go to Administration
+2. Go to Platform Tools > Apps > Installed Packages
+3. Click on the 'New' button
+4. Enter something descriptive as your Package name
+5. Click 'Save'. 
 
 **IMPORTANT: Copy and paste the JWT SIGNING SECRET into a separate notepad document. We will need it bit later** 
 
-#### 6. Select ‘Journey Builder Activity’ and click Next
+6. Select ‘Journey Builder Activity’ and click Next
 
-#### 7. Enter the following:
+7. Enter the following:
 
  Field | Value  |
 | ------ | --------- |
