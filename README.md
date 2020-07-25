@@ -178,3 +178,36 @@ Template | Description  |
 | Generic User Event | Used to sent any generic Event across to IS. Some examples could be email sent/opened, sms sent/opened etc.  |
 | Product View | Used to send Events across where the customer has viweed a particular product. The product does not need to pre-exist in IS beforehand but rather gets created on the fly. The product details specified in this template will be used to create a new product in IS if it does not exist already. |
 | Product Purchase | Used to send a Product Purchase event across to IS. |
+
+Once you have selected your template, click ‘Next’<br><br>
+
+4. In Step 2, map the fields from your Entry Data Extension to the IS Event Template. Below is a reference guide for each field in each of the templates:
+
+ Template| Field | Type | Description  |
+| ------ | --------- |--------- |--------- |
+| Generic User Event | user_id |           |
+|        | action    |         |           |
+|        | source    |         |           |
+|        | event_date |        |           |
+|        | first_name |        |           |
+|        | last_name |         |           |
+| Product View |  user_id |         |           |
+|        | action |        |           |
+|        | source |        |           |
+|        | source_url |        |           |
+|        | page_type |        |           |
+|        | event_date |        |           |
+|        | product_id |        |           |
+|        | product_name |        |           |
+|        | product_url |        |           |
+|        | product_imageUrl |        |           |
+|        | product_description |        |           |
+|        | product_price |        |           |
+|        | product_currency |        |           |
+|        | product_inventoryCount |        |           |
+| Product Purchase | user_id |           |
+|        | source    |         |           |
+|        | event_date |        |           |
+|        | order_id |        |           |
+|        | currency |         |           |
+|        | line_items |         |           |
