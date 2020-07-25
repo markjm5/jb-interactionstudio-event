@@ -175,6 +175,6 @@ http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 
 Template | Description  |
 | ------ | --------- |
-| Generic User Event | Used to sent any generic Event across to Interaction Studio. Some examples could be email sent/opened, sms sent/opened etc.  |
-| Product View | *Leave blank* |
-| Product Purchase | *Leave blank* |
+| Generic User Event | Used to sent any generic Event across to IS. Some examples could be email sent/opened, sms sent/opened etc.  |
+| Product View | Used to send Events across where the customer has viweed a particular product. The product does not need to pre-exist in IS beforehand but rather gets created on the fly. The product details specified in this template will be used to create a new product in IS if it does not exist already. |
+| Product Purchase | Used to send a Product Purchase event across to IS. |
