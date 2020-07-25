@@ -166,3 +166,15 @@ http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 <br>![](static/documentation/3.png)<br><br>
 
 ## Step 4 - Using the Custom Activity
+
+1. When creating a new Journey, ensure that you have selected an Entry Source first with a corresponding Data Extension. The IS Entry Custom Acivity will only work with an Entry Source Data Extension.<br><br>
+
+2. After selecting an Entry Source, drag the IS Event custom activity onto the journey canvas. Click on the custom activity to open the settings.
+
+3. Once the custom activity settings are opened, you will notice there are 2 steps. In Step 1, you will need to select from a list of templates, which are:
+
+Template | Description  |
+| ------ | --------- |
+| Generic User Event | Used to sent any generic Event across to Interaction Studio. Some examples could be email sent/opened, sms sent/opened etc.  |
+| Product View | *Leave blank* |
+| Product Purchase | *Leave blank* |
