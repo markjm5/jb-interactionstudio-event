@@ -187,18 +187,18 @@ Once you have selected your template, click ‘Next’<br><br>
 
  Template| Field | Type | Description  |
 | ------ | --------- |--------- |--------- |
-| Generic User Event | user_id |     TBC     |  TBC  |
-|        | action    |    TBC     |   TBC        |
-|        | source    |    TBC     |    TBC       |
-|        | event_date |     TBC   |      TBC     |
-|        | first_name |     TBC   |      TBC     |
-|        | last_name |    TBC     |     TBC      |
-| Product View |  user_id |     TBC    |   TBC        |
-|        | action |    TBC    |    TBC       |
-|        | source |    TBC    |     TBC      |
+| Generic User Event | user_id | Text/Numeric | An identifier for the user  |
+|        | action    | Text | An Action such as *Sent Email* or *Viewed Page* |
+|        | source    | Text | The source of the Event, such as *Journey Builder* |
+|        | event_date | Date | Either a historical date, or if left blank the current date will be used |
+|        | first_name | Text | First name of the subscriber |
+|        | last_name | Text | Last name of the subscriber |
+| Product View | user_id | Alpha/Numeric | An identifier for the user  |
+|        | action | Text | An Action such as *Sent Email* or *Viewed Page* |
+|        | source    | Text | The source of the Event, such as *Journey Builder* |
 |        | source_url |   TBC     |     TBC      |
 |        | page_type |    TBC    |    TBC       |
-|        | event_date |   TBC     |     TBC      |
+|        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | product_id |    TBC    |     TBC      |
 |        | product_name |    TBC    |    TBC       |
 |        | product_url |     TBC   |    TBC       |
@@ -207,15 +207,30 @@ Once you have selected your template, click ‘Next’<br><br>
 |        | product_price |     TBC   |      TBC     |
 |        | product_currency |    TBC    |    TBC       |
 |        | product_inventoryCount |    TBC    |      TBC     |
-| Product Purchase | user_id |    TBC       |TBC|
-|        | source    |    TBC     |    TBC       |
-|        | event_date |    TBC    |    TBC       |
+| Product Purchase | user_id | Alpha/Numeric | An identifier for the user  |
+|        | source    | Text | The source of the Event, such as *Journey Builder* |
+|        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | order_id |   TBC     |     TBC      |
 |        | currency |   TBC      |     TBC      |
-|        | line_items |    TBC     |    TBC       |
+|        | line_items | json | Each line item in the order. Needs to match the below specification |
+|        | | | `[{`                            |
+|        | | | ` _id: freedom-card,`                    |
+|        | | | ` price: 25.00,` |
+|        | | | ` quantity: 2`                 |
+|        | | | `},`                            |
+|        | | | `{`                            |
+|        | | | ` _id: student-card,`                    |
+|        | | | ` price: 25.00,` |
+|        | | | ` quantity: 2`                 |
+|        | | | `},`                            |
+|        | | | `{...}`|
+|        | | | `]`|
 
 5. Click ‘Done’ once you have finished mapping the fields. 
 
 6. Activate the Journey.
 
 Whenever a contact enters the Journey and reaches the IS Event Custom Activity, their details will be sent to Interaction Studio using the template mapping rules that have been configured. 
+
+
+[{_id: freedom-card,price: 25.00,quantity: 2}, {_id: cloud-travel-card,price: 25.00,quantity: 1}, {...}]
