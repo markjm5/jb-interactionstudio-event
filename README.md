@@ -34,7 +34,7 @@
 | Name | *Something intuitive*|
 | Description | *Leave blank* |
 | Category | Customer Updates |
-| Endpoint URL | *Nothing has been deployed to Heroku up to this point, however, we need to create this Activity in order to get the application key. For the time being (since this is a required field), enter in: https://herokuapp.com/ixn/activities/generic-activity and click Save.* We will return to this Endpoint URL field shortly to update it.|
+| Endpoint URL | *Nothing has been deployed to Heroku up to this point, however, we need to create this Activity in order to get the application key. For the time being (since this is a required field), enter in: https://herokuapp.com/ixn/activities/generic-activity and click Save. We will return to this Endpoint URL field shortly to update it.*|
 
 
 ## Step 2 - Deploy the Heroku Application
