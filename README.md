@@ -161,7 +161,9 @@ http://[YOUR_APP_NAME_HERE].herokuapp.com/config.json
 }
 ```
 
-3. Locate the activity in Journey Builder
+3. Go back to your Journey Builder component that was created in Step 1, and update the Endpoint URL from https://herokuapp.com/ixn/activities/generic-activity to the URL of your newly deployed Heroku App, ie. http://[YOUR_APP_NAME_HERE].herokuapp.com/ (http://[your_app_name_here].herokuapp.com/) <br><br>
+
+4. Locate the activity in Journey Builder
 
 <br>![](static/documentation/3.png)<br><br>
 
