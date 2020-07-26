@@ -212,7 +212,7 @@ Once you have selected your template, click ‘Next’<br><br>
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | order_id |   TBC     |     TBC      |
 |        | currency |   TBC      |     TBC      |
-|        | line_items | json | Each line item in the order. Needs to match the below specification |
+|        | line_items | JSON | Each line item in the order. Needs to match the below specification |
 |        | | | `[{`                            |
 |        | | | ` _id: freedom-card,`                    |
 |        | | | ` price: 25.00,` |
