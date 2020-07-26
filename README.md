@@ -193,7 +193,7 @@ Once you have selected your template, click ‘Next’<br><br>
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | first_name | Text | First name of the subscriber |
 |        | last_name | Text | Last name of the subscriber |
-| Product View | user_id | Alpha/Numeric | An identifier for the user  |
+| Product View | user_id | Text/Numeric | An identifier for the user  |
 |        | action | Text | An Action such as *Sent Email* or *Viewed Page* |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
 |        | source_url |   TBC     |     TBC      |
@@ -207,7 +207,7 @@ Once you have selected your template, click ‘Next’<br><br>
 |        | product_price |     TBC   |      TBC     |
 |        | product_currency |    TBC    |    TBC       |
 |        | product_inventoryCount |    TBC    |      TBC     |
-| Product Purchase | user_id | Alpha/Numeric | An identifier for the user  |
+| Product Purchase | user_id | Text/Numeric | An identifier for the user  |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | order_id |   TBC     |     TBC      |
