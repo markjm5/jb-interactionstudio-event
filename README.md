@@ -196,33 +196,33 @@ Once you have selected your template, click ‘Next’<br><br>
 | Product View | user_id | Text/Numeric | An identifier for the user  |
 |        | action | Text | An Action such as *Sent Email* or *Viewed Page* |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
-|        | source_url | Url |     TBC      |
-|        | page_type |    TBC    |    TBC       |
+|        | source_url | Url | TBC |
+|        | page_type | Text | TBC |
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
-|        | product_id |    TBC    |     TBC      |
-|        | product_name |    TBC    |    TBC       |
-|        | product_url | Url |    TBC       |
-|        | product_imageUrl | Url |    TBC       |
-|        | product_description | Text |    TBC       |
-|        | product_price | Decimal |      TBC     |
-|        | product_currency | Text |    TBC       |
-|        | product_inventoryCount | Integer |      TBC     |
+|        | product_id | Text/Numeric | TBC |
+|        | product_name | Text | TBC |
+|        | product_url | Url | TBC |
+|        | product_imageUrl | Url | TBC |
+|        | product_description | Text | TBC |
+|        | product_price | Decimal | TBC |
+|        | product_currency | Text | TBC |
+|        | product_inventoryCount | Integer | TBC |
 | Product Purchase | user_id | Text/Numeric | An identifier for the user  |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | order_id | Text/Numeric | An identifier for the order |
 |        | currency | Text |     TBC      |
 |        | line_items | Json | Each line item in the order. Needs to match the below specification |
-|        | | | `[{`                            |
-|        | | | ` _id: freedom-card,`                    |
+|        | | | `[{` |
+|        | | | ` _id: freedom-card,` |
 |        | | | ` price: 25.00,` |
-|        | | | ` quantity: 2`                 |
-|        | | | `},`                            |
-|        | | | `{`                            |
-|        | | | ` _id: student-card,`                    |
+|        | | | ` quantity: 2` |
+|        | | | `},` |
+|        | | | `{` |
+|        | | | ` _id: student-card,` |
 |        | | | ` price: 25.00,` |
-|        | | | ` quantity: 2`                 |
-|        | | | `},`                            |
+|        | | | ` quantity: 2` |
+|        | | | `},` |
 |        | | | `{...}`|
 |        | | | `]`|
 
@@ -231,6 +231,3 @@ Once you have selected your template, click ‘Next’<br><br>
 6. Activate the Journey.
 
 Whenever a contact enters the Journey and reaches the IS Event Custom Activity, their details will be sent to Interaction Studio using the template mapping rules that have been configured. 
-
-
-[{_id: freedom-card,price: 25.00,quantity: 2}, {_id: cloud-travel-card,price: 25.00,quantity: 1}, {...}]
