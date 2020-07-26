@@ -196,22 +196,22 @@ Once you have selected your template, click ‘Next’<br><br>
 | Product View | user_id | Text/Numeric | An identifier for the user  |
 |        | action | Text | An Action such as *Sent Email* or *Viewed Page* |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
-|        | source_url |   TBC     |     TBC      |
+|        | source_url | Url |     TBC      |
 |        | page_type |    TBC    |    TBC       |
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
 |        | product_id |    TBC    |     TBC      |
 |        | product_name |    TBC    |    TBC       |
-|        | product_url |     TBC   |    TBC       |
-|        | product_imageUrl |    TBC    |    TBC       |
-|        | product_description |    TBC    |    TBC       |
-|        | product_price |     TBC   |      TBC     |
-|        | product_currency |    TBC    |    TBC       |
-|        | product_inventoryCount |    TBC    |      TBC     |
+|        | product_url | Url |    TBC       |
+|        | product_imageUrl | Url |    TBC       |
+|        | product_description | Text |    TBC       |
+|        | product_price | Decimal |      TBC     |
+|        | product_currency | Text |    TBC       |
+|        | product_inventoryCount | Integer |      TBC     |
 | Product Purchase | user_id | Text/Numeric | An identifier for the user  |
 |        | source    | Text | The source of the Event, such as *Journey Builder* |
 |        | event_date | Date | Either a historical date, or if left blank the current date will be used |
-|        | order_id |   TBC     |     TBC      |
-|        | currency |   TBC      |     TBC      |
+|        | order_id | Text/Numeric | An identifier for the order |
+|        | currency | Text |     TBC      |
 |        | line_items | Json | Each line item in the order. Needs to match the below specification |
 |        | | | `[{`                            |
 |        | | | ` _id: freedom-card,`                    |
