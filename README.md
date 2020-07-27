@@ -59,7 +59,8 @@
 | LOG_NOTIFICATION_URL | Used for debugging purposes. Sends app log details to an external system such as Request.Bin. Leave it Empty| No |
 
 <br><br>4. After you have completed all of the required form fields - click on the *Deploy app* button at the bottom of the page.<br><br>
-5. Once the app is deployed successfully (validate that it is actually deployed, you will see a success message).
+5. Validate that the app is deployed successfully (You will see a success message like the one below)
+<br>![](static/documentation/4.png)<br><br>
 
 ## Step 3 - Validate your Heroku Deploy
 
